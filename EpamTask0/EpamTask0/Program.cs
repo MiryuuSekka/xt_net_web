@@ -38,10 +38,9 @@ namespace EpamTask0
         }
         static void DoTask4()
         {
-            Console.WriteLine("Task 4 :\nWrite number");
-            Str = Console.ReadLine();
-            Str = Task1.Sequence.GetSequence(Str);
-            Console.WriteLine("Result of Task 4 :\n" + Str + "\n");
+            Console.WriteLine("Task 4 :\nWrite number. Size of array");
+            Str = Task4.ArrayTask.GetSortedArray();
+            Console.WriteLine(Str + "\n");
         }
     }
 }
