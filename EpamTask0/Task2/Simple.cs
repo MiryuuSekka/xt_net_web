@@ -8,7 +8,6 @@ namespace Task2
         
         public static string IsSimple(string Number)
         {
-            string Result = "";
             int.TryParse(Number, out N);
             for (int i = 2; i < N; i++)
             {
