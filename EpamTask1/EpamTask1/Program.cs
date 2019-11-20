@@ -21,7 +21,9 @@ namespace EpamTask1
             Part1_Basics.XMasTree.Get();
             Console.WriteLine("Task 1.5 - sum of numbers");
             Part1_Basics.SumOfNumbers.Get();
-            //Console.WriteLine("Task 1.6 - Font adjustment");
+            Console.WriteLine("Task 1.6 - Font adjustment");
+            Part1_Basics.FontAdjustment.Show();
+
 
             //Console.WriteLine("Task 1.7 - array processing");
             //Console.WriteLine("Task 1.8 - No positive");
