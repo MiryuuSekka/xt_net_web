@@ -41,13 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AnotherTriangle.cs" />
     <Compile Include="FontAdjustment.cs" />
     <Compile Include="Rectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SumOfNumbers.cs" />
     <Compile Include="Triangle.cs" />
-    <Compile Include="XMasTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Helper\Helper.csproj">
