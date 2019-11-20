@@ -38,10 +38,13 @@ namespace EpamTask1
             Console.WriteLine("\nTask 1.10 - 2D array");
             Part2_Language.Array2d.GetNewArray();
 
-            Console.WriteLine("Task 1.11 - Average string lenght");
 
-            Console.WriteLine("Task 1.12 - Char doubler");
+            Console.WriteLine("\nTask 1.11 - Average string lenght");
+            Part3_Strings.AverageStringLength.Get();
+
+            Console.WriteLine("\nTask 1.12 - Char doubler");
             Part3_Strings.CharDouble.Get();
+
             Console.ReadKey();
         }
     }
