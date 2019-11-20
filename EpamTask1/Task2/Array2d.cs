@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Part2_Language
 {
-    class Array2d
+    public static class Array2d
     {
     }
 }

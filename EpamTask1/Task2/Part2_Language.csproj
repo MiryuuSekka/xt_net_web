@@ -47,5 +47,11 @@
     <Compile Include="NoPositive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{3563f6bc-c69b-48f7-8f13-054d37f9ba38}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
