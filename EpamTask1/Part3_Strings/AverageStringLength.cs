@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Part3_Strings
 {
-    public class AverageStringLength
+    public static class AverageStringLength
     {
+
     }
 }
