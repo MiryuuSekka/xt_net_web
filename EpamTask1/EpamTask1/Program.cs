@@ -26,14 +26,17 @@ namespace EpamTask1
             Part1_Basics.FontAdjustment.Show();
             
 
-            Console.WriteLine("Task 1.7 - array processing");
+            Console.WriteLine("\nTask 1.7 - array processing");
             Part2_Language.ArrayProcessing.GetNewArray();
 
-            Console.WriteLine("Task 1.8 - No positive");
+            Console.WriteLine("\nTask 1.8 - No positive");
             Part2_Language.NoPositive.GetNewArray();
 
-            //Console.WriteLine("Task 1.9 - Non-negative sum");
-            //Console.WriteLine("Task 1.10 - 2D array");
+            Console.WriteLine("\nTask 1.9 - Non-negative sum");
+            Part2_Language.NonNegativeSum.GetNewArray();
+
+            Console.WriteLine("\nTask 1.10 - 2D array");
+            Part2_Language.Array2d.GetNewArray();
 
             //Console.WriteLine("Task 1.11 - Average string lenght");
             //Console.WriteLine("Task 1.12 - Char doubler");
