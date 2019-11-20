@@ -19,7 +19,8 @@ namespace EpamTask1
             Part1_Basics.AnotherTriangle.Get();
             Console.WriteLine("Task 1.4 - X-MAS tree");
             Part1_Basics.XMasTree.Get();
-            //Console.WriteLine("Task 1.5 - sum of numbers");
+            Console.WriteLine("Task 1.5 - sum of numbers");
+            Part1_Basics.SumOfNumbers.Get();
             //Console.WriteLine("Task 1.6 - Font adjustment");
 
             //Console.WriteLine("Task 1.7 - array processing");

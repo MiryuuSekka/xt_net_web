@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Helper
 {
@@ -25,6 +22,7 @@ namespace Helper
                 Console.WriteLine("Write " + Text);
                 str = Console.ReadLine();
                 result = IsNaturalNumber(str);
+                if (!result) Console.WriteLine("Wrong number. Try again!");
             }
             while (!result);
             return ConvertedNumber;

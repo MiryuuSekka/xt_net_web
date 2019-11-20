@@ -12,7 +12,8 @@ namespace Task4
         static int[] Values;
 
 
-        static bool GetArrayLenght(string Number) {
+        static bool GetArrayLenght(string Number)
+        {
             int.TryParse(Number, out ArraySize);
             return ArraySize > 0;
         }
@@ -23,7 +24,7 @@ namespace Task4
             ArrayLenght = new int[ArraySize];
             for (int i = 0; i < ArraySize; i++)
             {
-                Console.WriteLine("Size of next array. " + (i+1).ToString() + "/"+ ArraySize);
+                Console.WriteLine("Size of next array. " + (i + 1).ToString() + "/" + ArraySize);
                 int.TryParse(Console.ReadLine(), out N);
 
                 ArrayLenght[i] = N;
@@ -44,7 +45,7 @@ namespace Task4
                 for (int j = 0; j < ArrayLenght[i]; j++)
                 {
                     Str.Append(values[count]);
-                    if(j < ArrayLenght[i]-1) Str.Append(", ");
+                    if (j < ArrayLenght[i] - 1) Str.Append(", ");
                     count++;
                 }
                 Str.Append('}');
