@@ -10,19 +10,26 @@ namespace Part3_Strings
         {
             Console.WriteLine();
             var FullText = Console.ReadLine();
-            DeletePunctiation(ref FullText);
+            FullText = DeletePunctiation(FullText);
             var text = FullText.Split(' ');
             Console.WriteLine("result is " + GetAverage(text));
         }
 
-        static void DeletePunctiation( ref string FullText)
+        static string DeletePunctiation( string FullText)
         {
-            FullText = FullText.Replace(',', ' ');
-            FullText = FullText.Replace('.', ' ');
-            FullText = FullText.Replace(';', ' ');
-            FullText = FullText.Replace(':', ' ');
-            FullText = FullText.Replace('-', ' ');
-            FullText = FullText.Replace('\"', ' ');
+            string FormattedText = "";
+            foreach (var item in FullText)
+            {
+                if(Char.IsPunctuation(item))
+                {
+                    FormattedText += ' ';
+                }
+                else
+                {
+                    FormattedText += item;
+                }
+            }
+            return FormattedText;
         }
 
         static int GetAverage(string[] text)

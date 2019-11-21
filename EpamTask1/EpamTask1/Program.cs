@@ -37,8 +37,7 @@ namespace EpamTask1
 
             Console.WriteLine("\nTask 1.10 - 2D array");
             Part2_Language.Array2d.GetNewArray();
-
-
+            
             Console.WriteLine("\nTask 1.11 - Average string lenght");
             Part3_Strings.AverageStringLength.Get();
 
