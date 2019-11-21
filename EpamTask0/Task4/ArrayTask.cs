@@ -11,14 +11,22 @@ namespace Task4
 
         static int[] Values;
 
-
-        static bool GetArrayLenght(string Number)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Number"></param>
+        /// <returns>IsSuccessful</returns>
+        static bool SetArrayLenght(string Number)
         {
             int.TryParse(Number, out ArraySize);
             return ArraySize > 0;
         }
 
-        static bool GetArraySizes()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>IsSuccessful</returns>
+        static bool SetArraySizes()
         {
             int N;
             ArrayLenght = new int[ArraySize];
@@ -66,11 +74,11 @@ namespace Task4
         {
             string Str;
             Str = Console.ReadLine();
-            if (!GetArrayLenght(Str))
+            if (!SetArrayLenght(Str))
             {
                 return "Wrong size of array";
             }
-            if (!GetArraySizes())
+            if (!SetArraySizes())
             {
                 return "Wrong size of array";
             }

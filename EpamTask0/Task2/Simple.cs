@@ -9,14 +9,30 @@ namespace Task2
         public static string IsSimple(string Number)
         {
             int.TryParse(Number, out N);
-            for (int i = 2; i < N; i++)
+            var Root = System.Math.Sqrt(N);
+            var RootValue = System.Math.Truncate(Root);
+
+
+            if (N <= 0)
             {
-                if (N % i == 0)
-                {
-                    return "DON'T SIMPLE";
-                }
+                return "Wrong number";
             }
-            return "SIMPLE";
+
+            if (N < 4)
+            {
+                return "SIMPLE";
+            }
+            else
+            {
+                for (int i = 2; i <= RootValue; i++)
+                {
+                    if (N % i == 0)
+                    {
+                        return "DON'T SIMPLE";
+                    }
+                }
+                return "SIMPLE";
+            }
         }
     }
 }
