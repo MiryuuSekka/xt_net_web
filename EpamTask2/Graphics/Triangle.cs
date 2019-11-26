@@ -1,44 +1,41 @@
-﻿
+﻿using System;
+using System.Text;
 
 namespace Graphics
 {
-    public class Triangle
+    public class Triangle : iFigure
     {
-        int a, b, c;
-
-        public Triangle()
-        {
-            a = 1;
-            b = 1;
-            c = 1;
-        }
-
+        public Line SideA { get; set; }
+        public Line SideB { get; set; }
+        public Line SideC { get; set; }
+        
         public Triangle(int a, int b, int c)
         {
-            this.a = (Helper.Class.IsNaturalNumber(a)) ? a : 1;
-            this.b = (Helper.Class.IsNaturalNumber(b)) ? b : 1;
-            this.c = (Helper.Class.IsNaturalNumber(c)) ? c : 1;
+            SideA = new Line(a);
+            SideB = new Line(b);
+            SideC = new Line(c);
         }
 
         public double GetPerimeter()
         {
-            return a + b + c;
+            return SideA.Length + SideB.Length + SideC.Length;
         }
 
-        public double GetVolume()
+        public double GetArea()
         {
             return GetPerimeter() / 2;
         }
 
-        public string GetInformation()
+        public string GetInfo()
         {
-            var Data = "Triangle:\n";
-            Data += "   side a = " + a;
-            Data += ", side b = " + b;
-            Data += ", side c = " + c;
-            Data += "\n Perimeter = " + GetPerimeter();
-            Data += ", volume = " + GetVolume();
-            return Data;
+            var str = new StringBuilder();
+            str.Append("\nTriangle");
+            str.Append(" Side a = " + SideA.Length + ", ");
+            str.Append(" Side b = " + SideB.Length + ", ");
+            str.Append(" Side c = " + SideC.Length + ", ");
+            str.Append("Perimeter is " + Math.Round(GetPerimeter(),2) + ", ");
+            str.Append("Area is " + Math.Round(GetArea(), 2));
+            return str.ToString();
         }
     }
 }

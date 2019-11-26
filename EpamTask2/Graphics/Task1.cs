@@ -1,100 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Graphics
 {
-    public class Task1
+    public class Task1 : FigureTask<Round>
     {
-        bool IsProgress = true;
-        List<Round> data;
-
-        public Task1()
+        internal override string _menu()
         {
-            data = new List<Round>();
-            Start();
-            do
+            return "Task 2.1. Round\n" +
+               "\nPress key 1 - Create new Round" +
+               "\n          2 - View created Rounds" +
+               "\n          3 - Clear created Rounds" +
+               "\n          4 - Back to menu" +
+               "\n---------------------------------\n";
+        }
+
+        internal override void _add()
+        {
+            var x = _getValue("Write X coordinate of center");
+            var y = _getValue("Write Y coordinate of center");
+            var radius = _getValue("Write radius of round (Value must be above 0)");
+
+            try
             {
-                IsProgress = SelectAction(Console.ReadKey());
+                _data.Add(new Round(new Point(x, y), radius));
+                _start();
+                Console.WriteLine("Added new round");
+
             }
-            while(IsProgress);
-        }
-
-        void Start()
-        {
-            Console.Clear();
-            Console.WriteLine("Task 2.1. Round\n");
-            Console.WriteLine("Press key 1 - Create new Round");
-            Console.WriteLine("          2 - View created Rounds");
-            Console.WriteLine("          3 - Clear created Rounds");
-            Console.WriteLine("          4 - Back to menu");
-            Console.WriteLine("---------------------------------\n");
-        }
-
-        bool SelectAction(ConsoleKeyInfo Pressed)
-        {
-            switch (Pressed.Key)
+            catch (ArgumentException e)
             {
-                default:
-                    break;
-
-                case ConsoleKey.D1:
-                    Start();
-                    Add();
-                    break;
-
-                case ConsoleKey.D2:
-                    Start();
-                    View();
-                    break;
-
-                case ConsoleKey.D3:
-                    Start();
-                    Delete();
-                    break;
-
-                case ConsoleKey.D4:
-                    return false;
+                Console.WriteLine(e.Message);
             }
-            return true;
+            
         }
-
-        void Add()
-        {
-            int x = 0, y = 0, radius = 0;
-            string str;
-
-            Console.WriteLine("Write X coordinate of center");
-            str = Console.ReadLine();
-            int.TryParse(str, out x);
-            Console.WriteLine("Write Y coordinate of center");
-            str = Console.ReadLine();
-            int.TryParse(str, out y);
-            Console.WriteLine("Write radius of round (Value must be above 0)");
-            str = Console.ReadLine();
-            int.TryParse(str, out radius);
-
-            data.Add(new Round(new Point(x, y), radius));
-        }
-
-        void Delete()
-        {
-            data.Clear();
-        }
-
-        void View()
-        {
-            var str = new StringBuilder();
-            foreach (var item in data)
-            {
-                str.Append("\nRound - Center at { " + item.GetCenter().X);
-                str.Append(" ; " + item.GetCenter().Y + " }, ");
-                str.Append("Radius is " + item.GetRadius() + ", ");
-                str.Append("Lenght is " + item.GetLength() + ", ");
-                str.Append("Area is " + item.GetArea());
-            }
-            Console.WriteLine("\n" + str.ToString());
-        }
-
     }
 }

@@ -42,24 +42,43 @@ namespace EpamTask2
             {
                 default:
                     break;
+
                 case ConsoleKey.Escape:
                     return false;
+
                 case ConsoleKey.D1:
                     var task1 = new Graphics.Task1();
+                    break;
+
+                case ConsoleKey.D2:
+                    var task2 = new Graphics.Task2();
+                    break;
+
+                case ConsoleKey.D6:
+                    var task6 = new Graphics.Task6();
+                    break;
+
+                case ConsoleKey.D7:
+                    var task7 = new Graphics.Task7();
+                    break;
+
+                case ConsoleKey.D3:
+                    //var task3 = new Graphics.Task3();
+                    break;
+
+                case ConsoleKey.D4:
+                    //var task4 = new Graphics.Task4();
+                    break;
+
+                case ConsoleKey.D5:
+                    //var task5 = new Graphics.Task5();
+                    break;
+
+                case ConsoleKey.D8:
+                    //var task5 = new Graphics.Task5();
                     break;
             }
             return true;
         }
-
-        /*
-            //var task2 = new Graphics.Task2();
-            //var task3 = new Graphics.Task3();
-            //var task4 = new Graphics.Task4();
-            //var task5 = new Graphics.Task5();
-            //var task6 = new Graphics.Task6();
-            //var task7 = new Graphics.Task7();
-            //var task8 = new Graphics.Task8();
-
-         */
     }
 }

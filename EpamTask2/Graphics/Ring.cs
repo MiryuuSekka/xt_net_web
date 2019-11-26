@@ -1,46 +1,61 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Graphics
 {
-    public class Ring
+    public class Ring : iFigure
     {
-        Round outer;
-        Round inner;
-        Point center;
+        public Round Inner { get; set; }
 
-        public Ring(Round round1, Round round2, Point center)
+        public Round Outer { get; set; }
+
+        public Point Center { get; set; }
+
+        public double Length
         {
-            this.center = center;
-            outer.SetCenter(center);
-            inner.SetCenter(center);
-
-            if (round1.GetRadius() < round2.GetRadius())
+            get
             {
-                outer = round1;
-                inner = round2;
+                return Inner.Length + Outer.Length;
+            }
+        }
+
+        public Ring(Round outer, Round inner)
+        {
+            if(outer.Radius.Length.Equals(inner.Radius.Length))
+            {
+                throw new ArgumentException("! Wrong value. Radiuses cant be equal !");
+            }
+
+            if(inner.Radius.Length > outer.Radius.Length)
+            {
+                Inner = outer;
+                Outer = inner;
             }
             else
             {
-                if (round1.GetRadius() > round2.GetRadius())
-                {
-                    inner = round1;
-                    outer = round2;
-                }
-                else
-                {
-                    Console.WriteLine("Wrong radius of circles");
-                    return;
-                }
+                Inner = inner;
+                Outer = outer;
             }
+
+            Center = Inner.Center;
+            Outer.Center = Center;
         }
-        
+
         public double GetArea()
         {
-            return outer.GetArea() - inner.GetArea();
+            return Outer.GetArea() - Inner.GetArea();
+        }
+
+        public string GetInfo()
+        {
+            var str = new StringBuilder();
+            str.Append("\nRing - Center at { " + Center.X);
+            str.Append(" ; " + Center.Y + " }, ");
+            str.Append("Inner round radius is " + Inner.Radius.Length + ", ");
+            str.Append("\n          Outer round radius is " + Outer.Radius.Length + ", ");
+            str.Append("Lenght of both rounds is " + Math.Round(Length, 2) + ", ");
+            str.Append("Area is " + Math.Round(GetArea(), 2));
+            return str.ToString();
         }
     }
 }

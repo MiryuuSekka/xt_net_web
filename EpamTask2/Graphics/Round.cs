@@ -1,48 +1,43 @@
 ﻿using System;
+using System.Text;
 
 
 namespace Graphics
 {
-    public class Round
+    public class Round : iFigure
     {
-        int radius;
-        Point center;
+        public Point Center { get; set; }
 
-        public Round(int x, int y, int Radius)
+        public Line Radius { get; set; }
+        
+        public double Length
         {
-            center = new Point(x, y);
-            radius = (Helper.Class.IsNaturalNumber(Radius)) ? Radius : 1;
+            get
+            {
+                return (2 * Math.PI * Radius.Length);
+            }
         }
 
-        public Round(Point Center, int Radius)
+        public Round(Point center, int radius)
         {
-            center = Center;
-            radius = (Helper.Class.IsNaturalNumber(Radius)) ? Radius : 1;
+            Center = center;
+            Radius = new Line(radius);
         }
 
         public double GetArea()
         {
-            return (Math.PI * radius * radius);
+            return (Math.PI * Radius.Length * Radius.Length);
         }
 
-        public double GetLength()
+        public string GetInfo()
         {
-            return (2 * Math.PI * radius);
-        }
-
-        public int GetRadius()
-        {
-            return radius;
-        }
-
-        public Point GetCenter()
-        {
-            return center;
-        }
-
-        internal void SetCenter(Point newCenter)
-        {
-            center = newCenter;
+            var str = new StringBuilder();
+            str.Append("\nRound - Center at { " + Center.X);
+            str.Append(" ; " + Center.Y + " }, ");
+            str.Append("Radius is " + Radius.Length + ", ");
+            str.Append("Lenght is " + Math.Round(Length, 2) + ", ");
+            str.Append("Area is " + Math.Round(GetArea(), 2));
+            return str.ToString();
         }
     }
 }
