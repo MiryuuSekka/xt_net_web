@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace EpamTask2
 {
@@ -26,12 +23,12 @@ namespace EpamTask2
             str.Append("TASK 2\nMENU\n");
             str.Append("    1 - Round\n");
             str.Append("    2 - Triangle\n");
-            str.Append("    3 - User\n");
-            str.Append("    4 - MyString\n");
-            str.Append("    5 - Employee\n");
+            str.Append("    3 - User (uncomplete)\n");
+            str.Append("    4 - MyString (uncomplete)\n");
+            str.Append("    5 - Employee (uncomplete)\n");
             str.Append("    6 - Ring\n");
             str.Append("    7 - Vector graphics editor\n");
-            str.Append("    8 - GAME\n");
+            str.Append("    8 - GAME (only map generator)\n");
             str.Append("Press number of task for start. OR esc for exit\n");
             Console.WriteLine(str.ToString());
         }

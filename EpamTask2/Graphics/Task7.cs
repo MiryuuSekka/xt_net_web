@@ -98,7 +98,7 @@ namespace Graphics
                "\nPress key 1 - Round" +
                "\n          2 - Ring" +
                "\n          3 - Triangle" +
-               "\n          4 - Back to menu" +
+               "\n          ESC - Back to menu" +
                "\n---------------------------------\n";
         }
 

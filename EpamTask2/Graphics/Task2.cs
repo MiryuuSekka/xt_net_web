@@ -31,7 +31,7 @@ namespace Graphics
                "\nPress key 1 - Create new Triangle" +
                "\n          2 - View created Triangles" +
                "\n          3 - Clear created Triangles" +
-               "\n          4 - Back to menu" +
+               "\n          ESC - Back to menu" +
                "\n---------------------------------\n";
         }
     }

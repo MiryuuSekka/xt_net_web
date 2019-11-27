@@ -34,7 +34,7 @@ namespace Graphics
                "\nPress key 1 - Create new Ring" +
                "\n          2 - View created Rings" +
                "\n          3 - Clear created Rings" +
-               "\n          4 - Back to menu" +
+               "\n          ESC - Back to menu" +
                "\n---------------------------------\n";
         }
     }

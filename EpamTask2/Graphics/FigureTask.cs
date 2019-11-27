@@ -43,7 +43,7 @@ namespace Graphics
                     _delete();
                     break;
 
-                case ConsoleKey.D4:
+                case ConsoleKey.Escape:
                     return false;
             }
             return true;

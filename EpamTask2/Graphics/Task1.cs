@@ -10,7 +10,7 @@ namespace Graphics
                "\nPress key 1 - Create new Round" +
                "\n          2 - View created Rounds" +
                "\n          3 - Clear created Rounds" +
-               "\n          4 - Back to menu" +
+               "\n          ESC - Back to menu" +
                "\n---------------------------------\n";
         }
 
