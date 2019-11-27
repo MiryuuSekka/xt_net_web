@@ -8,6 +8,7 @@ namespace Helper
 {
     public static class Class
     {
+        public static Random Randomize = new Random();
         public static int GetNaturalNumber(string str)
         {
             int Number = 0;

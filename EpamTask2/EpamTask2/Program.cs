@@ -75,7 +75,7 @@ namespace EpamTask2
                     break;
 
                 case ConsoleKey.D8:
-                    //var task5 = new Graphics.Task5();
+                    var task5 = new GameConsole.Class();
                     break;
             }
             return true;
