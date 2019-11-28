@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomString
 {
@@ -24,6 +21,7 @@ namespace CustomString
             }
         }
 
+
         public char[] GetCharArray()
         {
             return text.ToArray();
@@ -32,6 +30,21 @@ namespace CustomString
         public string GetString()
         {
             return text;
+        }
+
+        public void Concatenation(string str)
+        {
+            text += str;
+        }
+
+        public int SearchCharFisrt(char data)
+        {
+            return text.IndexOf(data);
+        }
+
+        public bool Compare(string str)
+        {
+            return str.Equals(text);
         }
     }
 }
