@@ -2,9 +2,9 @@
 
 namespace Graphics
 {
-    public class Task7 : FigureTask<iFigure>
+    public class Task7 : Helper.Task<iFigure>
     {
-        internal override void _add()
+        public override void _add()
         {
             Console.WriteLine(_figuresMenu());
             switch(Console.ReadKey().Key)
@@ -102,7 +102,7 @@ namespace Graphics
                "\n---------------------------------\n";
         }
 
-        internal override string _menu()
+        public override string _menu()
         {
             return "Task 2.7. VECTOR GRAPHICS EDITOR\n" +
                "\nPress key 1 - Create new figure" +

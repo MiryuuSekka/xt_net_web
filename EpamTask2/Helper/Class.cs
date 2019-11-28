@@ -12,7 +12,8 @@ namespace Helper
         public static int GetNaturalNumber(string str)
         {
             int Number = 0;
-            int.TryParse(str, out Number);
+            Console.WriteLine(str);
+            int.TryParse(Console.ReadLine(), out Number);
             return Number;
         }
 
@@ -26,6 +27,16 @@ namespace Helper
             return Pressed.Key == ConsoleKey.Escape;
         }
 
+        public static string GetName(string str)
+        {
+            Console.WriteLine(str);
+            str = Console.ReadLine();
+            if (str.Length < 3)
+            {
+                throw new ArgumentException("Name must have more then 2 character");
+            }
+            return str;
+        }
 
     }
 }

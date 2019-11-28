@@ -2,9 +2,9 @@
 
 namespace Graphics
 {
-    public class Task1 : FigureTask<Round>
+    public class Task1 : Helper.Task<Round>
     {
-        internal override string _menu()
+        public override string _menu()
         {
             return "Task 2.1. Round\n" +
                "\nPress key 1 - Create new Round" +
@@ -14,7 +14,7 @@ namespace Graphics
                "\n---------------------------------\n";
         }
 
-        internal override void _add()
+        public override void _add()
         {
             var x = _getValue("Write X coordinate of center");
             var y = _getValue("Write Y coordinate of center");

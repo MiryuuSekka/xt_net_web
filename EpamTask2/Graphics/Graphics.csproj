@@ -41,18 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="iFigure.cs" />
-    <Compile Include="Line.cs" />
-    <Compile Include="Point.cs" />
-    <Compile Include="Ring.cs" />
-    <Compile Include="Round.cs" />
+    <Compile Include="Figure\iFigure.cs" />
+    <Compile Include="Figure\Line.cs" />
+    <Compile Include="Figure\Point.cs" />
+    <Compile Include="Figure\Ring.cs" />
+    <Compile Include="Figure\Round.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FigureTask.cs" />
     <Compile Include="Task1.cs" />
     <Compile Include="Task2.cs" />
     <Compile Include="Task6.cs" />
     <Compile Include="Task7.cs" />
-    <Compile Include="Triangle.cs" />
+    <Compile Include="Figure\Triangle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Helper\Helper.csproj">

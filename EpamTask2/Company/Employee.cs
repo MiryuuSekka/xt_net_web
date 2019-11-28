@@ -1,28 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Company
 {
-    public class Employee : User
+    public class Employee : Helper.iInfo
     {
-        string position;
-        int experience;
+        User user { get; set; }
+        string position { get; set; }
+        int experience { get; set; }
 
-        public Employee()
+        public Employee(User user, string position, int experience)
         {
-            position = "-";
-            experience = 0;
+            this.user = user ?? throw new ArgumentNullException(nameof(user));
+            this.position = position ?? throw new ArgumentNullException(nameof(position));
+            this.experience = experience;
         }
-        /*
-        public Employee(string FirstName, string LastName, int Age, DateTime BirthDate, string Position, int Experience) 
-            : base(FirstName, LastName, Age, BirthDate)
+
+        public string GetInfo()
         {
-            position = Position;
-            experience = Experience;
+            var info = user.GetInfo();
+            info += "\n     Position - " + position;
+            info += ", experience - " + experience;
+            return info;
         }
-        */
     }
 }

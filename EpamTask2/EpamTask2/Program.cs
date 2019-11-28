@@ -60,19 +60,19 @@ namespace EpamTask2
                     break;
 
                 case ConsoleKey.D3:
-                    //var task3 = new Graphics.Task3();
+                    var task3 = new Company.Task3();
                     break;
 
                 case ConsoleKey.D4:
-                    //var task4 = new Graphics.Task4();
+                    var task4 = new CustomString.Task4();
                     break;
 
                 case ConsoleKey.D5:
-                    //var task5 = new Graphics.Task5();
+                    var task5 = new Company.Task5();
                     break;
 
                 case ConsoleKey.D8:
-                    var task5 = new GameConsole.Class();
+                    var task8 = new GameConsole.Class();
                     break;
             }
             return true;

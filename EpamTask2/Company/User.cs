@@ -2,41 +2,42 @@
 
 namespace Company
 {
-    public class User
+    public class User : Helper.iInfo
     {
-        string FirstName;
-        string LastName;
-        string FatherName;
-        DateTime BirthDate;
-        int Age;
-
-        public User(string FirstName, string LastName, string FatherName,
-                        int Age, DateTime BirthDate)
+        public User(string firstName, string lastName, string fatherName, DateTime birthDate)
         {
-            CreateNewUser(FirstName, LastName, FatherName, Age, BirthDate);
-        }
-        
-        public User()
-        {
-            CreateNewUser("Unknown", "Unknown", "-", 0, DateTime.MinValue.Date);
+            FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+            _lastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+            if (firstName.Length < 3 || lastName.Length < 3)
+            {
+                throw new ArgumentException("Name lenght must be more then 2 symbols");
+            }
+            if (fatherName != null && fatherName.Length > 3)
+            {
+                _fatherName = fatherName;
+            }
+            _birthDate = birthDate;
         }
 
-        void CreateNewUser(string FirstName, string LastName, string FatherName,
-                        int Age, DateTime BirthDate)
+        string FirstName { get; set; }
+        string _lastName { get; set; }
+        string _fatherName { get; set; }
+        DateTime _birthDate { get; set; }
+        string _age
         {
-            this.FirstName = FirstName;
-            this.LastName = LastName;
-            this.FatherName = FatherName;
-            this.BirthDate = BirthDate;
-            this.Age = Age;
+            get
+            {
+                var years = ((DateTime.Now - _birthDate).Days) / 365.25m;
+                return Math.Truncate(years).ToString();
+            }
         }
 
-        public string GetInformation()
+        public string GetInfo()
         {
-            var Data = "User: ";
-            Data += "\n     Ф.И.О - " + LastName + " " + FirstName + " " + FatherName;
-            Data += "\n     Дата рождения - " + BirthDate;
-            Data += "\n     Возраст - " + Age;
+            var Data = "\nUser: ";
+            Data += "\n     Ф.И.О - " + _lastName + " " + FirstName + " " + _fatherName;
+            Data += "\n     Дата рождения - " + _birthDate.ToLongDateString();
+            Data += "\n     Возраст - " + _age;
             return Data;
         }
     }

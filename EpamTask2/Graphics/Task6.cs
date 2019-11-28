@@ -2,9 +2,9 @@
 
 namespace Graphics
 {
-    public class Task6 : FigureTask<Ring>
+    public class Task6 : Helper.Task<Ring>
     {
-        internal override void _add()
+        public override void _add()
         {
             var x = _getValue("Write X coordinate of center");
             var y = _getValue("Write Y coordinate of center");
@@ -28,7 +28,7 @@ namespace Graphics
 
         }
 
-        internal override string _menu()
+        public override string _menu()
         {
             return "Task 2.6. Ring\n" +
                "\nPress key 1 - Create new Ring" +

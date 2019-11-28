@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Graphics
 {
-    public class Task2 : FigureTask<Triangle>
+    public class Task2 : Helper.Task<Triangle>
     {
-        internal override void _add()
+        public override void _add()
         {
             Console.WriteLine("Values must be above 0");
             var a = _getValue("Write lenght of side \"a\" of triangle");
@@ -25,7 +24,7 @@ namespace Graphics
 
         }
 
-        internal override string _menu()
+        public override string _menu()
         {
             return "Task 2.2. Triangle\n" +
                "\nPress key 1 - Create new Triangle" +

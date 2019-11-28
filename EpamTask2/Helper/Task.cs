@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Graphics
+namespace Helper
 {
-    abstract public class FigureTask<T> where T: iFigure
+    public abstract class Task<T> where T: iInfo
     {
-        internal bool _inProgress;
-        internal List<T> _data;
+        public bool _inProgress;
+        public List<T> _data;
 
-        public FigureTask()
+        public Task()
         {
             _inProgress = true;
             _data = new List<T>();
@@ -21,7 +21,7 @@ namespace Graphics
             while (_inProgress);
         }
 
-        internal bool _selectedAction(ConsoleKeyInfo Pressed)
+        public bool _selectedAction(ConsoleKeyInfo Pressed)
         {
             switch (Pressed.Key)
             {
@@ -49,22 +49,22 @@ namespace Graphics
             return true;
         }
 
-        abstract internal void _add();
+        public abstract void _add();
 
-        abstract internal string _menu();
+        public abstract string _menu();
 
-        internal void _start()
+        public void _start()
         {
             Console.Clear();
             Console.WriteLine(_menu());
         }
 
-        internal void _delete()
+        public void _delete()
         {
             _data.Clear();
         }
 
-        internal void _view()
+        public void _view()
         {
             var str = new StringBuilder();
             foreach (var item in _data)
@@ -74,7 +74,7 @@ namespace Graphics
             Console.WriteLine("\n" + str.ToString());
         }
 
-        internal int _getValue(string str)
+        public int _getValue(string str)
         {
             Console.WriteLine(str);
             str = Console.ReadLine();
