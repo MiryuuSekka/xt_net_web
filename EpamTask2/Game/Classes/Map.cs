@@ -1,30 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using Game.Interfaces;
 
 namespace Game.Classes
 {
     public class Map
     {
         public int Width { get; set; }
+
         public int Height { get; set; }
-        public List<Interfaces.iMapObject> Objects;
+
+        public List<iMapObject> Objects;
 
         public Map(int width, int height, Player Player1)
         {
             Width = width;
             Height = height;
 
-            _generateObjects(Player1);
+            generateObjects(Player1);
         }
 
-        void _generateObjects(Player Player1)
+        void generateObjects(Player Player1)
         {
-            Objects = new List<Interfaces.iMapObject>();
+            Objects = new List<iMapObject>();
             Objects.Add(Player1);
-            AddObjects(20, 5, 100);
+            addObjects((Width * Height / 50), (Width * Height / 250), (Width*Height/12));
         }
 
-        bool IsFilled(Point cell)
+        bool isFilled(Point cell)
         {
             foreach (var item in Objects)
             {
@@ -36,27 +39,27 @@ namespace Game.Classes
             return false;
         }
 
-        void AddObjects(int ItemCount, int EnemyCount, int WallsCount)
+        void addObjects(int ItemCount, int EnemyCount, int WallsCount)
         {
             Point cell;
             for (int i = 0; i < ItemCount; i++)
             {
-                cell = GetRandomCell();
-                Objects.Add(GetItem(cell));
+                cell = getRandomCell();
+                Objects.Add(getItem(cell));
             }
             for (int i = 0; i < EnemyCount; i++)
             {
-                cell = GetRandomCell();
-                Objects.Add(GetEnemy(cell));
+                cell = getRandomCell();
+                Objects.Add(getEnemy(cell));
             }
             for (int i = 0; i < WallsCount; i++)
             {
-                cell = GetRandomCell();
-                Objects.Add(GetWall(cell));
+                cell = getRandomCell();
+                Objects.Add(getWall(cell));
             }
         }
 
-        Interfaces.iMapObject GetItem(Point cell)
+        iMapObject getItem(Point cell)
         {
             var N = Helper.Class.Randomize.Next(2);
 
@@ -69,7 +72,7 @@ namespace Game.Classes
                     return new Items.Cherry(cell);
             }
         }
-        Interfaces.iMapObject GetEnemy(Point cell)
+        iMapObject getEnemy(Point cell)
         {
             var N = Helper.Class.Randomize.Next(2);
 
@@ -82,7 +85,7 @@ namespace Game.Classes
                     return new Enemies.Wolf(cell);
             }
         }
-        Interfaces.iMapObject GetWall(Point cell)
+        iMapObject getWall(Point cell)
         {
             var N = Helper.Class.Randomize.Next(2);
 
@@ -98,7 +101,7 @@ namespace Game.Classes
 
         }
 
-        Point GetRandomCell()
+        Point getRandomCell()
         {
             Point point = new Point(0, 0);
             if (Width * Height / 2 <= Objects.Count)
@@ -111,7 +114,7 @@ namespace Game.Classes
                 point.X = Helper.Class.Randomize.Next(Width);
                 point.Y = Helper.Class.Randomize.Next(Height);
             }
-            while (IsFilled(point));
+            while (isFilled(point));
             return point;
         }
     }

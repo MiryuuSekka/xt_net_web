@@ -4,21 +4,26 @@ namespace Graphics
 {
     public class Task6 : Helper.Task<Ring>
     {
-        public override void _add()
+        public override string TaskTitle()
         {
-            var x = _getValue("Write X coordinate of center");
-            var y = _getValue("Write Y coordinate of center");
+            return "Task 2.6 - RING";
+        }
+
+        public override void AddToList()
+        {
+            var x = ShowInfo("Write X coordinate of center");
+            var y = ShowInfo("Write Y coordinate of center");
             Console.WriteLine("Values must be above 0, and cant be equals");
-            var radius1 = _getValue("Write radius of first round");
-            var radius2 = _getValue("Write radius of second round");
+            var radius1 = ShowInfo("Write radius of first round");
+            var radius2 = ShowInfo("Write radius of second round");
 
             try
             {
                 var center = new Point(x, y);
                 var Round1 = new Round(center, radius1);
                 var Round2 = new Round(center, radius2);
-                _data.Add(new Ring(Round1, Round2));
-                _start();
+                Data.Add(new Ring(Round1, Round2));
+                ShowMenu();
                 Console.WriteLine("Added new ring");
             }
             catch (ArgumentException e)
@@ -27,15 +32,6 @@ namespace Graphics
             }
 
         }
-
-        public override string _menu()
-        {
-            return "Task 2.6. Ring\n" +
-               "\nPress key 1 - Create new Ring" +
-               "\n          2 - View created Rings" +
-               "\n          3 - Clear created Rings" +
-               "\n          ESC - Back to menu" +
-               "\n---------------------------------\n";
-        }
+        
     }
 }

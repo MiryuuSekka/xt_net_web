@@ -6,75 +6,80 @@ namespace Helper
 {
     public abstract class Task<T> where T: iInfo
     {
-        public bool _inProgress;
-        public List<T> _data;
+        public List<T> Data;
+
+        public abstract string TaskTitle();
 
         public Task()
         {
-            _inProgress = true;
-            _data = new List<T>();
-            _start();
+            ConsoleKey Pressed;
+            Data = new List<T>();
+            ShowMenu();
             do
             {
-                _inProgress = _selectedAction(Console.ReadKey());
+                Pressed = Console.ReadKey().Key;
+                action(Pressed);
             }
-            while (_inProgress);
+            while (!Pressed.Equals(ConsoleKey.Escape));
         }
 
-        public bool _selectedAction(ConsoleKeyInfo Pressed)
+        void action(ConsoleKey Pressed)
         {
-            switch (Pressed.Key)
+            switch (Pressed)
             {
                 default:
                     break;
 
                 case ConsoleKey.D1:
-                    _start();
-                    _add();
+                    ShowMenu();
+                    AddToList();
                     break;
 
                 case ConsoleKey.D2:
-                    _start();
-                    _view();
+                    ShowMenu();
+                    view();
                     break;
 
                 case ConsoleKey.D3:
-                    _start();
-                    _delete();
+                    ShowMenu();
+                    delete();
                     break;
-
-                case ConsoleKey.Escape:
-                    return false;
             }
-            return true;
         }
 
-        public abstract void _add();
+        public abstract void AddToList();
 
-        public abstract string _menu();
-
-        public void _start()
+        public void ShowMenu()
         {
             Console.Clear();
-            Console.WriteLine(_menu());
+            var str = new StringBuilder();
+
+            str.AppendLine(TaskTitle());
+            str.AppendLine("Press key 1   - Create new");
+            str.AppendLine("          2   - View created");
+            str.AppendLine("          3   - Clear created");
+            str.AppendLine("          ESC - Back to menu");
+            str.AppendLine("---------------------------------");
+
+            Console.WriteLine(str.ToString());
         }
 
-        public void _delete()
+        void delete()
         {
-            _data.Clear();
+            Data.Clear();
         }
 
-        public void _view()
+        void view()
         {
             var str = new StringBuilder();
-            foreach (var item in _data)
+            foreach (var item in Data)
             {
                 str.Append(item.GetInfo());
             }
             Console.WriteLine("\n" + str.ToString());
         }
 
-        public int _getValue(string str)
+        public int ShowInfo(string str)
         {
             Console.WriteLine(str);
             str = Console.ReadLine();

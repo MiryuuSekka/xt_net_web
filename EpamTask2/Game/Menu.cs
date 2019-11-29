@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Game.Classes;
 
 namespace Game
 {
     public class Menu
     {
-        Classes.Map GameMap;
+        Map GameMap;
 
         public Menu()
         {
-            var NewPlayer = new Classes.Player("Unknown", new Classes.Point(0, 0));
-            GameMap = new Classes.Map(25, 50, NewPlayer);
+            var NewPlayer = new Player("Unknown", new Point(0, 0));
+            GameMap = new Map(25, 50, NewPlayer);
+            GameMap.Objects[0].Position = new Point(GameMap.Width / 2, GameMap.Height / 2);
         }
 
         public List<Interfaces.iMapObject> GetMap()
@@ -29,6 +27,11 @@ namespace Game
         public int GetHeight()
         {
             return GameMap.Height;
+        }
+
+        public Player GetPlayerData()
+        {
+            return (Player)GameMap.Objects[0];
         }
     }
 }

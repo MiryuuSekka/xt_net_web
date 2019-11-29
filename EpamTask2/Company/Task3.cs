@@ -4,7 +4,12 @@ namespace Company
 {
     public class Task3 : Helper.Task<User>
     {
-        internal DateTime GetBirthDate()
+        public override string TaskTitle()
+        {
+            return "Task 2.3 - USER";
+        }
+
+        internal DateTime getBirthDate()
         {
             int y = Helper.Class.GetNaturalNumber("Write year of birth");
             if (y > DateTime.Now.Year - 13 || y < 1900)
@@ -25,7 +30,7 @@ namespace Company
             return new DateTime(y, m, d);
         }
 
-        internal User _addUser()
+        internal User addUser()
         {
             try
             {
@@ -38,7 +43,7 @@ namespace Company
                     FatherName = "-";
                 }
 
-                var date = GetBirthDate();
+                var date = getBirthDate();
                 return new User(FirstName, SecondName, FatherName, date);
             }
             catch (ArgumentException e)
@@ -48,25 +53,14 @@ namespace Company
             }
         }
 
-        public override void _add()
+        public override void AddToList()
         {
-            var result = _addUser();
+            var result = addUser();
             if (result!=null)
             {
-                _data.Add(result);
+                Data.Add(result);
                 Console.WriteLine("User Added");
             }
-        }
-
-        public override string _menu()
-        {
-            Console.Clear();
-            return "Task 2.3. User\n" +
-               "\nPress key 1 - Create new User" +
-               "\n          2 - View created users" +
-               "\n          3 - Clear created users" +
-               "\n          ESC - Back to menu" +
-               "\n---------------------------------\n";
         }
     }
 }
