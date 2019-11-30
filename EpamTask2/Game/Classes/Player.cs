@@ -2,7 +2,7 @@
 
 namespace Game.Classes
 {
-    public class Player : iPlayer
+    public class Player : IIPlayer
     {
         public string Name { get; set; }
         public int Score { get; set; }

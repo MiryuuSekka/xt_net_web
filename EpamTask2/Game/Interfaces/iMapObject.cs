@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game.Interfaces
 {
-    public interface iMapObject
+    public interface IIMapObject
     {
         Classes.Point Position { get; set; }
         string Name { get;}

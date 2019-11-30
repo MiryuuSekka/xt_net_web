@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game.Interfaces
 {
-    interface iDamager
+    interface IIDamager : IIMapObject
     {
         int AttackP { get; set; }
     }

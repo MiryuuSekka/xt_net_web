@@ -2,7 +2,7 @@
 
 namespace Game.Interfaces
 {
-    interface iMovable
+    interface IIMovable : IIMapObject
     {
         int SpeedPoint { get; set; }
         Classes.Point LastPosition { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Game.Interfaces
 {
-    interface iPlayer : iMovable, iDamager, iMapObject
+    interface IIPlayer : IIMovable, IIDamager, IIMapObject
     {
         int Score { get; set; }
     }

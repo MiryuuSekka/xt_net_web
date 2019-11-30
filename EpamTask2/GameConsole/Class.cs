@@ -12,7 +12,7 @@ namespace GameConsole
     public class Class
     {
         Game.Menu game;
-        List<iMapObject> map;
+        List<IIMapObject> map;
 
         public Class()
         {
@@ -22,57 +22,88 @@ namespace GameConsole
             do
             {
                 PrintMap();
-                printPlayerData();
+                PrintPlayerData();
                 Pressed = Console.ReadKey().Key;
+
+                var direction = GetAction(Pressed);
+                game.NextTurn(direction);
             }
             while (!Pressed.Equals(ConsoleKey.Escape));
         }
 
         public void PrintMap()
         {
-            showMenu();
+            ShowMenu();
             map = game.GetMap();
             int? index;
             for (int i = 0; i < game.GetWidth(); i++)
             {
                 for (int j = 0; j < game.GetHeight(); j++)
                 {
-                    index = getIndex(i, j);
+                    index = GetIndex(i, j);
                     if (index.HasValue)
                     {
-                        writeSymbol(map[index.Value]);
+                        WriteSymbol(map[index.Value]);
                     }
                     else
                     {
-                        writeSymbol(null);
+                        WriteSymbol(null);
                     }
                 }
                 Console.WriteLine();
             }
         }
 
-        void showMenu()
+        Game.Menu.Direction GetAction(ConsoleKey Pressed)
+        {
+            Game.Menu.Direction direction;
+            switch (Pressed)
+            {
+                default:
+                    direction = Game.Menu.Direction.None;
+                    break;
+
+                case ConsoleKey.LeftArrow:
+                    direction = Game.Menu.Direction.Left;
+                    break;
+
+                case ConsoleKey.RightArrow:
+                    direction = Game.Menu.Direction.Right;
+                    break;
+
+                case ConsoleKey.UpArrow:
+                    direction = Game.Menu.Direction.Up;
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    direction = Game.Menu.Direction.Down;
+                    break;
+            }
+            return direction;
+        }
+
+        void ShowMenu()
         {
             Console.Clear();
             var str = new StringBuilder();
             Console.WriteLine("Task 2.8 - Game\nstandart map size - 50x25");
 
-            writeSymbol(new Player(null, null));
+            WriteSymbol(new Player(null, null));
             Console.WriteLine(" - player");
 
-            writeSymbol(new Tree(null));
+            WriteSymbol(new Tree(null));
             Console.Write(" - Tree,     ");
-            writeSymbol(new Rock(null));
+            WriteSymbol(new Rock(null));
             Console.WriteLine(" - Rock, ");
 
-            writeSymbol(new Apple(null));
+            WriteSymbol(new Apple(null));
             Console.Write(" - Apple,    ");
-            writeSymbol(new Cherry(null));
+            WriteSymbol(new Cherry(null));
             Console.WriteLine(" - Cherry, ");
 
-            writeSymbol(new Bear(null));
+            WriteSymbol(new Bear(null));
             Console.Write(" - Bear,     ");
-            writeSymbol(new Wolf(null));
+            WriteSymbol(new Wolf(null));
             Console.WriteLine(" - Wolf ");
 
             Console.WriteLine("<<< press ESC for back to menu >>>\n");
@@ -81,7 +112,7 @@ namespace GameConsole
             str.AppendLine();
         }
 
-        void printPlayerData()
+        void PrintPlayerData()
         {
             var player = game.GetPlayerData();
             var str = new StringBuilder();
@@ -93,7 +124,7 @@ namespace GameConsole
             Console.WriteLine(str.ToString());
         }
 
-        int? getIndex(int x, int y)
+        int? GetIndex(int x, int y)
         {
             for (int i = 0; i < map.Count; i++)
             {
@@ -105,7 +136,7 @@ namespace GameConsole
             return null;
         }
 
-        char getSymbol(iMapObject type)
+        char GetSymbol(IIMapObject type)
         {
             Console.BackgroundColor = ConsoleColor.DarkGray;
             Console.OutputEncoding = Encoding.Unicode;
@@ -149,9 +180,9 @@ namespace GameConsole
             return ' ';
         }
 
-        void writeSymbol(iMapObject type)
+        void WriteSymbol(IIMapObject type)
         {
-            Console.Write(getSymbol(type));
+            Console.Write(GetSymbol(type));
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Gray;
         }
