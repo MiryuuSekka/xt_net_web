@@ -1,6 +1,6 @@
-﻿using Game.Interfaces;
+﻿using Logic.Interfaces;
 
-namespace Game.Classes.Items
+namespace Logic.Classes.Items
 {
     abstract public class Loot : IIMapObject
     {

@@ -1,6 +1,6 @@
-﻿using Game.Interfaces;
+﻿using Logic.Interfaces;
 
-namespace Game.Classes.Enemies
+namespace Logic.Classes.Enemies
 {
     public class Wolf : Enemy
     {

@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Classes.Items
+namespace Logic.Classes.Items
 {
     public class Apple : Loot
     {

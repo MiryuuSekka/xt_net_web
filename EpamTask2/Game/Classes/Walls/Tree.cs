@@ -1,6 +1,6 @@
 ﻿
 
-namespace Game.Classes.Walls
+namespace Logic.Classes.Walls
 {
     public class Tree : Walls
     {

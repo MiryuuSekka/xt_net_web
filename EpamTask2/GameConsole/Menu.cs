@@ -1,23 +1,23 @@
-﻿using System;
-using System.Text;
+﻿using Logic.Classes;
+using Logic.Classes.Enemies;
+using Logic.Classes.Items;
+using Logic.Classes.Walls;
+using Logic.Interfaces;
+using System;
 using System.Collections.Generic;
-using Game.Interfaces;
-using Game.Classes;
-using Game.Classes.Walls;
-using Game.Classes.Items;
-using Game.Classes.Enemies;
+using System.Text;
 
-namespace GameConsole
+namespace Visual
 {
-    public class Class
+    public class Menu
     {
-        Game.Menu game;
+        Logic.Menu game;
         List<IIMapObject> map;
 
-        public Class()
+        public Menu()
         {
 
-            game = new Game.Menu();
+            game = new Logic.Menu();
             ConsoleKey Pressed;
             do
             {
@@ -32,7 +32,7 @@ namespace GameConsole
         }
 
         public void PrintMap()
-        {
+    {
             ShowMenu();
             map = game.GetMap();
             int? index;
@@ -54,29 +54,29 @@ namespace GameConsole
             }
         }
 
-        Game.Menu.Direction GetAction(ConsoleKey Pressed)
+        Logic.Menu.Direction GetAction(ConsoleKey Pressed)
         {
-            Game.Menu.Direction direction;
+            Logic.Menu.Direction direction;
             switch (Pressed)
             {
                 default:
-                    direction = Game.Menu.Direction.None;
+                    direction = Logic.Menu.Direction.None;
                     break;
 
                 case ConsoleKey.LeftArrow:
-                    direction = Game.Menu.Direction.Left;
+                    direction = Logic.Menu.Direction.Left;
                     break;
 
                 case ConsoleKey.RightArrow:
-                    direction = Game.Menu.Direction.Right;
+                    direction = Logic.Menu.Direction.Right;
                     break;
 
                 case ConsoleKey.UpArrow:
-                    direction = Game.Menu.Direction.Up;
+                    direction = Logic.Menu.Direction.Up;
                     break;
 
                 case ConsoleKey.DownArrow:
-                    direction = Game.Menu.Direction.Down;
+                    direction = Logic.Menu.Direction.Down;
                     break;
             }
             return direction;
@@ -105,11 +105,8 @@ namespace GameConsole
             Console.Write(" - Bear,     ");
             WriteSymbol(new Wolf(null));
             Console.WriteLine(" - Wolf ");
-
-            Console.WriteLine("<<< press ESC for back to menu >>>\n");
-
-            str.AppendLine("<<< press ESC for back to menu >>>");
-            str.AppendLine();
+              
+            Console.WriteLine("<<< press ESC for back to menu >>>\n"); 
         }
 
         void PrintPlayerData()
@@ -147,31 +144,31 @@ namespace GameConsole
                     default:
                         break;
 
-                    case "Game.Classes.Player":
+                    case "Logic.Classes.Player":
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         return '\u263B'; //Player
 
-                    case "Game.Classes.Walls.Tree":
+                    case "Logic.Classes.Walls.Tree":
                         Console.ForegroundColor = ConsoleColor.White;
                         return '\u25B2'; //tree
 
-                    case "Game.Classes.Walls.Rock":
+                    case "Logic.Classes.Walls.Rock":
                         Console.ForegroundColor = ConsoleColor.Black;
                         return '\u25B2'; //rock
 
-                    case "Game.Classes.Items.Cherry":
+                    case "Logic.Classes.Items.Cherry":
                         Console.ForegroundColor = ConsoleColor.Cyan;
                         return '\u058D'; //cherry
 
-                    case "Game.Classes.Items.Apple":
+                    case "Logic.Classes.Items.Apple":
                         Console.ForegroundColor = ConsoleColor.Blue;
                         return '\u058D'; //apple
 
-                    case "Game.Classes.Enemies.Wolf":
+                    case "Logic.Classes.Enemies.Wolf":
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         return '\u25BC'; //wolf
 
-                    case "Game.Classes.Enemies.Bear":
+                    case "Logic.Classes.Enemies.Bear":
                         Console.ForegroundColor = ConsoleColor.Red;
                         return '\u25BC'; //bear
                 }

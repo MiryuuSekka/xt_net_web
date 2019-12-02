@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Helper
 {
-    public abstract class Task<T> where T: iInfo
+    public abstract class Task<T> where T: IInfo
     {
         public List<T> Data;
 
@@ -18,12 +18,12 @@ namespace Helper
             do
             {
                 Pressed = Console.ReadKey().Key;
-                action(Pressed);
+                Action(Pressed);
             }
             while (!Pressed.Equals(ConsoleKey.Escape));
         }
 
-        void action(ConsoleKey Pressed)
+        void Action(ConsoleKey Pressed)
         {
             switch (Pressed)
             {
@@ -37,12 +37,12 @@ namespace Helper
 
                 case ConsoleKey.D2:
                     ShowMenu();
-                    view();
+                    View();
                     break;
 
                 case ConsoleKey.D3:
                     ShowMenu();
-                    delete();
+                    Delete();
                     break;
             }
         }
@@ -64,12 +64,12 @@ namespace Helper
             Console.WriteLine(str.ToString());
         }
 
-        void delete()
+        void Delete()
         {
             Data.Clear();
         }
 
-        void view()
+        void View()
         {
             var str = new StringBuilder();
             foreach (var item in Data)

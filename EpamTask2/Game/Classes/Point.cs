@@ -1,6 +1,6 @@
 ﻿
 
-namespace Game.Classes
+namespace Logic.Classes
 {
     public class Point
     {

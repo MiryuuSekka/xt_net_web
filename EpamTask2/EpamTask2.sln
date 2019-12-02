@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomString", "ClassLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game", "Game\Game.csproj", "{9BC18D6C-715B-4992-8BD4-8BA78C5AE4C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameConsole", "GameConsole\GameConsole.csproj", "{9BE008A2-414B-4275-A756-C690D2128233}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visual", "GameConsole\Visual.csproj", "{9BE008A2-414B-4275-A756-C690D2128233}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TaskGame", "TaskGame", "{6CF71AE3-9875-4F5A-A1A2-35072BDA9B7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -54,6 +56,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9BC18D6C-715B-4992-8BD4-8BA78C5AE4C7} = {6CF71AE3-9875-4F5A-A1A2-35072BDA9B7E}
+		{9BE008A2-414B-4275-A756-C690D2128233} = {6CF71AE3-9875-4F5A-A1A2-35072BDA9B7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D486D29E-3F75-4E62-8EF4-A6FE23CE4852}

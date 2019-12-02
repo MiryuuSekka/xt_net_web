@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Classes;
+using Logic.Classes;
 
-namespace Game
+namespace Logic
 {
     public class Menu
     {
@@ -62,7 +62,7 @@ namespace Game
         {
             if (!(Obj is Player))
             {
-                direction = (Direction)Helper.Class.Randomize.Next(4);
+                direction = (Direction)Helper.Numbers.Randomize.Next(4);
             }
                 switch (direction)
                 {

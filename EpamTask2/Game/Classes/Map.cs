@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Interfaces;
+using Logic.Interfaces;
 
-namespace Game.Classes
+namespace Logic.Classes
 {
     public class Map
     {
@@ -65,7 +65,7 @@ namespace Game.Classes
 
         IIMapObject GetItem(Point cell)
         {
-            var N = Helper.Class.Randomize.Next(2);
+            var N = Helper.Numbers.Randomize.Next(2);
 
             switch (N)
             {
@@ -78,7 +78,7 @@ namespace Game.Classes
         }
         IIMapObject GetEnemy(Point cell)
         {
-            var N = Helper.Class.Randomize.Next(2);
+            var N = Helper.Numbers.Randomize.Next(2);
 
             switch (N)
             {
@@ -91,7 +91,7 @@ namespace Game.Classes
         }
         IIMapObject GetWall(Point cell)
         {
-            var N = Helper.Class.Randomize.Next(2);
+            var N = Helper.Numbers.Randomize.Next(2);
 
             switch (N)
             {
@@ -115,8 +115,8 @@ namespace Game.Classes
 
             do
             {
-                point.X = Helper.Class.Randomize.Next(Width);
-                point.Y = Helper.Class.Randomize.Next(Height);
+                point.X = Helper.Numbers.Randomize.Next(Width);
+                point.Y = Helper.Numbers.Randomize.Next(Height);
             }
             while (IsFilled(point));
             return point;

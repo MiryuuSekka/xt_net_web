@@ -1,6 +1,6 @@
-﻿using Game.Interfaces;
+﻿using Logic.Interfaces;
 
-namespace Game.Classes.Walls
+namespace Logic.Classes.Walls
 {
     abstract public class Walls : IIMapObject, IIBreakable
     {

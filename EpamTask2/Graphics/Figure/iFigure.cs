@@ -2,7 +2,7 @@
 
 namespace Graphics
 {
-    public interface iFigure : Helper.iInfo
+    public interface iFigure : Helper.IInfo
     {
         double GetArea();
     }

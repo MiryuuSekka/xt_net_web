@@ -2,24 +2,24 @@
 
 namespace Company
 {
-    public class Employee : Helper.iInfo
+    public class Employee : Helper.IInfo
     {
-        User user { get; set; }
-        string position { get; set; }
-        int experience { get; set; }
+        User User { get; set; }
+        string Position { get; set; }
+        int Experience { get; set; }
 
         public Employee(User user, string position, int experience)
         {
-            this.user = user ?? throw new ArgumentNullException(nameof(user));
-            this.position = position ?? throw new ArgumentNullException(nameof(position));
-            this.experience = experience;
+            this.User = user ?? throw new ArgumentNullException(nameof(user));
+            this.Position = position ?? throw new ArgumentNullException(nameof(position));
+            this.Experience = experience;
         }
 
         public string GetInfo()
         {
-            var info = user.GetInfo();
-            info += "\n     Position - " + position;
-            info += ", experience - " + experience;
+            var info = User.GetInfo();
+            info += "\n     Position - " + Position;
+            info += ", experience - " + Experience;
             return info;
         }
     }

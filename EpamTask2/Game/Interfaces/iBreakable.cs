@@ -1,5 +1,5 @@
 ﻿
-namespace Game.Interfaces
+namespace Logic.Interfaces
 {
     interface IIBreakable : IIMapObject
     {

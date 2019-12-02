@@ -2,7 +2,7 @@
 
 namespace Helper
 {
-    public interface iInfo
+    public interface IInfo
     {
         string GetInfo();
     }

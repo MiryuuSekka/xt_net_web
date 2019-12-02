@@ -10,14 +10,14 @@ namespace EpamTask2
             ConsoleKey Pressed;
             do
             {
-                menu();
+                Menu();
                 Pressed = Console.ReadKey().Key;
-                action(Pressed);
+                Action(Pressed);
             }
             while (!Pressed.Equals(ConsoleKey.Escape));
         }
 
-        static void menu()
+        static void Menu()
         {
             Console.Clear();
             var str = new StringBuilder();
@@ -34,7 +34,7 @@ namespace EpamTask2
             Console.WriteLine(str.ToString());
         }
 
-        static void action(ConsoleKey Pressed)
+        static void Action(ConsoleKey Pressed)
         {
             switch(Pressed)
             {
@@ -70,7 +70,7 @@ namespace EpamTask2
                     break;
 
                 case ConsoleKey.D8:
-                    var task8 = new GameConsole.Class();
+                    var task8 = new Visual.Menu();
                     break;
             }
         }

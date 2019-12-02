@@ -1,6 +1,6 @@
 ﻿
 
-namespace Game.Interfaces
+namespace Logic.Interfaces
 {
     interface IIMovable : IIMapObject
     {

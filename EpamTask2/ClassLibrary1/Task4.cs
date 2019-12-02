@@ -11,15 +11,15 @@ namespace CustomString
         {
             myString = new MyString("");
             _inProgress = true;
-            _start();
+            Start();
             do
             {
-                _inProgress = _selectedAction(Console.ReadKey());
+                _inProgress = SelectedAction(Console.ReadKey());
             }
             while (_inProgress);
         }
 
-        public bool _selectedAction(ConsoleKeyInfo Pressed)
+        public bool SelectedAction(ConsoleKeyInfo Pressed)
         {
             switch (Pressed.Key)
             {
@@ -27,18 +27,18 @@ namespace CustomString
                     break;
 
                 case ConsoleKey.D1:
-                    _start();
-                    _add();
+                    Start();
+                    Add();
                     break;
 
                 case ConsoleKey.D2:
-                    _start();
-                    _search();
+                    Start();
+                    Search();
                     break;
 
                 case ConsoleKey.D3:
-                    _start();
-                    _compare();
+                    Start();
+                    Compare();
                     break;
 
                 case ConsoleKey.Escape:
@@ -47,15 +47,15 @@ namespace CustomString
             return true;
         }
 
-        public void _add()
+        public void Add()
         {
             Console.WriteLine("Write string for add");
             myString.Concatenation(Console.ReadLine());
-            _menu();
+            Menu();
             Console.WriteLine("\nResult string:\n" + myString.GetString());
         }
 
-        public void _menu()
+        public void Menu()
         {
             Console.Clear();
             Console.WriteLine("Task 2.4. My string\n" +
@@ -69,25 +69,25 @@ namespace CustomString
 
         }
 
-        public void _start()
+        public void Start()
         {
             Console.Clear();
-            _menu();
+            Menu();
         }
 
-        public void _view()
+        public void View()
         {
             Console.WriteLine(myString.GetString());
         }
 
-        public void _compare()
+        public void Compare()
         {
             Console.WriteLine("Write string for compare");
             var result = (myString.Compare(Console.ReadLine())) ? "equals" : "not equals";
             Console.WriteLine("Strings is " + result);
         }
 
-        public void _search()
+        public void Search()
         {
             Console.WriteLine("Write char for search");
             var result = myString.SearchCharFisrt(Console.ReadKey().KeyChar);

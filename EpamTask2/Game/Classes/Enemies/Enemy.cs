@@ -1,6 +1,6 @@
-﻿using Game.Interfaces;
+﻿using Logic.Interfaces;
 
-namespace Game.Classes.Enemies
+namespace Logic.Classes.Enemies
 {
     abstract public class Enemy : IIMapObject, IIMovable, IIBreakable, IIDamager
     {

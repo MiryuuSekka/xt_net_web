@@ -1,6 +1,6 @@
-﻿using Game.Interfaces;
+﻿using Logic.Interfaces;
 
-namespace Game.Classes
+namespace Logic.Classes
 {
     public class Player : IIPlayer
     {

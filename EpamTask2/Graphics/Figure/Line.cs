@@ -14,7 +14,7 @@ namespace Graphics
             }
             set
             {
-                if (!Helper.Class.IsNaturalNumber(value))
+                if (!Helper.Numbers.IsNatural(value))
                 {
                     throw new ArgumentException("!Invalid value. Required value above zero!");
 

@@ -11,22 +11,22 @@ namespace Graphics
 
         public override void AddToList()
         {
-            Console.WriteLine(figuresMenu());
+            Console.WriteLine(FiguresMenu());
             switch(Console.ReadKey().Key)
             {
                 default:
                     break;
 
                 case ConsoleKey.D1:
-                    addRound();
+                    AddRound();
                     break;
 
                 case ConsoleKey.D2:
-                    addRing();
+                    AddRing();
                     break;
 
                 case ConsoleKey.D3:
-                    addTrinagle();
+                    AddTrinagle();
                     break;
 
                 case ConsoleKey.D4:
@@ -35,7 +35,7 @@ namespace Graphics
             }
         }
 
-        void addRound()
+        void AddRound()
         {
             var x = ShowInfo("Write X coordinate of center");
             var y = ShowInfo("Write Y coordinate of center");
@@ -53,7 +53,7 @@ namespace Graphics
             }
         }
 
-        void addTrinagle()
+        void AddTrinagle()
         {
             Console.WriteLine("Values must be above 0");
             var a = ShowInfo("Write lenght of side \"a\" of triangle");
@@ -72,7 +72,7 @@ namespace Graphics
             }
         }
 
-        void addRing()
+        void AddRing()
         {
             var x = ShowInfo("Write X coordinate of center");
             var y = ShowInfo("Write Y coordinate of center");
@@ -95,7 +95,7 @@ namespace Graphics
             }
         }
 
-        string figuresMenu()
+        string FiguresMenu()
         {
             Console.Clear();
             return "Task 2.7 - VECTOR GRAPHICS EDITOR\n" +

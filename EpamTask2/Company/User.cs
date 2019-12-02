@@ -2,32 +2,32 @@
 
 namespace Company
 {
-    public class User : Helper.iInfo
+    public class User : Helper.IInfo
     {
         public User(string firstName, string lastName, string fatherName, DateTime birthDate)
         {
-            FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
-            _lastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
+            this.FirstName = firstName ?? throw new ArgumentNullException(nameof(firstName));
+            this.LastName = lastName ?? throw new ArgumentNullException(nameof(lastName));
             if (firstName.Length < 3 || lastName.Length < 3)
             {
                 throw new ArgumentException("Name lenght must be more then 2 symbols");
             }
             if (fatherName != null && fatherName.Length > 3)
             {
-                _fatherName = fatherName;
+                this.FatherName = fatherName;
             }
-            _birthDate = birthDate;
+            this.BirthDate = birthDate;
         }
 
         string FirstName { get; set; }
-        string _lastName { get; set; }
-        string _fatherName { get; set; }
-        DateTime _birthDate { get; set; }
-        string _age
+        string LastName { get; set; }
+        string FatherName { get; set; }
+        DateTime BirthDate { get; set; }
+        string Age
         {
             get
             {
-                var years = ((DateTime.Now - _birthDate).Days) / 365.25m;
+                var years = ((DateTime.Now - BirthDate).Days) / 365.25m;
                 return Math.Truncate(years).ToString();
             }
         }
@@ -35,9 +35,9 @@ namespace Company
         public string GetInfo()
         {
             var Data = "\nUser: ";
-            Data += "\n     Ф.И.О - " + _lastName + " " + FirstName + " " + _fatherName;
-            Data += "\n     Дата рождения - " + _birthDate.ToLongDateString();
-            Data += "\n     Возраст - " + _age;
+            Data += "\n     Ф.И.О - " + LastName + " " + FirstName + " " + FatherName;
+            Data += "\n     Дата рождения - " + BirthDate.ToLongDateString();
+            Data += "\n     Возраст - " + Age;
             return Data;
         }
     }

@@ -58,9 +58,9 @@
       <Project>{8d69ff51-f305-413d-a5fa-00c872ebd2b9}</Project>
       <Name>Company</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GameConsole\GameConsole.csproj">
+    <ProjectReference Include="..\GameConsole\Visual.csproj">
       <Project>{9be008a2-414b-4275-a756-c690d2128233}</Project>
-      <Name>GameConsole</Name>
+      <Name>Visual</Name>
     </ProjectReference>
     <ProjectReference Include="..\Graphics\Graphics.csproj">
       <Project>{3fc3f7a0-664a-4f00-90a1-0c34ef67a539}</Project>
