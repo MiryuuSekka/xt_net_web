@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Part1_Basics
+namespace Basics
 {
     public static class Rectangle
     {
@@ -8,8 +8,8 @@ namespace Part1_Basics
 
         public static void GetPerimeter()
         {
-            a = Helper.Class.GetNaturalNumber("value of side a");
-            b = Helper.Class.GetNaturalNumber("value of side b");
+            a = Helper.Number.GetNatural("value of side a");
+            b = Helper.Number.GetNatural("value of side b");
             Console.WriteLine("Perimeter of this pectangle is ");
             Console.WriteLine(CalculatePerimeter() + "\n");
         }

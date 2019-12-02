@@ -1,25 +1,25 @@
 ﻿using System;
 using System.Text;
 
-namespace Part1_Basics
+namespace Basics
 {
     public static class Triangle
     {
         public static void GetTriangle()
         {
-            var N = Helper.Class.GetNaturalNumber("size of triangle");
+            var N = Helper.Number.GetNatural("size of triangle");
             Console.WriteLine(ConstructTriangle(N) + "\n");
         }
 
         public static void GetAnotherTriangle()
         {
-            var N = Helper.Class.GetNaturalNumber("size of triangle");
+            var N = Helper.Number.GetNatural("size of triangle");
             Console.WriteLine(ConstructAnotherTriangle(N) + "\n");
         }
 
         public static void GetXMasTree()
         {
-            var N = Helper.Class.GetNaturalNumber("size of tree");
+            var N = Helper.Number.GetNatural("size of tree");
             Console.WriteLine(ConstructXMASTree(N) + "\n");
         }
 

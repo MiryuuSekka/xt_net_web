@@ -50,17 +50,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Part3_Strings\Part3_Strings.csproj">
+    <ProjectReference Include="..\Part3_Strings\Strings.csproj">
       <Project>{b27e4bee-e03e-40fc-a86e-fbf967c04207}</Project>
-      <Name>Part3_Strings</Name>
+      <Name>Strings</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Task1\Part1_Basics.csproj">
+    <ProjectReference Include="..\Task1\Basics.csproj">
       <Project>{fc0f2cf5-62ef-416b-8459-fcf7e3fbdcdd}</Project>
-      <Name>Part1_Basics</Name>
+      <Name>Basics</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Task2\Part2_Language.csproj">
+    <ProjectReference Include="..\Task2\Language.csproj">
       <Project>{75254254-5601-48aa-924c-121e862d81d7}</Project>
-      <Name>Part2_Language</Name>
+      <Name>Language</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Part2_Language
+namespace Language
 {
     public class ArrayProcessing
     {
@@ -10,7 +10,7 @@ namespace Part2_Language
 
         public static void GetNewArray()
         {
-            Size = Helper.Class.GetNaturalNumber("");
+            Size = Helper.Number.GetNatural("");
             IntArray = new int[Size];
             FullfillArray();
             Console.WriteLine("Array is\n" + GetValuesOfArray());

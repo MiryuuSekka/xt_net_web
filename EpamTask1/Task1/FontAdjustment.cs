@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Part1_Basics
+namespace Basics
 {
     public static class FontAdjustment
     {
@@ -23,13 +23,13 @@ namespace Part1_Basics
             {
                 Console.WriteLine("\nПараметры надписи:" + GetResult());
                 Console.WriteLine("Введите:\n1: bold\n2: italic\n3: underline");
-                status = setResult(Console.ReadKey());
+                status = SetResult(Console.ReadKey());
                 Console.WriteLine();
             }
             while (!status);
         }
 
-        static bool setResult(ConsoleKeyInfo Key)
+        static bool SetResult(ConsoleKeyInfo Key)
         {
             switch(Key.Key)
             {

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace Part3_Strings
+namespace Strings
 {
     public static class CharDouble
     {

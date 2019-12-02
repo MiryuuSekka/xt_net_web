@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace Part3_Strings
+namespace Strings
 {
     public static class AverageStringLength
     {

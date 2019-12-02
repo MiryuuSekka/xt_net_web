@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Part1_Basics
+namespace Basics
 {
     public static class SumOfNumbers
     {

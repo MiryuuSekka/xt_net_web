@@ -5,11 +5,11 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EpamTask1", "EpamTask1\EpamTask1.csproj", "{70B8B84A-2366-4F6C-A831-037371D89D20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part1_Basics", "Task1\Part1_Basics.csproj", "{FC0F2CF5-62EF-416B-8459-FCF7E3FBDCDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Basics", "Task1\Basics.csproj", "{FC0F2CF5-62EF-416B-8459-FCF7E3FBDCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2_Language", "Task2\Part2_Language.csproj", "{75254254-5601-48AA-924C-121E862D81D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Language", "Task2\Language.csproj", "{75254254-5601-48AA-924C-121E862D81D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part3_Strings", "Part3_Strings\Part3_Strings.csproj", "{B27E4BEE-E03E-40FC-A86E-FBF967C04207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Strings", "Part3_Strings\Strings.csproj", "{B27E4BEE-E03E-40FC-A86E-FBF967C04207}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper", "Helper\Helper.csproj", "{3563F6BC-C69B-48F7-8F13-054D37F9BA38}"
 EndProject
