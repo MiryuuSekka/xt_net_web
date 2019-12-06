@@ -52,11 +52,11 @@
     <Compile Include="Classes\Walls\Rock.cs" />
     <Compile Include="Classes\Walls\Tree.cs" />
     <Compile Include="Classes\Walls\Walls.cs" />
-    <Compile Include="Interfaces\iBreakable.cs" />
-    <Compile Include="Interfaces\iDamager.cs" />
-    <Compile Include="Interfaces\iMapObject.cs" />
-    <Compile Include="Interfaces\iMovable.cs" />
-    <Compile Include="Interfaces\iPlayer.cs" />
+    <Compile Include="Interfaces\IBreakable.cs" />
+    <Compile Include="Interfaces\IDamager.cs" />
+    <Compile Include="Interfaces\IMapObject.cs" />
+    <Compile Include="Interfaces\IMovable.cs" />
+    <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Classes\Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
