@@ -18,5 +18,22 @@ namespace Helper
         {
             return N % 2 == 0;
         }
+
+        public static int GetRankOfTwo(int N)
+        {
+            double result = 0;
+            int rank = 0;
+
+            while (N > result)
+            {
+                result = Math.Pow(2, rank);
+                if (N > result)
+                {
+                    rank++;
+                }
+            }
+            int.TryParse(result.ToString(), out N);
+            return N;
+        }
     }
 }

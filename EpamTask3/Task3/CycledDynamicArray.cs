@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task3
 {
@@ -21,6 +17,11 @@ namespace Task3
             return true;
         }
 
+        /// <summary>
+        /// индексатор
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public new T this[int index]
         {
             get

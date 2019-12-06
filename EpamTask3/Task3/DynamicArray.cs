@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Task3
 {
@@ -11,7 +10,25 @@ namespace Task3
     public class DynamicArray<T> : IEnumerable<T>, IEnumerator<T>
     {
         internal T[] _array;
-        public int Capacity { get; set; }
+
+        /// <summary>
+        /// Свойство Capacity — получение ёмкости: длины внутреннего массива
+        /// </summary>
+        public int Capacity {
+            get
+            {
+                int N = 0;
+                foreach (var item in _array)
+                {
+                    N++;
+                }
+                return N;
+            }
+        }
+
+        /// <summary>
+        /// Свойство Length — получение количества элементов. 
+        /// </summary>
         public int Length
         {
             get
@@ -22,28 +39,29 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.1
-        /// 
+        /// Конструктор без параметров (создаётся массив ёмкостью 8 элементов)
         /// </summary>
         public DynamicArray()
         {
-            Capacity = 8;
-            _array = new T[Capacity];
+            _array = new T[8];
         }
 
         /// <summary>
         /// Task 3.3.2
-        /// 
+        /// Конструктор с одним целочисленным параметром 
+        /// (создаётся массив указанной ёмкости)
         /// </summary>
         /// <param name="Capacity"></param>
         public DynamicArray(int Capacity)
         {
-            this.Capacity = Capacity;
             _array = new T[Capacity];
         }
 
         /// <summary>
         /// Task 3.3.3
-        /// 
+        /// Конструктор, который в качестве параметра принимает коллекцию, 
+        /// реализующую интерфейс IEnumerable<T>, создаёт массив нужного размера 
+        /// и копирует в него все элементы из коллекции.
         /// </summary>
         /// <param name="Items"></param>
         public DynamicArray(IEnumerable<T> Items)
@@ -62,7 +80,9 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.4
-        /// 
+        /// Метод Add, добавляющий в конец массива один элемент. 
+        /// При нехватке места для добавления элемента, 
+        /// ёмкость массива должна удваиваться.
         /// </summary>
         /// <param name="Item"></param>
         public void Add(T Item)
@@ -73,7 +93,11 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.5
-        /// 
+        /// Метод AddRange, добавляющий в конец массива содержимое коллекции, 
+        /// реализующей интерфейс IEnumerable<T>. Обратите внимание, 
+        /// метод должен корректно учитывать число элементов в коллекции с тем, 
+        /// чтобы при необходимости расширения массива делать это только один 
+        /// раз вне зависимости от числа элементов в добавляемой коллекции
         /// </summary>
         /// <param name="Items"></param>
         public void AddRange(IEnumerable<T> Items)
@@ -91,7 +115,10 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.6
-        /// 
+        /// Метод Remove, удаляющий из коллекции указанный элемент. 
+        /// Метод должен возвращать true, если удаление прошло успешно 
+        /// и false в противном случае. 
+        /// При удалении элементов реальная ёмкость массива не должна уменьшаться
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
@@ -120,7 +147,11 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.7
-        /// 
+        /// Метод Insert, позволяющий добавить элемент в произвольную позицию массива 
+        /// (обратите внимание, может потребоваться расширить массив). 
+        /// Метод должен возвращать true, если добавление прошло успешно и 
+        /// false в противном случае. При выходе за границу массива должно 
+        /// генерироваться исключение ArgumentOutOfRangeException.
         /// </summary>
         /// <param name="index"></param>
         /// <param name="item"></param>
@@ -132,14 +163,14 @@ namespace Task3
                 _array[index] = item;
                 return true;
             }
-            return false;
+            throw new ArgumentOutOfRangeException();
         }
 
         #region Task 3.3.10 IEnumerable<T> и IEnumerator
 
         /// <summary>
         /// Task 3.3.10
-        /// 
+        /// массив обьектов в виде IEnumerator<T>
         /// </summary>
         /// <returns></returns>
         public IEnumerator<T> GetEnumerator()
@@ -149,7 +180,7 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.10
-        /// 
+        /// массив обьектов в виде IEnumerator<T>
         /// </summary>
         /// <returns></returns>
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -160,6 +191,11 @@ namespace Task3
 
         #region Task 3.3.11 indexator
 
+        /// <summary>
+        /// индексатор
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public T this[int index]
         {
             get
@@ -180,11 +216,14 @@ namespace Task3
             }
         }
 
+        /// <summary>
+        /// индекс
+        /// </summary>
         internal int index;
 
         /// <summary>
         /// Task 3.3.11
-        /// 
+        /// выбранное значение
         /// </summary>
         public T Current
         {
@@ -196,7 +235,7 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.11
-        /// 
+        /// к следующему значению
         /// </summary>
         /// <returns></returns>
         public bool MoveNext()
@@ -211,7 +250,7 @@ namespace Task3
 
         /// <summary>
         /// Task 3.3.11
-        /// 
+        /// вернуться к первому значению
         /// </summary>
         public void Reset()
         {
@@ -230,31 +269,15 @@ namespace Task3
 
         #endregion
 
+
+
         #region helper
-
-        int GetRankOfTwo(int N)
-        {
-            double result = 0;
-            int rank = 0;
-
-            while (N > result)
-            {
-                result = Math.Pow(2, rank);
-                if (N > result)
-                {
-                    rank++;
-                }
-            }
-            int.TryParse(result.ToString(), out N);
-            return N;
-        }
 
         void ChangeArrayCapacity(int ItemCount)
         {
             var length = (Capacity > ItemCount) ? ItemCount : Length;
-
-            Capacity = GetRankOfTwo(ItemCount);
-            var newArray = new T[Capacity];
+            
+            var newArray = new T[Helper.Number.GetRankOfTwo(ItemCount)];
             for (int i = 0; i < length; i++)
             {
                 newArray[i] = _array[i];
@@ -286,6 +309,5 @@ namespace Task3
         }
 
         #endregion
-
     }
 }

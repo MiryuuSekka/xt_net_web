@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Task3
 {
@@ -26,13 +24,15 @@ namespace Task3
             }
         }
 
+        internal int _capacity;
+
         /// <summary>
         /// Task 3.4.2
-        /// 
+        /// ёмкость
         /// </summary>
         public new int Capacity
         {
-            get { return base.Capacity; }
+            get { return _capacity; }
             set
             {
                 var NewArray = new T[value];
@@ -44,13 +44,13 @@ namespace Task3
                     }
                 }
                 _array = NewArray;
-                base.Capacity = value;
+                _capacity = value;
             }
         }
 
         /// <summary>
         /// Task 3.4.3
-        /// 
+        /// создание копии массива
         /// </summary>
         /// <returns></returns>
         public object Clone()
@@ -62,7 +62,8 @@ namespace Task3
 
         /// <summary>
         /// Task 3.4.4
-        /// 
+        /// возвращает новый массив (обычный), 
+        /// содержащий все содержащиеся в текущем динамическом массиве объекты
         /// </summary>
         /// <returns></returns>
         public T[] ToArray()
@@ -70,6 +71,11 @@ namespace Task3
             return _array;
         }
 
+        /// <summary>
+        /// индексатор
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public new T this[int index]
         {
             get
