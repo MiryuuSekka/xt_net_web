@@ -15,6 +15,10 @@ namespace Logger
             EntryLog = Entry.Deserialize();
         }
 
-
+        public List<Entry> GetLog()
+        {
+            EntryLog = Entry.Deserialize();
+            return EntryLog;
+        }
     }
 }

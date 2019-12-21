@@ -20,7 +20,9 @@ namespace Logger
 
 
         static internal string LogPath = @"..\\Log.json";
-        static internal string TargetPath = @"..\\TEST";
+        static public string TargetPath = @"..\\TEST";
+
+
 
         static public void Serialize(Entry Data)
         {
