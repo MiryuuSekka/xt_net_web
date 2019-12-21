@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logger
 {
@@ -75,6 +71,41 @@ namespace Logger
         }
 
 
+        public void BackToChangeManager(Entry Status)
+        {
+            var Path = Entry.TargetPath + @"\" + Status.FileName;
+
+            switch (Status.Action)
+            {
+                case WatcherChangeTypes.Created:
+                    File.Create(Path);
+                    break;
+
+                case WatcherChangeTypes.Deleted:
+                    File.Delete(Path);
+                    break;
+
+                case WatcherChangeTypes.Changed:
+                    using (var Stream = new FileStream(Path, FileMode.Open))
+                    {
+                        var buffStream = new BufferedStream(Stream);
+                        var writer = new StreamWriter(buffStream);
+                        writer.Write(Status.Text);
+                        writer.Close();
+                    }
+                    break;
+
+                case WatcherChangeTypes.Renamed:
+
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+
+
 
         void MessageOnChanged(string fileName, string ActionName)
         {
@@ -93,13 +124,17 @@ namespace Logger
         {
             var str = "";
             var Path = Entry.TargetPath + @"\" + FileName;
-            using (var Stream = new FileStream(Path, FileMode.Open))
+            try
             {
-                var buffStream = new BufferedStream(Stream);
-                var reader = new StreamReader(buffStream);
-                str = reader.ReadToEnd();
-                reader.Close();
+                using (var Stream = new FileStream(Path, FileMode.Open))
+                {
+                    var buffStream = new BufferedStream(Stream);
+                    var reader = new StreamReader(buffStream);
+                    str = reader.ReadToEnd();
+                    reader.Close();
+                }
             }
+            catch (Exception) { }
             return str;
         }
 

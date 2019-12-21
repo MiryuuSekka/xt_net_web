@@ -7,7 +7,7 @@ namespace Logger
 {
     public class Main
     {
-        internal List<Entry> EntryLog;
+        public List<Entry> EntryLog;
 
         public Main()
         {

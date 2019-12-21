@@ -59,7 +59,7 @@ namespace EpamTask5
 
         void StartRead()
         {
-            Watcher.Start();
+            //Watcher.Start();
             ReadLogMain();
 
             ConsoleKey Key;
@@ -74,21 +74,41 @@ namespace EpamTask5
                         break;
 
                     case ConsoleKey.D1:
+                        ReadLogMain();
                         WriteFullLog();
                         break;
 
                     case ConsoleKey.D2:
-                        ReadLogGoTo();
-                        break;
-
-                    case ConsoleKey.D3:
-                        ReadLogGoTo();
+                        StartRecover();
                         break;
 
                     default:
                         break;
                 }
             } while (Key != ConsoleKey.Escape);
+        }
+
+        void StartRecover()
+        {
+            ReadLogGoTo();
+            WriteFullLog();
+            string str = "";
+            do
+            {
+                str = Console.ReadLine();
+                DateTime.TryParse(str, out DateTime date);
+                var SearchResult = Loginator.EntryLog.Find(x => x.Time.Date.Equals(date.Date)
+                                                               && x.Time.Hour.Equals(date.Hour)
+                                                               && x.Time.Minute.Equals(date.Minute)
+                                                               && x.Time.Second.Equals(date.Second));
+                if (SearchResult != null)
+                {
+                    Watcher.BackToChangeManager(SearchResult);
+                    Console.WriteLine("File was returned at this change status");
+                    Console.WriteLine("u can write new date");
+                }
+
+            } while (str.Equals("ESC") || str.Equals("ecs"));
         }
 
         void ReadLogMain()
@@ -100,8 +120,7 @@ namespace EpamTask5
             Console.WriteLine("Now u can:");
 
             Console.WriteLine(" < 1 >       Get list of changes");
-            Console.WriteLine(" < 2 >       Get list of changes BY FILE NAME");
-            Console.WriteLine(" < 3 >       Get list of changes BY CHANGE TYPE");
+            Console.WriteLine(" < 2 >       Return change by date");
             Console.WriteLine("< ESC >        Back");
 
             Console.WriteLine("\n");
@@ -114,8 +133,8 @@ namespace EpamTask5
             Console.WriteLine("TASK 5");
             Console.WriteLine("Read log - mode");
 
-            Console.WriteLine("Write number of change wat u want turn back");
-            Console.WriteLine("write < ESC >        Back");
+            Console.WriteLine("Write date of change wat u want back to");
+            Console.WriteLine("sample is \"21.12.2019 14:07:04\"");
 
             Console.WriteLine("\n");
         }
@@ -123,14 +142,15 @@ namespace EpamTask5
         void WriteFullLog()
         {
             var SearchData = Loginator.GetLog();
-            ReadLogMain();
-
+            Console.WriteLine("======================================================");
+            Console.WriteLine("Log: ");
             foreach (var item in SearchData)
             {
                 Console.WriteLine("File name: {0}", item.FileName);
                 Console.WriteLine("Date: {0}       Change type: {1}", item.Time, item.Action);
                 Console.WriteLine("Text: {0}", item.Text);
             }
+            Console.WriteLine("======================================================");
         }
 
         void ReadByName()
