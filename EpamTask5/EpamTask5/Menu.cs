@@ -22,7 +22,6 @@ namespace EpamTask5
 
                 if (Key == ConsoleKey.D1)
                 {
-                    Watcher.Start();
                     StartWrite();
                 }
 
