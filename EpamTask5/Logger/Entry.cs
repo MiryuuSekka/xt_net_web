@@ -7,6 +7,7 @@ namespace Logger
 {
     public class Entry
     {
+        public string ChangeNumber { get; set; } 
         public string FileName { get; set; }
         public DateTime Time { get; set; }
         public WatcherChangeTypes Action { get; set; }
@@ -19,11 +20,12 @@ namespace Logger
 
 
 
+
         static internal string LogPath = @"..\\Log.json";
         static public string TargetPath = @"..\\TEST";
 
 
-
+        static public string LastIndex;
         static public void Serialize(Entry Data)
         {
             using (var writer = new StreamWriter(LogPath, true))

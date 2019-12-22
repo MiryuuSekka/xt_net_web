@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace EpamTask5
 {
@@ -21,15 +16,13 @@ namespace EpamTask5
 
             do
             {
+                Watcher.End();
                 ShowMenu();
                 Key = Console.ReadKey().Key;
-                if (Key == ConsoleKey.Escape)
-                {
-                    Watcher.End();
-                }
 
                 if (Key == ConsoleKey.D1)
                 {
+                    Watcher.Start();
                     StartWrite();
                 }
 
@@ -59,7 +52,6 @@ namespace EpamTask5
 
         void StartRead()
         {
-            //Watcher.Start();
             ReadLogMain();
 
             ConsoleKey Key;
@@ -69,7 +61,6 @@ namespace EpamTask5
                 switch (Key)
                 {
                     case ConsoleKey.Escape:
-                        Watcher.End();
                         ShowMenu();
                         break;
 
@@ -92,6 +83,8 @@ namespace EpamTask5
         {
             ReadLogGoTo();
             WriteFullLog();
+            Console.WriteLine("sample is \"21.12.2019 14:07:04\"");
+
             string str = "";
             do
             {
@@ -103,7 +96,7 @@ namespace EpamTask5
                                                                && x.Time.Second.Equals(date.Second));
                 if (SearchResult != null)
                 {
-                    Watcher.BackToChangeManager(SearchResult);
+                    Loginator.BackToChangeManager(SearchResult);
                     Console.WriteLine("File was returned at this change status");
                     Console.WriteLine("u can write new date");
                 }
@@ -134,9 +127,6 @@ namespace EpamTask5
             Console.WriteLine("Read log - mode");
 
             Console.WriteLine("Write date of change wat u want back to");
-            Console.WriteLine("sample is \"21.12.2019 14:07:04\"");
-
-            Console.WriteLine("\n");
         }
 
         void WriteFullLog()
@@ -146,9 +136,12 @@ namespace EpamTask5
             Console.WriteLine("Log: ");
             foreach (var item in SearchData)
             {
-                Console.WriteLine("File name: {0}", item.FileName);
-                Console.WriteLine("Date: {0}       Change type: {1}", item.Time, item.Action);
-                Console.WriteLine("Text: {0}", item.Text);
+                if (item.Action != WatcherChangeTypes.All)
+                {
+                    Console.WriteLine("\nFile name: {0}", item.FileName);
+                    Console.WriteLine("Date: {0}       Change type: {1}", item.Time, item.Action);
+                    Console.WriteLine("Text: {0}", item.Text);
+                }
             }
             Console.WriteLine("======================================================");
         }

@@ -48,60 +48,22 @@ namespace Logger
 
         void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-            AddToLog(e.Name, WatcherChangeTypes.Changed);
-            MessageOnChanged(e.Name, e.ChangeType.ToString());
+            WriteStatusOfFiles(e);
         }
 
         void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            AddToLog(e.Name, WatcherChangeTypes.Created);
-            MessageOnChanged(e.Name, e.ChangeType.ToString());
+            WriteStatusOfFiles(e);
         }
 
         void Watcher_Renamed(object sender, RenamedEventArgs e)
         {
-            AddToLog(e.Name, WatcherChangeTypes.Renamed);
-            MessageOnChanged(e.Name, e.ChangeType.ToString());
+            WriteStatusOfFiles(e);
         }
 
         void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            //DeleteFromLog(e.FullPath);
-            MessageOnChanged(e.Name, e.ChangeType.ToString());
-        }
-
-
-        public void BackToChangeManager(Entry Status)
-        {
-            var Path = Entry.TargetPath + @"\" + Status.FileName;
-
-            switch (Status.Action)
-            {
-                case WatcherChangeTypes.Created:
-                    File.Create(Path);
-                    break;
-
-                case WatcherChangeTypes.Deleted:
-                    File.Delete(Path);
-                    break;
-
-                case WatcherChangeTypes.Changed:
-                    using (var Stream = new FileStream(Path, FileMode.Open))
-                    {
-                        var buffStream = new BufferedStream(Stream);
-                        var writer = new StreamWriter(buffStream);
-                        writer.Write(Status.Text);
-                        writer.Close();
-                    }
-                    break;
-
-                case WatcherChangeTypes.Renamed:
-
-                    break;
-
-                default:
-                    break;
-            }
+            WriteStatusOfFiles(e);
         }
 
 
@@ -119,37 +81,21 @@ namespace Logger
                 Watcher.EnableRaisingEvents = true;
             }
         }
-
-        string GetTextFromFile(string FileName)
+        
+        void WriteStatusOfFiles(FileSystemEventArgs e)
         {
-            var str = "";
-            var Path = Entry.TargetPath + @"\" + FileName;
-            try
+            string Hash = DateTime.Now.ToString().GetHashCode().ToString();
+            Main.AddToLogEntry(e.Name, WatcherChangeTypes.Changed, Hash);
+            MessageOnChanged(e.Name, e.ChangeType.ToString());
+
+
+            var Files = Directory.GetFiles(Entry.TargetPath);
+            foreach (var item in Files)
             {
-                using (var Stream = new FileStream(Path, FileMode.Open))
-                {
-                    var buffStream = new BufferedStream(Stream);
-                    var reader = new StreamReader(buffStream);
-                    str = reader.ReadToEnd();
-                    reader.Close();
-                }
+                if(!item.Contains(e.Name))
+                Main.AddToLogEntry(item.Replace(Entry.TargetPath, ""), WatcherChangeTypes.All, Hash);
             }
-            catch (Exception) { }
-            return str;
-        }
 
-        public void AddToLog(string FileName, WatcherChangeTypes ActionType)
-        {
-            var str = GetTextFromFile(FileName);
-
-            var AddData = new Entry() {
-                Action = ActionType,
-                FileName = FileName,
-                Time = DateTime.Now,
-                Text = str
-            };
-
-            Entry.Serialize(AddData);
         }
     }
 }
