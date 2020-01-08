@@ -1,20 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Entities;
+using System;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp
 {
     class Program
     {
         static ConsoleKey Key;
-        static Task6.BLL.UserLogic Logic;
+        static Task6.BLL.Interface.ILogic<User> Logic;
 
         static void Main(string[] args)
         {
             Logic = new Task6.BLL.UserLogic();
-            Menu();
+            do
+            {
+                Menu();
+                Key = Console.ReadKey().Key;
+            } while (Key != ConsoleKey.Escape);
         }
 
         static void ShowNewScreen(string Text)
@@ -25,18 +27,17 @@ namespace ConsoleApp
 
         static void Menu()
         {
-            var Text = new StringBuilder();
-            Text.AppendLine("TASK 6");
-            Text.AppendLine();
-            Text.AppendLine("Press <<Esc>> to exit");
-            Text.AppendLine("Press <<1>> to Show all users");
-            Text.AppendLine("Press <<2>> to add user");
-            Text.AppendLine("Press <<3>> to delete user");
-
-            ShowNewScreen(Text.ToString());
-
             do
             {
+                var Text = new StringBuilder();
+                Text.AppendLine("TASK 6");
+                Text.AppendLine();
+                Text.AppendLine("Press <<Esc>> to exit");
+                Text.AppendLine("Press <<1>> to Show all users");
+                Text.AppendLine("Press <<2>> to add user");
+                Text.AppendLine("Press <<3>> to delete user");
+
+                ShowNewScreen(Text.ToString());
                 Key = Console.ReadKey().Key;
                 switch (Key)
                 {
@@ -44,7 +45,7 @@ namespace ConsoleApp
                         break;
 
                     case ConsoleKey.D1:
-                        ShowResult();
+                        ShowAllData();
                         break;
 
                     case ConsoleKey.D2:
@@ -60,37 +61,73 @@ namespace ConsoleApp
 
         static void AddUser()
         {
+            User NewUser = new User();
             ShowNewScreen("Write name");
             var name = Console.ReadLine();
-
             ShowNewScreen("Write BirthDate at format like 16.04.2019 (DD.MM.YYYY)");
             var date = Console.ReadLine();
+            try
+            {
+                NewUser = User.Parse(name, date, Logic.GetAll());
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Wrong data. {e.Message}");
+                return;
+            }
 
-            //
-            Console.WriteLine("New user data is - {0}", 0);
+            Console.WriteLine("New user data is:");
+            ShowResult(NewUser);
             Console.WriteLine("If its correct press <<Y>>");
             var answer = Console.ReadKey().Key;
             if (answer.Equals(ConsoleKey.Y))
             {
-                //
+                Logic.AddData(NewUser);
             }
             else
             {
                 Console.WriteLine("canselled");
             }
+            Console.ReadKey();
         }
 
         static void Delete()
         {
             ShowNewScreen("Write Id");
-            Console.ReadLine();
-            //
+            var answer = Console.ReadLine();
+            int.TryParse(answer, out int Id);
+            try
+            {
+                Logic.DeleteById(Id);
+            }
+            catch (ArgumentException e)
+            {
+                Console.WriteLine($"Wrong data. {e.Message}");
+                return;
+            }
             Console.WriteLine("User Deleted");
+            Console.ReadKey();
         }
 
-        static void ShowResult()
+        static void ShowAllData()
         {
-            //
+            var Result = Logic.GetAll();
+            ShowNewScreen("User data list:");
+            foreach (var item in Result)
+            {
+                ShowResult(item);
+            }
+            Console.WriteLine("----------------\nIts all");
+            Console.ReadKey();
+        }
+
+        static void ShowResult(User user)
+        {
+            Console.WriteLine($"     Id: {user.Id}");
+            Console.WriteLine($"     Name: {user.Name}");
+            Console.WriteLine($"     Age: {user.Age}");
+            Console.WriteLine($"     BirthDay: {user.BirthDay.Date.Day}.{user.BirthDay.Date.Month}.{user.BirthDay.Date.Year}");
+            Console.WriteLine();
         }
     }
 }

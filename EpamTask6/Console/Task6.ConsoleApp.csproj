@@ -50,6 +50,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{E12EF6CA-C48C-44DB-876C-39B1279409A7}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task6.BLL.Interface\Task6.BLL.Interface.csproj">
+      <Project>{f6e2c858-8bef-443c-a444-be8a2d2e71b0}</Project>
+      <Name>Task6.BLL.Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Task6.BLL\Task6.BLL.csproj">
       <Project>{7161124f-b6b2-4e03-a244-3463fb9aca96}</Project>
       <Name>Task6.BLL</Name>
