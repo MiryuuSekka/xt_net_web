@@ -3,19 +3,20 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Task6.DAL.Interface
+namespace DALInterfaces
 {
-    public class Serializer<T>
+    public class ToFolder
     {
-        private string FilePath;
+        public string FilePath;
 
-        public Serializer(string FilePath)
+
+        public ToFolder(string Path)
         {
-            this.FilePath = FilePath;
+            FilePath = Path;
         }
 
 
-        public void Serialize(T Data)
+        public void Serialize<T>(T Data)
         {
             using (var writer = new StreamWriter(FilePath, true))
             {
@@ -59,7 +60,7 @@ namespace Task6.DAL.Interface
             return true;
         }
 
-        public List<T> Deserialize()
+        public List<T> Deserialize<T>()
         {
             var result = new List<T>();
 

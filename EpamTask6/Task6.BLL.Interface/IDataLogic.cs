@@ -2,7 +2,7 @@
 
 namespace Task6.BLL.Interface
 {
-    public interface ILogic<T>
+    public interface IDataLogic<T>
     {
         void AddData(T data);
 
@@ -11,5 +11,7 @@ namespace Task6.BLL.Interface
         IEnumerable<T> GetAll();
 
         T GetByID(int Id);
+
+        IEnumerable<T> GetAllByID(int Id);
     }
 }

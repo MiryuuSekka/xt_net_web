@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E12EF6CA-C48C-44DB-876C-39B1279409A7}</ProjectGuid>
+    <ProjectGuid>{A5D88AD4-4F07-4F2F-8962-8F3A019EA601}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,12 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Award.cs" />
-    <Compile Include="AwardWeilders.cs" />
-    <Compile Include="HaveKey.cs" />
-    <Compile Include="PathData.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Folder.cs" />
+    <Compile Include="Local.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DALInterfaces\DALInterfaces.csproj">
+      <Project>{6388e014-1a40-4bcd-83b1-29c368892b9f}</Project>
+      <Name>DALInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

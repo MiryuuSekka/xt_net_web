@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E12EF6CA-C48C-44DB-876C-39B1279409A7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Entities</RootNamespace>
-    <AssemblyName>Entities</AssemblyName>
+    <ProjectGuid>{D3A4585C-ADB8-4598-82AA-BE7D01EA4B28}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Task6</RootNamespace>
+    <AssemblyName>Task6</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,12 +43,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Award.cs" />
-    <Compile Include="AwardWeilders.cs" />
-    <Compile Include="HaveKey.cs" />
-    <Compile Include="PathData.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="AwardConsole.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserConsole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLLInterfaces\BLLInterfaces.csproj">
+      <Project>{c0f7bab1-1a95-453f-8dbd-ed4ade32b6c0}</Project>
+      <Name>BLLInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DependencyResolver\DependencyResolver.csproj">
+      <Project>{2cab124e-8133-4831-8c3c-3de6ccb9cae7}</Project>
+      <Name>DependencyResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

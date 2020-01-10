@@ -1,17 +1,18 @@
 ﻿using Entities;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace ConsoleApp
 {
     class Program
     {
+        static Task6.BLL.Interface.IMainLogic Logic;
         static ConsoleKey Key;
-        static Task6.BLL.Interface.ILogic<User> Logic;
 
         static void Main(string[] args)
         {
-            Logic = new Task6.BLL.UserLogic();
+            Logic = Common.DependencyResolver.GetLogic();
             do
             {
                 Menu();
@@ -68,7 +69,7 @@ namespace ConsoleApp
             var date = Console.ReadLine();
             try
             {
-                NewUser = User.Parse(name, date, Logic.GetAll());
+                NewUser = User.Parse(name, date, (IEnumerable<User>)Logic.GetAll());
             }
             catch (ArgumentException e)
             {
@@ -115,7 +116,7 @@ namespace ConsoleApp
             ShowNewScreen("User data list:");
             foreach (var item in Result)
             {
-                ShowResult(item);
+                ShowResult((User)item);
             }
             Console.WriteLine("----------------\nIts all");
             Console.ReadKey();

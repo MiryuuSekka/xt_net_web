@@ -3,11 +3,11 @@ using Task6.DAL.Interface;
 
 namespace Task6.DAL
 {
-    public class UserData : AbstractData<User>
+    public class AwardData : AbstractData<Award>
     {
-        public UserData()
+        public AwardData()
         {
-            Manager = new Serializer<User>(PathData.User);
+            Manager = new Serializer<Award>(PathData.Awards);
             Manager.OpenOrCreateFile();
         }
     }

@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Entities
 {
-    public class User
+    public class User : HaveKey
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public DateTime BirthDay { get; set; }
@@ -30,10 +27,12 @@ namespace Entities
                 throw new ArgumentException("Wrong date");
             }
 
+            var Awards = new List<Award>();
+
             NewUser.Name = Name;
             NewUser.Age = Age;
             NewUser.BirthDay = NewDate;
-            NewUser.Id = GetNewId( data.ToList() );
+            NewUser.Id = GetNewId(data);
             return NewUser;
         }
 
@@ -57,18 +56,6 @@ namespace Entities
                 }
             }
             return Age;
-        }
-
-        static internal int GetNewId(List<User> data)
-        {
-            int NewId = 1;
-            if (data == null || data.Count < 1)
-            {
-                return NewId;
-            }
-            NewId = data.Max(x => x.Id);
-            NewId++;
-            return NewId;
         }
     }
 }

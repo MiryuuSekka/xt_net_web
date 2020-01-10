@@ -44,12 +44,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractData.cs" />
     <Compile Include="IData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entities\Entities.csproj">
+      <Project>{e12ef6ca-c48c-44db-876c-39b1279409a7}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

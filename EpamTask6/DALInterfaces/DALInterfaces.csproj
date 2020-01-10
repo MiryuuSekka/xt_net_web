@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64A563AD-A5B8-4551-8DC5-A6E37CE860C2}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Console</RootNamespace>
-    <AssemblyName>Console</AssemblyName>
+    <ProjectGuid>{6388E014-1A40-4BCD-83B1-29C368892B9F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DALInterfaces</RootNamespace>
+    <AssemblyName>DALInterfaces</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,25 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="IData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ToFolder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{E12EF6CA-C48C-44DB-876C-39B1279409A7}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task6.BLL.Interface\Task6.BLL.Interface.csproj">
-      <Project>{f6e2c858-8bef-443c-a444-be8a2d2e71b0}</Project>
-      <Name>Task6.BLL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task6.BLL\Task6.BLL.csproj">
-      <Project>{7161124f-b6b2-4e03-a244-3463fb9aca96}</Project>
-      <Name>Task6.BLL</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

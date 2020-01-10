@@ -41,26 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserLogic.cs" />
+    <Compile Include="MainLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Entities\Entities.csproj">
-      <Project>{e12ef6ca-c48c-44db-876c-39b1279409a7}</Project>
-      <Name>Entities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task6.BLL.Interface\Task6.BLL.Interface.csproj">
-      <Project>{f6e2c858-8bef-443c-a444-be8a2d2e71b0}</Project>
-      <Name>Task6.BLL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task6.DAL.Interface\Task6.DAL.Interface.csproj">
-      <Project>{24B41D4A-7C3D-4BD5-B428-13AB01FD3C2A}</Project>
-      <Name>Task6.DAL.Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Task6.DAL\Task6.DAL.csproj">
-      <Project>{b7727af7-4b67-439d-8b26-661433146232}</Project>
-      <Name>Task6.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

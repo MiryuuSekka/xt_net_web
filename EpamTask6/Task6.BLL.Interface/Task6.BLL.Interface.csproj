@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogic.cs" />
+    <Compile Include="AbstractLogic.cs" />
+    <Compile Include="IDataLogic.cs" />
+    <Compile Include="IMainLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

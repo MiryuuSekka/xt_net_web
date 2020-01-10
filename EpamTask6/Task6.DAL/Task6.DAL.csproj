@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AwardData.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeilderData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj">
