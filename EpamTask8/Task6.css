@@ -1,0 +1,56 @@
+﻿* {
+    background-color: #333333;
+}
+
+.Blocks {
+    display: inline-flex;
+    z-index: 0;
+    position: absolute;
+    height: 250px;
+}
+
+.Block {
+    background: linear-gradient(to top, #ff8d02, #ffd059);
+    width: 35px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    position: absolute;
+    bottom: 0px;
+    margin-left: 5px;
+}
+
+#Block1 {
+    height: 120px;
+}
+
+#Block2 {
+    height: 45px;
+    left: 40px;
+}
+
+#Block3 {
+    height: 195px;
+    left: 80px;
+}
+
+#Block4 {
+    height: 245px;
+    left: 120px;
+}
+
+#Block5 {
+    height: 120px;
+    left: 160px;
+}
+
+#Block6 {
+    height: 70px;
+    left: 200px;
+}
+
+.Stripes {
+    z-index: 1;
+    height: 275px;
+    width: 250px;
+    background: repeating-linear-gradient(transparent 5px, transparent 27px, #333333 27px, #333333 30px);
+}

@@ -1,0 +1,53 @@
+﻿.Window {
+    color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #0075b2;
+    background-color: #0690cf;
+    width: 400px;
+}
+
+h1 {
+    font-size: 20px;
+    border-bottom-style: solid;
+    border-width: 1px;
+    border-color: white;
+    padding: 15px 0px 10px 20px;
+    margin-top: 0px;
+    font-family: "Tahoma";
+    font-weight: 300;
+}
+
+h2 {
+    margin-left: 20px;
+    font-size: 15px;
+    font-family: "Tahoma";
+    font-weight: 300;
+    margin-bottom: 2px;
+}
+
+.SendButton {
+    background-color: #ffdf7f;
+    border-style: none;
+    padding: 5px 10px;
+    margin: 30px 0px 20px 20px;
+    font-family: "Tahoma";
+    font-weight: 300;
+}
+
+.Line2 {
+    display: inline-flex;
+}
+
+.E-mailInput {
+    width: 360px;
+}
+
+.PasswordInput {
+    width: 170px;
+}
+
+input {
+    margin-left: 20px;
+    border: 1px solid #98aab6;
+}

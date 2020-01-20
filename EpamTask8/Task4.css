@@ -1,0 +1,47 @@
+﻿* {
+    background-color: #333333;
+}
+
+.Window {
+    height: 1px;
+}
+
+.Message {
+    padding: 0px;
+    margin: 0px;
+}
+
+h1 {
+    background-color: #88b7d5;
+    color: #eae6d9;
+    text-align: center;
+    border: 5px solid #c2e1f5;
+    margin: 50px 5px;
+    font-family: "Times New Roman";
+    font-size: 24px;
+    padding: 20px;
+}
+
+.ArrowBorder:before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    margin: 0px;
+    left: 45%;
+    border-bottom: 50px solid #c2e1f5;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}
+
+.ArrowBody:before {
+    content: '';
+    position: absolute;
+    width: 0px;
+    height: 7px;
+    margin: 0px;
+    left: 45%;
+    border-bottom: 50px solid #88b7d5;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+}

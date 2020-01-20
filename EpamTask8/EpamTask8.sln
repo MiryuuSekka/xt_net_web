@@ -5,27 +5,59 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{F1A9FA41-EA3F-4E5A-BDED-3E878301C0C7}"
 	ProjectSection(SolutionItems) = preProject
-		Task1.css = Task1.css
-		Task1.html = Task1.html
+		Task1\Task1.css = Task1\Task1.css
+		Task1\Task1.html = Task1\Task1.html
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{46D3BB70-46CB-4041-88AF-87B59A597637}"
+	ProjectSection(SolutionItems) = preProject
+		Task2\Task2.css = Task2\Task2.css
+		Task2\Task2.html = Task2\Task2.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{2B5B5BCB-8AFF-48AF-9F6D-6CA1C9BC2625}"
+	ProjectSection(SolutionItems) = preProject
+		Task3.css = Task3.css
+		Task3.html = Task3.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task10", "Task10", "{B02D6D04-7682-4358-9AEE-32EB7D1CBC79}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task4", "Task4", "{008D5038-B835-4E05-AEC8-ADBB364DE060}"
+	ProjectSection(SolutionItems) = preProject
+		Task4.css = Task4.css
+		Task4.html = Task4.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task5", "Task5", "{8829ED3A-597B-4C61-B06A-252842B4D3C4}"
+	ProjectSection(SolutionItems) = preProject
+		img.png = img.png
+		Task5.css = Task5.css
+		Task5.html = Task5.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task6", "Task6", "{6C8395B4-B188-424B-AF54-B1F73A6550B4}"
+	ProjectSection(SolutionItems) = preProject
+		Task6.css = Task6.css
+		Task6.html = Task6.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task7", "Task7", "{78650F36-4FC6-4A9A-926A-B35570166DD6}"
+	ProjectSection(SolutionItems) = preProject
+		Task7.css = Task7.css
+		Task7.html = Task7.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task8", "Task8", "{6EC82436-1BD9-4858-9A29-1461CF933102}"
+	ProjectSection(SolutionItems) = preProject
+		Task8.css = Task8.css
+		Task8.html = Task8.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task9", "Task9", "{F4EA1DC9-E975-4899-8527-49F07A30202D}"
+	ProjectSection(SolutionItems) = preProject
+		Task9.css = Task9.css
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
