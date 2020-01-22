@@ -1,0 +1,43 @@
+﻿* {
+    font-family: "Tahoma";
+    font-size: 13px;
+    font-weight: 100;
+}
+
+h1 {
+    margin: auto 25px auto 5px;
+    color: #83a8d4;
+    font-size: 15px;
+    font-family: "Lucida Console";
+}
+
+h2 {
+    margin: auto;
+    color: #5f6984;
+}
+
+h3 {
+    margin: auto;
+    color: yellow;
+}
+
+h4 {
+    margin: auto;
+    color: #a29d99;
+}
+
+h5 {
+    margin: auto;
+    color: #6a625f;
+}
+
+h6 {
+    margin: auto;
+    color: black;
+}
+
+h7 {
+    margin: auto;
+    color: black;
+    font-size: 14px;
+}

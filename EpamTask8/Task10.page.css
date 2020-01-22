@@ -1,0 +1,96 @@
+﻿body {
+    background-color: #edeef0;
+    margin: 0px;
+}
+
+.HeaderBox {
+    background-color: #4b77a8;
+}
+
+.Header {
+    display: flex;
+    margin: auto;
+    width: 1000px;
+}
+
+.BodyBox {
+    display: flex;
+    margin: auto;
+    width: 1000px;
+}
+
+.LeftBox {
+    width: 160px;
+    margin: 15px 0px;
+}
+
+.CenterBox {
+    width: 550px;
+    margin: 15px;
+    background-color: white;
+    border: 1px solid #d7d8da;
+    border-radius: 5px;
+}
+
+.RightBox {
+    width: 230px;
+    margin: 15px 0px;
+    background-color: white;
+    border: 1px solid #d7d8da;
+    border-radius: 5px;
+}
+
+.CenterSettings {
+    border-top: 1px solid #d7d8da;
+    border-bottom: 1px solid #d7d8da;
+    margin: 10px auto;
+    width: 500px;
+}
+
+.CenterMenu {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterProfile {
+    display: inline;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterContent {
+    display: inline;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterPassword {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterMail {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterTelephone {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterAdress {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterVerification {
+    display: flex;
+    border-bottom: 1px solid #d7d8da;
+}
+
+.CenterLanguage {
+    display: flex;
+}
+
+.CenterDelete {
+    text-align: center;
+}

@@ -7,7 +7,7 @@
     background-color: white;
     width: 600px;
     height: 150px;
-    box-shadow: 0px 15px 50px 5px #303d4b;
+    box-shadow: 0 15px 50px 5px #303d4b;
     border-radius: 5px;
     display: flex;
     margin: auto;
@@ -56,13 +56,13 @@ img {
 }
 
 #Image1 {
-    object-position: 0px 0%;
+    object-position: 0 0;
 }
 
 #Image2 {
-    object-position: 0px 50%;
+    object-position: 0 50%;
 }
 
 #Image3 {
-    object-position: 0px 100%;
+    object-position: 0 100%;
 }

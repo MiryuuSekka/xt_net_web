@@ -1,3 +1,90 @@
-﻿body
-{
+﻿body {
+    background-color: white;
+}
+
+nav {
+    width: 390px;
+    margin: auto;
+}
+
+h2 {
+    height: 28px;
+    width: 95px;
+    font-family: "Arial";
+    color: black;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+h3 {
+    height: 28px;
+    width: 95px;
+    background: linear-gradient(to bottom, #dedede, #bfbfbf, #dedede);
+    margin: 0;
+}
+
+.Steps {
+    display: flex;
+}
+
+.Boxes {
+    z-index: 0;
+    position: absolute;
+    display: flex;
+}
+
+.Arrows {
+    z-index: 1;
+    position: absolute;
+}
+
+.Text {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    margin: -22px 0 0 25px;
+}
+
+.Step1:hover .Text {
+    color: white;
+}
+
+.Step1:hover .Box {
+    background: linear-gradient(180deg, #aee188, #64c51d, #aee188);
+}
+
+.Step2:hover .Text {
+    color: white;
+}
+
+.Step2:hover .Box {
+    background: linear-gradient(180deg, #aee188, #64c51d, #aee188);
+}
+
+.Step3:hover .Text {
+    color: white;
+}
+
+.Step3:hover .Box {
+    background: linear-gradient(180deg, #aee188, #64c51d, #aee188);
+}
+
+.Step4:hover .Text {
+    color: white;
+}
+
+.Step4:hover .Box {
+    background: linear-gradient(180deg, #aee188, #64c51d, #aee188);
+}
+
+#arrowTop {
+    height: 14px;
+    width: 380px;
+    background: repeating-linear-gradient(70deg,transparent 0px, transparent 90px, white 90px, white 96px, transparent 96px, transparent 178px, white 178px, white 183px, transparent 183px, transparent 267px, white 267px, white 272px);
+}
+
+#arrowDown {
+    height: 14px;
+    width: 380px;
+    background: repeating-linear-gradient(110deg,transparent 0px, transparent 90px, white 90px, white 96px, transparent 96px, transparent 178px, white 178px, white 183px, transparent 183px, transparent 267px, white 267px, white 272px);
 }

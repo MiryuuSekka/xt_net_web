@@ -1,0 +1,42 @@
+﻿
+#Username {
+    margin: auto 10px auto 50px;
+    color: white;
+    font-size: 13px;
+}
+
+ui {
+    list-style: none;
+}
+
+#SearchIco {
+    background-color: #4b77a8;
+}
+
+.SearchBox {
+    height: 25px;
+    width: 300px;
+    border-radius: 25px;
+    background-color: #224b79;
+    margin: auto;
+}
+
+.InLine {
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.input {
+    margin-top: 0px;
+    margin-left: 5px;
+    height: 20px;
+    width: 200px;
+    color: #4b77a8;
+    background-color: transparent;
+    border-style: none;
+}
+
+li {
+    margin: 15px;
+}

@@ -22,6 +22,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{2B5B5BCB
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task10", "Task10", "{B02D6D04-7682-4358-9AEE-32EB7D1CBC79}"
+	ProjectSection(SolutionItems) = preProject
+		Task10.html = Task10.html
+		Task10.images.css = Task10.images.css
+		Task10.page.css = Task10.page.css
+		Task10.styles.css = Task10.styles.css
+		Task10.Text.css = Task10.Text.css
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task4", "Task4", "{008D5038-B835-4E05-AEC8-ADBB364DE060}"
 	ProjectSection(SolutionItems) = preProject
@@ -57,6 +64,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task9", "Task9", "{F4EA1DC9-E975-4899-8527-49F07A30202D}"
 	ProjectSection(SolutionItems) = preProject
 		Task9.css = Task9.css
+		Task9.html = Task9.html
 	EndProjectSection
 EndProject
 Global
