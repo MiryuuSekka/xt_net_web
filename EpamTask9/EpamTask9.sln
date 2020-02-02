@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task1", "Task1", "{BABF7484-A717-426E-977E-69A204A40736}"
+	ProjectSection(SolutionItems) = preProject
+		Task1.html = Task1.html
+		Task1.Style.css = Task1.Style.css
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{C2B71C66-5D00-4B29-B96A-0B80C6615FB3}"
+	ProjectSection(SolutionItems) = preProject
+		Task2.html = Task2.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{B6DD5205-00B6-4359-94B0-E19AFA14B075}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task4", "Task4", "{28657B1C-2B9E-4CB1-9F9F-4B1C62FF8D02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A927DB77-FA7B-47B4-BA8B-704B4D68FF40}"
+	ProjectSection(SolutionItems) = preProject
+		Script1.js = Script1.js
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A927DB77-FA7B-47B4-BA8B-704B4D68FF40} = {BABF7484-A717-426E-977E-69A204A40736}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7481CA85-F3DF-474E-BD7E-EED1BD6D2513}
+	EndGlobalSection
+EndGlobal

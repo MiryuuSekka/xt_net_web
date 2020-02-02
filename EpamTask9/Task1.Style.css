@@ -1,0 +1,21 @@
+﻿body{
+    font-family:Tahoma;
+}
+#LabelResult {
+    background-color: lightseagreen;
+    color: white;
+    width: 500px;
+    height: 30px;
+    margin: 0;
+    border-style: none;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+#InputData {
+    background-color: darkcyan;
+    color: white;
+    width: 500px;
+    height: 30px;
+    margin: 0;
+    padding-left: 10px;
+}
