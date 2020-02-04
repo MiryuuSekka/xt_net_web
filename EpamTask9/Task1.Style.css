@@ -1,8 +1,10 @@
-﻿body{
-    font-family:Tahoma;
+﻿body {
+    font-family: Tahoma;
+    background-color: #1e1e1e;
+    color: lightgray;
 }
 #LabelResult {
-    background-color: lightseagreen;
+    background-color: #3e3e42;
     color: white;
     width: 500px;
     height: 30px;
@@ -12,10 +14,15 @@
     padding-top: 5px;
 }
 #InputData {
-    background-color: darkcyan;
+    background-color: #3e3e42;
     color: white;
     width: 500px;
     height: 30px;
     margin: 0;
     padding-left: 10px;
+}
+h2 {
+    margin: 50px 0;
+    width: 500px;
+    font-size: 15px;
 }

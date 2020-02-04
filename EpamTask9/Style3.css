@@ -1,15 +1,19 @@
-﻿body
-{
-    font-family:Tahoma;
+﻿body {
+    font-family: Tahoma;
+    background-color: #1e1e1e;
+    color: lightgray;
 }
 .task{
     display:flex;
 }
-.box{
-    width:200px;
-    height:300px;
-    background-color:slategrey;
-    color:white;
+.box {
+    width: 200px;
+    min-width:100px;
+    height: 300px;
+    background-color: #3e3e42;
+    border-style: none;
+    color: white;
+    overflow-y: hidden;
 }
 .buttons {
     display: block;
@@ -19,4 +23,12 @@
 input {
     width: 90px;
     height: 30px;
+    background-color: #686868;
+    border-style: none;
+    color: lightgray;
+    margin-bottom: 1px;
+    border-radius: 3px;
+}
+option{
+    margin:5px;
 }
