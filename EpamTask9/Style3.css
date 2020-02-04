@@ -32,3 +32,9 @@ input {
 option{
     margin:5px;
 }
+#Error {
+    color: indianred;
+    height: 30px;
+    margin: 0;
+    font-size: 15px;
+}

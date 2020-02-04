@@ -1,5 +1,6 @@
 var Boxes = document.getElementsByClassName("box");
 var buttons = document.getElementsByClassName("Button");
+var Error = document.getElementById("Error");
 var BaseBox;
 var TargetBox;
 
@@ -12,7 +13,14 @@ function OnClick() {
     var PanelNumber = GetPanelNumber(event.target.id);
     GetBoxNumber(PanelNumber, event.target.name);
     var Lines = GetLines();
-    MoveLines(event.target.name, Lines);
+    if (Lines.length > 0 || event.target.name.indexOf("All") > -1){
+        MoveLines(event.target.name, Lines);
+        Error.innerHTML = "";
+    }
+    else {
+        Error.innerHTML = "Wrong arguments. Select 1 or more line for move them";
+    }
+    ClearSelection();
 }
 
 function GetBoxNumber(PanelNumber, ButtonName) {
@@ -64,5 +72,11 @@ function MoveLines(Type, Lines) {
 
         default:
             break;
+    }
+};
+
+function ClearSelection() {
+    for (var i = 0; i < Boxes.length; i++) {
+        Boxes[i].options.selectedIndex = -1;
     }
 };
