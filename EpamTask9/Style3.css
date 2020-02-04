@@ -1,0 +1,22 @@
+﻿body
+{
+    font-family:Tahoma;
+}
+.task{
+    display:flex;
+}
+.box{
+    width:200px;
+    height:300px;
+    background-color:slategrey;
+    color:white;
+}
+.buttons {
+    display: block;
+    margin: auto 5px;
+    width: 90px;
+}
+input {
+    width: 90px;
+    height: 30px;
+}
