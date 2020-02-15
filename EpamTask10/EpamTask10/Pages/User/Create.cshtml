@@ -1,0 +1,91 @@
+﻿@using EpamTask10.Models;
+@{
+    Layout = "~/Pages/_Layout.cshtml";
+
+    Boolean IsAdded = false;
+    Boolean ShowError = false;
+    string Name = "";
+    string Date = "";
+
+    var Awards = EpamTask10.Models.Main.GetAwards();
+
+    if (IsPost)
+    {
+        Name = Request["Name"];
+        Date = Request["Date"];
+        //SelectedUsersId = Request["A"];
+
+        if (Name != null && Date != null && Name.Length > 3)
+        {
+            EpamTask10.Models.Main.AddUser(Name, Date);
+            IsAdded = true;
+        }
+        else
+        {
+            ShowError = true;
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body style="background-color:#222; color:#fff">
+    <div class="container">
+
+        <div>
+            <h2>Users</h2>
+            <button type="button" id="ToUser" class="btn btn-outline-secondary">< Back</button>
+        </div>
+
+        <div style="margin-top:15px">
+            <h5>add new user</h5>
+        </div>
+
+        <form action="~/Pages/MenuUser/Create.cshtml" method="post">
+            <div>
+                <label class="col-form-label"> Username: </label>
+                <input type="text" name="Name" id="Name" value="" class="form-control" />
+                <label class="col-form-label"> BirthDay: </label>
+                <input type="date" name="Date" id="Date" value="" class="form-control" />
+            </div>
+
+            <div class="form-group" style="margin-top:15px">
+                <label class="col-form-label"> Select awards for this user </label>
+                <select class="custom-select" multiple>
+                    @foreach (var item in Awards)
+                    {
+                        <option value="@item.Id">
+                            @item.Title
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <button class="btn btn-success" style="margin-top:15px">Add Award</button>
+        </form>
+
+        <div style="margin-top:15px">
+            @if (ShowError)
+            {
+                <p class="text-danger">Username length more then 3 characters. Try again ☆</p>
+            }
+
+            @if (IsAdded)
+            {
+                <p class="text-success">New user "@Name" is Added ☆</p>
+            }
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/pages/changePage.js"></script>
+</body>
+</html>
