@@ -6,8 +6,6 @@
     Boolean ShowError = false;
     string Title = "";
 
-    var Users = EpamTask10.Models.Main.GetUsers();
-
     if (IsPost)
     {
         Title = Request["Title"];
@@ -45,18 +43,6 @@
                 <div>
                     <label class="col-form-label"> Award title: </label>
                     <input type="text" name="Title" id="Title" value="" class="form-control" />
-                </div>
-
-                <div class="form-group" style="margin-top:15px">
-                    <label class="col-form-label"> Select users with this award </label>
-                    <select class="custom-select" multiple>
-                        @foreach (var item in Users)
-                        {
-                            <option value="@item.Id">
-                                @item.Name
-                            </option>
-                        }
-                    </select>
                 </div>
 
                 <button class="btn btn-success" style="margin-top:15px">Add Award</button>

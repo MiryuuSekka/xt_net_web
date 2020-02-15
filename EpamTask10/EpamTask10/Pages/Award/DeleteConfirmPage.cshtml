@@ -1,0 +1,35 @@
+﻿@{
+    Layout = null;
+
+    var id = Request["id"];
+    var confirm = Request["confirm"];
+
+    if (confirm!=null && confirm == "Y")
+    {
+        EpamTask10.Models.Main.DeleteAward(id);
+        Response.Redirect("~/Pages/Award/Show.cshtml");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body  style="background-color:#222; color:#fff">
+    <div>
+        <label>U sure?</label>
+        <a class="btn btn-outline-danger"
+           href="~/Pages/Award/Edit.cshtml?id=@id">
+            No, return to Edit
+        </a>
+        <a class="btn btn-outline-success"
+           href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id&confirm=Y">
+            Yes, delete this award
+        </a>
+    </div>
+</body>
+</html>

@@ -150,6 +150,7 @@
     <Content Include="Pages\Award\Edit.cshtml" />
     <Content Include="Pages\Award\Create.cshtml" />
     <Content Include="Pages\Award\Show.cshtml" />
+    <Content Include="Pages\Award\DeleteConfirmPage.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />

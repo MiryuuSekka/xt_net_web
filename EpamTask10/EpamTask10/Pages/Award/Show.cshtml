@@ -2,12 +2,6 @@
 @{
     Layout = "~/Pages/_Layout.cshtml";
     var Awards = EpamTask10.Models.Main.GetAwards();
-
-    var a = Request["DeleteUser"];
-    var b = Request["ChangeUser"];
-    if (IsPost)
-    {
-    }
 }
 
 <!DOCTYPE html>
@@ -68,18 +62,9 @@
                                 </td>
                             }
                             <td style="display:flex">
-                                <form action="~/Pages/MenuAward/Show.cshtml" method="post">
-                                    <button type="button" class="btn btn-outline-secondary" name="ChangeUser" value="@item.Id">
-                                        Change >
-                                    </button>
-                                </form>
-
-                                <form action="~/Pages/MenuAward/Show.cshtml" method="post">
-
-                                    <button type="button" class="btn btn-outline-danger" name="DeleteUser" value="@item.Id">
-                                        Delete
-                                    </button>
-                                </form>
+                                <a class="btn btn-outline-warning" href="~/Pages/Award/Edit.cshtml?id=@item.Id">
+                                    Edit >
+                                </a>
                             </td>
 
                         </tr>

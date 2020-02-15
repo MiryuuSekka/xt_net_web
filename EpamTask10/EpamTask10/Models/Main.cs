@@ -9,8 +9,10 @@ namespace EpamTask10.Models
     public class Main
     {
         private static string DefaultImage = "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Award_Rosette_Ribbon_PNG_Clipar_Image.png?m=1461120901";
+        private static string DefaultAvatar = "https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png";
 
         public static IAwardBLL Application = Resolver.SelectAwardBLL();
+
 
         public static List<DataAward> GetAwards()
         {
@@ -30,16 +32,6 @@ namespace EpamTask10.Models
             return result;
         }
 
-        public static string AddAward(string title)
-        {
-            if (title != null)
-            {
-                var newAward = Entity.Award.Parse(Application.GetAllAwards(), title);
-                Application.AddAward(newAward);
-            }
-            return title;
-        }
-
         public static List<DataUser> GetUsers()
         {
             var result = new List<DataUser>();
@@ -50,6 +42,7 @@ namespace EpamTask10.Models
                 result.Add(new DataUser()
                 {
                     Id = item.Id,
+                    Image = DefaultAvatar,
                     Age = item.Age,
                     Birthday = DateToString(item.BirthDay),
                     Name = item.Name
@@ -58,11 +51,50 @@ namespace EpamTask10.Models
             return result;
         }
 
+
+        public static string AddAward(string title)
+        {
+            if (title != null)
+            {
+                var newAward = Entity.Award.Parse(Application.GetAllAwards(), title);
+                Application.AddAward(newAward);
+            }
+            return title;
+        }
+
         public static void AddUser(string name, string date)
         {
             var newDate = StringToDate(date);
             var newUser = Entity.User.Parse(Application.GetAllUsers(), name, newDate);
             Application.AddUser(newUser);
+        }
+
+
+        public static DataAward GetAward(string Id)
+        {
+            int.TryParse(Id, out int num);
+            var awards = GetAwards();
+            return awards.Find(x => x.Id == num);
+        }
+
+        public static DataUser GetUser(string Id)
+        {
+            int.TryParse(Id, out int num);
+            var users = GetUsers();
+            return users.Find(x => x.Id == num);
+        }
+
+
+        public static void DeleteUser(string Id)
+        {
+            int.TryParse(Id, out int num);
+            Application.DeleteUserById(num);
+        }
+
+        public static void DeleteAward(string Id)
+        {
+            int.TryParse(Id, out int num);
+            Application.DeleteAwardById(num);
         }
 
 

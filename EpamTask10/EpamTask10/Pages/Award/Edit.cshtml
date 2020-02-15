@@ -1,5 +1,18 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Pages/_Layout.cshtml";
+
+
+    var Users = EpamTask10.Models.Main.GetUsers();
+
+    string id = Request["id"];
+    var Award = new EpamTask10.Models.classes.DataAward();
+
+    if (id!=null)
+    {
+        Award = EpamTask10.Models.Main.GetAward(id);
+    }
+
+
 }
 
 <!DOCTYPE html>
@@ -7,11 +20,57 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
-    <div>
-    
+    <div class="container">
+        <form action="~/Pages/Award/DeleteConfirmPage.cshtml" method="post">
+            <div style="margin-top:15px">
+                <button type="button" id="ToShowAward" class="btn btn-outline-secondary">< Back</button>
+                <a class="btn btn-outline-danger" href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id">
+                    Delete
+                </a>
+            </div>
+        </form>
+
+        <form action="/" method="post">
+            <div>
+                <div style="margin-top:15px">
+                    <label>Title:</label>
+                    <input type="text" class="form-control" name="NewTitle" value="@Award.Title" />
+                </div>
+
+                <div style="margin-top:15px">
+                    <img src=@Award.Image
+                         alt="Award @Award.Title"
+                         style="width:32px; background-color:transparent;" />
+
+                    <label>Icon:</label>
+                    <p class="text-secondary" style="width:280px">recommend: squared small size icon. Type url of image:</p>
+                    <input type="text" class="form-control" name="NewImageUrl" value="" />
+                </div>
+
+                <div style="margin-top:15px">
+                    <label>Give this award to users:</label>
+                    <div class="custom-control custom-switch" style="display:grid; margin:auto">
+                        @foreach (var item in Users)
+                        {
+                            <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
+                            <label class="custom-control-label" for="customSwitch @item.Id"> @item.Name </label>
+                        }
+                    </div>
+                </div>
+
+                <button style="margin-top:15px" class="btn btn-success">
+                    Save changes
+                </button>
+            </div>
+        </form>
+
     </div>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/pages/changePage.js"></script>
 </body>
 </html>

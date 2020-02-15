@@ -1,5 +1,7 @@
 ﻿@{
     Layout = null;
+
+    var Awards = EpamTask10.Models.Main.GetAwards();
 }
 
 <!DOCTYPE html>
@@ -11,7 +13,25 @@
 </head>
 <body>
     <div>
-    
+        <form action="/" method="post">
+
+
+            <div class="form-group" style="margin-top:15px">
+                <label class="col-form-label"> Select awards for this user </label>
+                <select class="custom-select" multiple>
+                    @foreach (var item in Awards)
+                    {
+                        <option value="@item.Id">
+                            @item.Title
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <button> Save </button>
+        </form>
+        
+
     </div>
 </body>
 </html>
