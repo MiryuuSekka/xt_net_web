@@ -12,20 +12,12 @@ namespace Logger
         public DateTime Time { get; set; }
         public WatcherChangeTypes Action { get; set; }
         public string Text { get; set; }
-
-        public void Serialize()
-        {
-            Serialize(this);
-        }
-
-
-
-
+        
+        
         static internal string LogPath = @"..\\Log.json";
         static public string TargetPath = @"..\\TEST";
 
-
-        static public string LastIndex;
+        
         static public void Serialize(Entry Data)
         {
             using (var writer = new StreamWriter(LogPath, true))

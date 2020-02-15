@@ -34,34 +34,34 @@ namespace Logger
 
 
 
-        void Watcher_Error(object sender, ErrorEventArgs e)
+        internal void Watcher_Error(object sender, ErrorEventArgs e)
         {
             Console.WriteLine("overflow");
         }
 
-        void Watcher_Disposed(object sender, EventArgs e)
+        internal void Watcher_Disposed(object sender, EventArgs e)
         {
             Console.WriteLine("disposed");
         }
 
 
 
-        void Watcher_Changed(object sender, FileSystemEventArgs e)
+        internal void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
             WriteStatusOfFiles(e);
         }
 
-        void Watcher_Created(object sender, FileSystemEventArgs e)
+        internal void Watcher_Created(object sender, FileSystemEventArgs e)
         {
             WriteStatusOfFiles(e);
         }
 
-        void Watcher_Renamed(object sender, RenamedEventArgs e)
+        internal void Watcher_Renamed(object sender, RenamedEventArgs e)
         {
             WriteStatusOfFiles(e);
         }
 
-        void Watcher_Deleted(object sender, FileSystemEventArgs e)
+        internal void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
             WriteStatusOfFiles(e);
         }
@@ -69,7 +69,7 @@ namespace Logger
 
 
 
-        void MessageOnChanged(string fileName, string ActionName)
+        internal void MessageOnChanged(string fileName, string ActionName)
         {
             try
             {
@@ -81,8 +81,8 @@ namespace Logger
                 Watcher.EnableRaisingEvents = true;
             }
         }
-        
-        void WriteStatusOfFiles(FileSystemEventArgs e)
+
+        internal void WriteStatusOfFiles(FileSystemEventArgs e)
         {
             string Hash = DateTime.Now.ToString().GetHashCode().ToString();
             Main.AddToLogEntry(e.Name, WatcherChangeTypes.Changed, Hash);

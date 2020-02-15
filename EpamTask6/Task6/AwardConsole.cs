@@ -207,8 +207,7 @@ namespace Task6
             ActionViewAwards();
             Console.WriteLine("Write ONE award Id");
             var answer = Console.ReadLine();
-            int Id = 0;
-            int.TryParse(answer, out Id);
+            int.TryParse(answer, out int Id);
 
             var Awards = BLL.GetAllAwards();
             var result = Awards.ToList().FindAll(x => x.Id.Equals(Id));
@@ -250,8 +249,7 @@ namespace Task6
             ActionViewUsers();
             Console.WriteLine("Write ONE user Id");
             var answer = Console.ReadLine();
-            int Id = 0;
-            int.TryParse(answer, out Id);
+            int.TryParse(answer, out int Id);
 
             var Users = BLL.GetAllUsers();
             var result = Users.ToList().FindAll(x => x.Id.Equals(Id));
@@ -372,8 +370,7 @@ namespace Task6
             {
                 return 0;
             }
-            int result = 0;
-            int.TryParse(Id, out result);
+            int.TryParse(Id, out int result);
             return result;
         }
 
@@ -393,9 +390,8 @@ namespace Task6
             {
                 return 0;
             }
-            int result = 0;
-            int.TryParse(Id, out result);
-            return result;
+            int.TryParse(Id, out int result);
+            return 0;
         }
 
         void ActionDeleteUser()
@@ -408,32 +404,29 @@ namespace Task6
 
         private void PrintUserData(User user)
         {
-            Console.WriteLine("User Id " + user.Id);
-            Console.WriteLine("Name : " + user.Name);
-            Console.Write("BirthDay : " + user.BirthDay.Date.Day);
-            Console.Write("." + user.BirthDay.Date.Month);
-            Console.Write("." + user.BirthDay.Date.Year);
-            Console.WriteLine(" ( " + user.Age + " )");
+            Console.WriteLine($"User Id {user.Id}");
+            Console.WriteLine($"Name : {user.Name}");
+            Console.WriteLine($"BirthDay : {user.BirthDay.Day}.{user.BirthDay.Month}.{user.BirthDay.Year} ({user.Age})");
 
             var awards = BLL.GetAllAwardAtUser(user.Id);
             Console.WriteLine("Awards: ");
             foreach (var item in awards)
             {
-                Console.Write(item.Title + " (id:" + item.Id + ")  ");
+                Console.Write($"{item.Title} (id:{item.Id})");
             }
             Console.WriteLine("\n------------------------------------");
         }
 
         private void PrintAwardData(Award award)
         {
-            Console.WriteLine("User Id " + award.Id);
-            Console.WriteLine("Title : " + award.Title);
+            Console.WriteLine($"User Id {award.Id}");
+            Console.WriteLine($"Title : {award.Title}");
 
             var users = BLL.GetAllUsersWithAward(award.Id);
-            Console.WriteLine("Users: ");
+            Console.WriteLine($"Users: ");
             foreach (var item in users)
             {
-                Console.Write(item.Name + " (id:" + item.Id + ")  ");
+                Console.Write($"{item.Name} (id:{item.Id}) ");
             }
             Console.WriteLine("\n------------------------------------");
         }

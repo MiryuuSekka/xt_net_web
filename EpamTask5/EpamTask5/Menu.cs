@@ -3,13 +3,48 @@ using System.IO;
 
 namespace EpamTask5
 {
-    public class Menu
+    public class MenuMain
     {
-        Logger.Main Loginator;
-        Logger.FolderManager Watcher;
-        ConsoleKey Key;
+        internal Logger.Main Loginator;
+        internal Logger.FolderManager Watcher;
+        internal ConsoleKey Key;
 
-        public Menu()
+        internal void ShowMenu(int N)
+        {
+            Console.Clear();
+            switch (N)
+            {
+                case 0:
+                    Console.WriteLine("TASK 5 \nselect mode <PRESS key>");
+                    Console.WriteLine("< 1 >       Write Log");
+                    Console.WriteLine("< 2 >       Read Log");
+                    Console.WriteLine("< ESC >        Exit");
+                    break;
+
+                case 1:
+                    Console.WriteLine("TASK 5 \nRead log - mode \nNow u can:");
+                    Console.WriteLine(" < 1 >       Get list of changes");
+                    Console.WriteLine(" < 2 >       Return change by date");
+                    Console.WriteLine("< ESC >        Back");
+                    break;
+
+                case 2:
+                    Console.WriteLine("TASK 5\nRead log - mode");
+                    Console.WriteLine("Write date of change wat u want back to");
+                    break;
+
+                case 3:
+                    Console.WriteLine("TASK 5 \nWrite log - mode");
+                    Console.WriteLine("Now u can do something with txt files in folder");
+                    Console.WriteLine("< ESC >        Exit");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        public MenuMain()
         {
             Watcher = new Logger.FolderManager();
             Loginator = new Logger.Main();
@@ -17,41 +52,24 @@ namespace EpamTask5
             do
             {
                 Watcher.End();
-                ShowMenu();
+                ShowMenu(0);
                 Key = Console.ReadKey().Key;
 
                 if (Key == ConsoleKey.D1)
                 {
-                    StartWrite();
+                    MenuWrite();
                 }
 
                 if (Key == ConsoleKey.D2)
                 {
-                    StartRead();
+                    MenuRead();
                 }
             } while (Key != ConsoleKey.Escape);
         }
 
-
-        void ShowMenu()
+        internal void MenuRead()
         {
-            Console.Clear();
-
-            Console.WriteLine("TASK 5");
-            Console.WriteLine("select mode <PRESS key>");
-
-            Console.WriteLine(" < 1 >       Write Log");
-            Console.WriteLine(" < 2 >       Read Log");
-            Console.WriteLine("< ESC >        Exit");
-
-            Console.WriteLine("\n");
-        }
-
-
-
-        void StartRead()
-        {
-            ReadLogMain();
+            ShowMenu(1);
 
             ConsoleKey Key;
             do
@@ -60,16 +78,16 @@ namespace EpamTask5
                 switch (Key)
                 {
                     case ConsoleKey.Escape:
-                        ShowMenu();
+                        ShowMenu(0);
                         break;
 
                     case ConsoleKey.D1:
-                        ReadLogMain();
+                        ShowMenu(1);
                         WriteFullLog();
                         break;
 
                     case ConsoleKey.D2:
-                        StartRecover();
+                        MenuRecover();
                         break;
 
                     default:
@@ -78,9 +96,9 @@ namespace EpamTask5
             } while (Key != ConsoleKey.Escape);
         }
 
-        void StartRecover()
+        internal void MenuRecover()
         {
-            ReadLogGoTo();
+            ShowMenu(2);
             WriteFullLog();
             Console.WriteLine("sample is \"21.12.2019 14:07:04\"");
 
@@ -103,32 +121,23 @@ namespace EpamTask5
             } while (str.Equals("ESC") || str.Equals("ecs"));
         }
 
-        void ReadLogMain()
+        internal void MenuWrite()
         {
-            Console.Clear();
-
-            Console.WriteLine("TASK 5");
-            Console.WriteLine("Read log - mode");
-            Console.WriteLine("Now u can:");
-
-            Console.WriteLine(" < 1 >       Get list of changes");
-            Console.WriteLine(" < 2 >       Return change by date");
-            Console.WriteLine("< ESC >        Back");
-
-            Console.WriteLine("\n");
+            Watcher.Start();
+            ShowMenu(3);
+            ConsoleKey Key;
+            do
+            {
+                Key = Console.ReadKey().Key;
+                if (Key == ConsoleKey.Escape)
+                {
+                    ShowMenu(0);
+                }
+            } while (Key != ConsoleKey.Escape);
         }
 
-        void ReadLogGoTo()
-        {
-            Console.Clear();
 
-            Console.WriteLine("TASK 5");
-            Console.WriteLine("Read log - mode");
-
-            Console.WriteLine("Write date of change wat u want back to");
-        }
-
-        void WriteFullLog()
+        internal void WriteFullLog()
         {
             var SearchData = Loginator.GetLog();
             Console.WriteLine("======================================================");
@@ -145,7 +154,7 @@ namespace EpamTask5
             Console.WriteLine("======================================================");
         }
 
-        void ReadByName()
+        internal void ReadByName()
         {
             ConsoleKey Key;
             bool result = false;
@@ -153,41 +162,14 @@ namespace EpamTask5
             do
             {
                 Search = Console.ReadLine();
-                var SearchData = Loginator.GetLog().FindAll(x => x.FileName.Equals(Logger.Entry.TargetPath + @"\" + Search + ".txt"));
+                Search = Logger.Entry.TargetPath + @"\" + Search + ".txt";
+                var SearchData = Loginator.GetLog().FindAll(x => x.FileName.Equals(Search));
                 foreach (var item in SearchData)
                 {
                     Console.WriteLine(item.FileName + " " + item.Action + item.Time);
                 }
                 Key = Console.ReadKey().Key;
             } while (Key != ConsoleKey.Escape || !result);
-        }
-
-
-        void WriteLog()
-        {
-            Console.Clear();
-
-            Console.WriteLine("TASK 5");
-            Console.WriteLine("Write log - mode");
-            Console.WriteLine("Now u can do something with txt files in folder");
-            Console.WriteLine("< ESC >        Exit");
-
-            Console.WriteLine("\n");
-        }
-
-        void StartWrite()
-        {
-            Watcher.Start();
-            WriteLog();
-            ConsoleKey Key;
-            do
-            {
-                Key = Console.ReadKey().Key;
-                if (Key == ConsoleKey.Escape)
-                {
-                    ShowMenu();
-                }
-            } while (Key != ConsoleKey.Escape);
         }
 
     }

@@ -37,7 +37,7 @@ namespace Logger
         }
 
 
-        static string GetTextFromFile(string FileName)
+        static internal string GetTextFromFile(string FileName)
         {
             var str = "";
             var Path = Entry.TargetPath + @"\" + FileName;

@@ -15,12 +15,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task2", "Task2", "{C2B71C66
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task3", "Task3", "{B6DD5205-00B6-4359-94B0-E19AFA14B075}"
+	ProjectSection(SolutionItems) = preProject
+		Style3.css = Style3.css
+		Task3.html = Task3.html
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Task4", "Task4", "{28657B1C-2B9E-4CB1-9F9F-4B1C62FF8D02}"
+	ProjectSection(SolutionItems) = preProject
+		Style4.css = Style4.css
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A927DB77-FA7B-47B4-BA8B-704B4D68FF40}"
 	ProjectSection(SolutionItems) = preProject
 		Script1.js = Script1.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{543BA885-B293-43C8-89FE-499C3891329B}"
+	ProjectSection(SolutionItems) = preProject
+		Script2.js = Script2.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{24233931-A72F-4F81-B705-3B6E6C3D7882}"
+	ProjectSection(SolutionItems) = preProject
+		Script3.js = Script3.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{A1496D7F-508E-4945-A7E9-7BD066BE9B35}"
+	ProjectSection(SolutionItems) = preProject
+		Script4Main.js = Script4Main.js
+		Task4Page.js = Task4Page.js
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pages", "pages", "{03FAB3C5-BECB-4DC3-8805-E71D81ABE525}"
+	ProjectSection(SolutionItems) = preProject
+		LastPage.html = LastPage.html
+		Task4main.html = Task4main.html
+		Task4page1.html = Task4page1.html
+		Task4page2.html = Task4page2.html
+		Task4page3.html = Task4page3.html
+		Task4page4.html = Task4page4.html
+		Task4page5.html = Task4page5.html
 	EndProjectSection
 EndProject
 Global
@@ -29,6 +63,10 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{A927DB77-FA7B-47B4-BA8B-704B4D68FF40} = {BABF7484-A717-426E-977E-69A204A40736}
+		{543BA885-B293-43C8-89FE-499C3891329B} = {C2B71C66-5D00-4B29-B96A-0B80C6615FB3}
+		{24233931-A72F-4F81-B705-3B6E6C3D7882} = {B6DD5205-00B6-4359-94B0-E19AFA14B075}
+		{A1496D7F-508E-4945-A7E9-7BD066BE9B35} = {28657B1C-2B9E-4CB1-9F9F-4B1C62FF8D02}
+		{03FAB3C5-BECB-4DC3-8805-E71D81ABE525} = {28657B1C-2B9E-4CB1-9F9F-4B1C62FF8D02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7481CA85-F3DF-474E-BD7E-EED1BD6D2513}

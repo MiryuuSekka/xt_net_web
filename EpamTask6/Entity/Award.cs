@@ -22,8 +22,10 @@ namespace Entity
                 throw new ArgumentException("Award with same title already exist");
             }
 
-            var NewAward = new Award();
-            NewAward.Title = Answer;
+            var NewAward = new Award
+            {
+                Title = Answer
+            };
             NewAward.Id = NewAward.GetNewId(Awards);
             return NewAward;
         }

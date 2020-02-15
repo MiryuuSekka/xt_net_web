@@ -17,16 +17,16 @@ namespace Entity
             var today = DateTime.Now;
             if (BirthDay < DateTime.Now)
             {
-                this.Age = today.Date.Year - BirthDay.Date.Year;
+                Age = today.Date.Year - BirthDay.Date.Year;
                 if (today.Date.Month < BirthDay.Date.Month)
                 {
-                    this.Age--;
+                    Age--;
                 }
                 if (today.Date.Month == BirthDay.Date.Month)
                 {
                     if (today.Date.Day < BirthDay.Date.Day)
                     {
-                        this.Age--;
+                        Age--;
                     }
                 }
             }
@@ -39,10 +39,28 @@ namespace Entity
             User NewUser = new User();
             try
             {
-                NewUser.Name = User.ParseName(Answers[0]);
-                NewUser.BirthDay = User.ParseBirthDate(Answers[1]);
+                NewUser.Name = ParseName(Answers[0]);
+                NewUser.BirthDay = ParseBirthDate(Answers[1]);
                 NewUser.CalculateAge();
-                NewUser.Age = User.ParseAge(NewUser.Age, Answers[2]);
+                NewUser.Age = ParseAge(NewUser.Age, Answers[2]);
+            }
+            catch (ArgumentException e)
+            {
+                throw e;
+            }
+
+            NewUser.Id = NewUser.GetNewId(data);
+            return NewUser;
+        }
+
+        static public User Parse(IEnumerable<User> data, string Name, DateTime Date)
+        {
+            User NewUser = new User();
+            try
+            {
+                NewUser.Name = ParseName(Name);
+                NewUser.BirthDay = Date;
+                NewUser.CalculateAge();
             }
             catch (ArgumentException e)
             {
@@ -79,8 +97,7 @@ namespace Entity
         {
             if (text.Length > 0)
             {
-                var Age = 0;
-                int.TryParse(text, out Age);
+                int.TryParse(text, out int Age);
                 if (!userAge.Equals(Age))
                 {
                     throw new ArgumentException("Wrong age");
@@ -92,6 +109,6 @@ namespace Entity
             }
             return userAge;
         }
-
+        
     }
 }

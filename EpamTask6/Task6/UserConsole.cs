@@ -150,7 +150,7 @@ namespace Task6
         {
             Console.WriteLine($"User Id {user.Id}");
             Console.WriteLine($"Name : {user.Name}");
-            Console.WriteLine($"BirthDay : {user.BirthDay.Date.Day}.{user.BirthDay.Date.Month}.{user.BirthDay.Date.Year}");
+            Console.WriteLine($"BirthDay : {user.BirthDay.Day}.{user.BirthDay.Month}.{user.BirthDay.Year} ({user.Age})");
             Console.WriteLine($" ( {user.Age} )");
             Console.WriteLine("------------------------------------");
         }
