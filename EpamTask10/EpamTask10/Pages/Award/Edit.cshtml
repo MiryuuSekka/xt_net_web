@@ -12,6 +12,12 @@
         Award = EpamTask10.Models.Main.GetAward(id);
     }
 
+    if (IsPost)
+    {
+        var NewTitle = Request["NewTitle"];
+        var NewImageUrl = Request["NewImageUrl"];
+    }
+
 
 }
 
@@ -21,6 +27,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Basic.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
@@ -43,8 +50,7 @@
 
                 <div style="margin-top:15px">
                     <img src=@Award.Image
-                         alt="Award @Award.Title"
-                         style="width:32px; background-color:transparent;" />
+                         alt="Award @Award.Title"/>
 
                     <label>Icon:</label>
                     <p class="text-secondary" style="width:280px">recommend: squared small size icon. Type url of image:</p>
@@ -53,19 +59,21 @@
 
                 <div style="margin-top:15px">
                     <label>Give this award to users:</label>
-                    <div class="custom-control custom-switch" style="display:grid; margin:auto">
+                    <div style="display:grid;">
                         @foreach (var item in Users)
                         {
-                            <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
-                            <label class="custom-control-label" for="customSwitch @item.Id"> @item.Name </label>
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
+                                <label class="custom-control-label" for="customSwitch @item.Id"> @item.Name </label>
+                            </div>
                         }
                     </div>
                 </div>
 
-                <button style="margin-top:15px" class="btn btn-success">
-                    Save changes
-                </button>
-            </div>
+                    <button style="margin-top:15px" class="btn btn-success">
+                        Save changes
+                    </button>
+                </div>
         </form>
 
     </div>

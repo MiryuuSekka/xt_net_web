@@ -1,7 +1,31 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Pages/_Layout.cshtml";
 
     var Awards = EpamTask10.Models.Main.GetAwards();
+
+    string id = Request["id"];
+    var delete = Request["delete"];
+    var User = new EpamTask10.Models.classes.DataUser();
+
+    if (id != null)
+    {
+        User = EpamTask10.Models.Main.GetUser(id);
+    }
+
+    if (IsPost)
+    {
+        var NewName = Request["NewName"];
+        var NewImageUrl = Request["NewImageUrl"];
+        var NewDate = Request["NewDate"];
+    }
+
+
+    if (delete != null && delete == "Y")
+    {
+        EpamTask10.Models.Main.DeleteUser(id);
+        Response.Redirect("~/Pages/User/Show.cshtml");
+    }
+
 }
 
 <!DOCTYPE html>
@@ -9,29 +33,65 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Basic.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
-    <div>
-        <form action="/" method="post">
-
-
-            <div class="form-group" style="margin-top:15px">
-                <label class="col-form-label"> Select awards for this user </label>
-                <select class="custom-select" multiple>
-                    @foreach (var item in Awards)
-                    {
-                        <option value="@item.Id">
-                            @item.Title
-                        </option>
-                    }
-                </select>
+    <div class="container">
+        <form action="~/Pages/Award/DeleteConfirmPage.cshtml" method="post">
+            <div style="margin-top:15px">
+                <button type="button" id="ToShowUser" class="btn btn-outline-secondary">< Back</button>
+                <a class="btn btn-outline-danger" href="~/Pages/User/Edit.cshtml?id=@id&delete=Y">
+                    Delete
+                </a>
             </div>
-
-            <button> Save </button>
         </form>
-        
+
+        <form action="/" method="post">
+            <div>
+                <div style="margin-top:15px">
+                    <label>User name:</label>
+                    <input type="text" class="form-control" name="NewName" value="@User.Name" />
+                </div>
+
+                <div style="margin-top:15px">
+                    <label>age : @User.Age </label>
+                    <label>Birthday : @User.Birthday </label>
+                    <input type="date" name="NewDate" id="Date" value="" class="form-control" />
+                </div>
+
+                <div style="margin-top:15px">
+                    <img src=@User.Image
+                         alt="Award @User.Name"/>
+
+                    <label>Icon:</label>
+                    <p class="text-secondary" style="width:280px">recommend: squared small size icon. Type url of image:</p>
+                    <input type="text" class="form-control" name="NewImageUrl" value="" />
+                </div>
+
+                <div style="margin-top:15px">
+                    <label>Give this award to users:</label>
+                    <div  style="display:grid;">
+                        @foreach (var item in Awards)
+                        {
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
+                                <label class="custom-control-label" for="customSwitch @item.Id"> @item.Title </label>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <button style="margin-top:15px" class="btn btn-success">
+                    Save changes
+                </button>
+            </div>
+        </form>
 
     </div>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/pages/changePage.js"></script>
 </body>
 </html>

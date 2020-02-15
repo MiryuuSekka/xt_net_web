@@ -36,12 +36,3 @@ $('#ToDeleteUser').click(function myfunction() {
 $('#ToShowUser').click(function myfunction() {
     location.href = '/Pages/User/Show';
 });
-
-
-$([name = "ChangeUser"]).click(function myfunction() {
-
-    this.id;
-});
-$([name = "DeleteUser"]).click(function myfunction() {
-    this.id;
-});

@@ -10,9 +10,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Basic.css" rel="stylesheet" />
     <title></title>
 </head>
-<body style="background-color:#222; color:#fff">
+<body>
     <div class="container">
 
         <div>
@@ -20,16 +21,13 @@
             <button type="button" id="ToAward" class="btn btn-outline-secondary">< Back</button>
         </div>
 
-        <div style="margin-top:15px">
-            <h5>all users table</h5>
-        </div>
-        <div class="col-lg-12">
+        <div class="col-lg-12" style="margin-top:15px">
             <table class="table table-hover">
                 <thead>
-                    <tr style="color:aliceblue; background-color:#444;">
+                    <tr style="background-color:#444;">
                         <th scope="col">Id</th>
-                        <th scope="col">Title</th>
                         <th scope="col">Icon</th>
+                        <th scope="col">Title</th>
                         <th scope="col">Users</th>
                         <th scope="col">Settings</th>
                     </tr>
@@ -37,37 +35,36 @@
                 <tbody>
                     @foreach (var item in @Awards)
                     {
-                        <tr style="color:aliceblue;">
-                            <td>@item.Id</td>
-                            <td>@item.Title</td>
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <img src=@item.Image
+                                 alt="Award @item.Title" />
+                        </td>
+
+                        <td>@item.Title</td>
+                        @if (@item.Users == null)
+                        {
+                            <td>none</td>
+                        }
+                        else
+                        {
                             <td>
-                                <img src=@item.Image
-                                     alt="Award @item.Title"
-                                     style="width:32px; background-color:transparent;" />
+                                @foreach (var user in @item.Users)
+                                {
+                                    <span class="badge badge-info">
+                                        @user.Name
+                                    </span>
+                                }
                             </td>
+                        }
+                        <td style="display:flex">
+                            <a class="btn btn-outline-warning" href="~/Pages/Award/Edit.cshtml?id=@item.Id">
+                                Edit >
+                            </a>
+                        </td>
 
-                            @if (@item.Users == null)
-                            {
-                                <td>none</td>
-                            }
-                            else
-                            {
-                                <td>
-                                    @foreach (var user in @item.Users)
-                                    {
-                                        <span class="badge badge-info">
-                                            @user.Name
-                                        </span>
-                                    }
-                                </td>
-                            }
-                            <td style="display:flex">
-                                <a class="btn btn-outline-warning" href="~/Pages/Award/Edit.cshtml?id=@item.Id">
-                                    Edit >
-                                </a>
-                            </td>
-
-                        </tr>
+                    </tr>
                     }
                 </tbody>
             </table>

@@ -1,0 +1,12 @@
+﻿body {
+    background-color: #222;
+    color: #fff;
+}
+tr {
+    color: aliceblue;
+}
+img {
+    width: 50px;
+    background-color: transparent;
+    border-radius:100%; 
+}

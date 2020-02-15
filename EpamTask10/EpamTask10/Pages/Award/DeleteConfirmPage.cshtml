@@ -17,19 +17,25 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Basic.css" rel="stylesheet" />
     <title></title>
 </head>
-<body  style="background-color:#222; color:#fff">
-    <div>
-        <label>U sure?</label>
-        <a class="btn btn-outline-danger"
-           href="~/Pages/Award/Edit.cshtml?id=@id">
-            No, return to Edit
-        </a>
-        <a class="btn btn-outline-success"
-           href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id&confirm=Y">
-            Yes, delete this award
-        </a>
+<body>
+    <div class="container" style="margin-top:10%">
+
+        <div class="jumbotron  bg-dark" style="text-align:center;">
+            <div style="margin: auto 10px;">
+                <label>U sure?</label>
+            </div>
+            <a class="btn btn-outline-danger"
+               href="~/Pages/Award/Edit.cshtml?id=@id">
+                No, return to Edit
+            </a>
+            <a class="btn btn-outline-success"
+               href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id&confirm=Y">
+                Yes, delete this award
+            </a>
+        </div>
     </div>
 </body>
 </html>

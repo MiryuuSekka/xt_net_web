@@ -8,7 +8,7 @@ namespace EpamTask10.Models
 {
     public class Main
     {
-        private static string DefaultImage = "https://gallery.yopriceville.com/var/albums/Free-Clipart-Pictures/Trophy-and-Medals-PNG/Award_Rosette_Ribbon_PNG_Clipar_Image.png?m=1461120901";
+        private static string DefaultImage = "https://cdn4.iconfinder.com/data/icons/trophy-and-awards-1/64/Icon_Medal_Trophy_Awards_Red-512.png";
         private static string DefaultAvatar = "https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png";
 
         public static IAwardBLL Application = Resolver.SelectAwardBLL();
