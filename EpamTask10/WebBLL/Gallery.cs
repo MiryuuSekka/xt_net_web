@@ -14,16 +14,24 @@ namespace WebBLL
         public Gallery()
         {
             DALImages = new DAL.Folder<Images>(Common.Path + @"\Images.json");
-            //check table
-            //create table if havenot
+
+        }
+        
+        public void DeleteImage(int Id)
+        {
+            var Image = DALImages.GetAll().FirstOrDefault(x => x.Id == Id);
+            if (!Image.IsDefault)
+            {
+                DALImages.DeleteById(Id);
+            }
         }
 
-        public string AddImage(string Path, string Info)
+        public string AddImage(string Path, int? WebUserId, int? UserId, int? AwardId)
         {
             Images NewImage;
             try
             {
-                NewImage = Images.Parse(DALImages.GetAll(), Path, Info);
+                NewImage = Images.Parse(DALImages.GetAll(), Path, WebUserId, UserId, AwardId);
                 DALImages.AddData(NewImage);
                 return "";
             }
@@ -37,11 +45,28 @@ namespace WebBLL
         {
             return DALImages.GetAll();
         }
-
-        public Images GetImageByInfo(string Info)
+        
+        public Images GetImageByImageId(int Id)
         {
-            var Images = DALImages.GetAll();
-            return Images.Where(x => x.Info == Info).First();
+            var all = DALImages.GetAll();
+            all = all.Where(x => x.Id == Id);
+
+            return all.FirstOrDefault();
+        }
+
+        public Images GetImageByUserId(int Id)
+        {
+            return DALImages.GetAll().Where(x => x.UserId == Id).FirstOrDefault();
+        }
+
+        public Images GetImageByWebUserId(int Id)
+        {
+            return DALImages.GetAll().Where(x => x.WebUserId == Id).FirstOrDefault();
+        }
+
+        public Images GetImageByAwardId(int Id)
+        {
+            return DALImages.GetAll().Where(x => x.AwardId == Id).FirstOrDefault();
         }
     }
 }

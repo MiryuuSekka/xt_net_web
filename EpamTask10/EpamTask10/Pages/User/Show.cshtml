@@ -1,7 +1,7 @@
 ﻿@using EpamTask10.Models;
 @{
     Layout = "~/Pages/_Layout.cshtml";
-    var Users = WebBLL.Main.GetUsers();
+    var Users = WebData.GetAllUsers();
     string role = WebData.CurrentUser.Role.ToString();
 }
 

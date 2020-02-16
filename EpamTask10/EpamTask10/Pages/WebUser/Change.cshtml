@@ -2,7 +2,7 @@
 @{
     Layout = "~/Pages/_Layout.cshtml";
     string role = WebData.CurrentUser.Role.ToString();
-    var Users = WebData.GetAllUsers().Where(x => x.Id > 1);
+    var Users = WebData.GetAllWebUsers().Where(x => x.Id > 1);
     Users = Users.Where(x => x.Id!= WebData.CurrentUser.Id);
     Users = Users.OrderByDescending(x => x.Id);
 
@@ -51,7 +51,7 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>
-                            <img src="@WebData.GetImageForUser(item.Role)" 
+                            <img src="@WebData.GetImageForWebUser(item.Role, item.Id.ToString())" 
                                  alt="Avatar @item.Role.ToString()" />
                         </td>
                         <td>@item.Username</td>

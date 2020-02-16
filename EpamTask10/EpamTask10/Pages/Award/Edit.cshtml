@@ -1,15 +1,16 @@
-﻿@{
+﻿@using EpamTask10.Models;
+@{
     Layout = "~/Pages/_Layout.cshtml";
 
 
-    var Users = WebBLL.Main.GetUsers();
+    var Users = WebData.GetAllUsers();
 
     string id = Request["id"];
     var Award = new WebEntity.AwardData();
 
-    if (id!=null)
+    if (id != null)
     {
-        Award = WebBLL.Main.GetAward(id);
+        Award = WebData.GetAward(id);
     }
 
     if (IsPost)
@@ -18,7 +19,7 @@
         var NewImageUrl = Request["NewImageUrl"];
         var UsersHave = new Dictionary<int, string>();
 
-        WebBLL.Main.EditAward(id, NewTitle);
+        WebData.EditAward(id, NewTitle);
 
         foreach (var item in Users)
         {
@@ -29,18 +30,17 @@
             }
         }
 
-
         if (UsersHave.Count > 0)
         {
             foreach (var item in Users)
             {
                 if (UsersHave.FirstOrDefault(x => x.Key == item.Id).Key > 0)
                 {
-                    WebBLL.Main.AddAwardWeilder(Award.Id, item.Id);
+                    WebData.AddAwardWeilder(Award.Id, item.Id);
                 }
                 else
                 {
-                    WebBLL.Main.DeleteAwardWeilder(Award.Id, item.Id);
+                    WebData.DeleteAwardWeilder(Award.Id, item.Id);
                 }
             }
         }
@@ -48,8 +48,13 @@
         {
             foreach (var item in Users)
             {
-                WebBLL.Main.DeleteAwardWeilder(Award.Id, item.Id);
+                WebData.DeleteAwardWeilder(Award.Id, item.Id);
             }
+        }
+
+        if (NewImageUrl!=null && NewImageUrl.Length > 0)
+        {
+            WebData.ChangeImage(NewImageUrl, null, null, Award.Id);
         }
 
         Response.Redirect("~/Pages/Award/Show.cshtml");
@@ -67,12 +72,12 @@
 </head>
 <body>
     <div class="container">
-            <div style="margin-top:15px">
-                <button type="button" id="ToShowAward" class="btn btn-outline-secondary">< Back</button>
-                <a class="btn btn-outline-danger" href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id">
-                    Delete
-                </a>
-            </div>
+        <div style="margin-top:15px">
+            <button type="button" id="ToShowAward" class="btn btn-outline-secondary">< Back</button>
+            <a class="btn btn-outline-danger" href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id">
+                Delete
+            </a>
+        </div>
 
         <form action="~/Pages/Award/Edit.cshtml?id=@id" method="post">
             <div>

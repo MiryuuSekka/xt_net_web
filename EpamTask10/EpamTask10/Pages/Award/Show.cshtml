@@ -1,7 +1,7 @@
 ﻿@using EpamTask10.Models;
 @{
     Layout = "~/Pages/_Layout.cshtml";
-    var Awards = WebBLL.Main.GetAwards();
+    var Awards = WebData.GetAllAwards();
     string role = WebData.CurrentUser.Role.ToString();
 }
 
@@ -25,7 +25,7 @@
             }
             else
             {
-                <button type="button" id="ToUser" class="btn btn-outline-secondary">< Back</button>
+                <button type="button" id="ToAward" class="btn btn-outline-secondary">< Back</button>
             }
         </div>
 

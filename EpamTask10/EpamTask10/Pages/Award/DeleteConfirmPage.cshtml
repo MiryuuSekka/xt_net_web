@@ -1,12 +1,13 @@
-﻿@{
+﻿@using EpamTask10.Models;
+@{
     Layout = null;
 
     var id = Request["id"];
     var confirm = Request["confirm"];
 
-    if (confirm!=null && confirm == "Y")
+    if (confirm != null && confirm == "Y")
     {
-        WebBLL.Main.DeleteAward(id);
+        WebData.DeleteAward(id);
         Response.Redirect("~/Pages/Award/Show.cshtml");
     }
 }

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WebEntity;
 
 namespace WebBLL
@@ -14,8 +11,6 @@ namespace WebBLL
         public Autentification()
         {
             DALUser = new DAL.Folder<WebUsers>(Common.Path + @"\WebUsers.json");
-            //check table
-            //create table if havenot
         }
 
         public bool CheckPassword(string Username, string Password)
