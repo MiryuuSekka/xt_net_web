@@ -1,16 +1,15 @@
 ﻿@{
     Layout = "~/Pages/_Layout.cshtml";
 
-    var Awards = EpamTask10.Models.Main.GetAwards();
+    var Awards = WebBLL.Main.GetAwards();
 
     string id = Request["id"];
     var delete = Request["delete"];
-    var User = new EpamTask10.Models.classes.DataUser();
-    var DateToCalendar = "";
+    var User = new WebEntity.UserData();
 
     if (id != null)
     {
-        User = EpamTask10.Models.Main.GetUser(id);
+        User = WebBLL.Main.GetUser(id);
     }
 
     if (IsPost)
@@ -29,7 +28,7 @@
             }
         }
 
-        EpamTask10.Models.Main.EditUser(id, NewDate, NewName);
+        WebBLL.Main.EditUser(id, NewDate, NewName);
 
         if (HaveAwards.Count > 0)
         {
@@ -37,11 +36,11 @@
             {
                 if (HaveAwards.FirstOrDefault(x => x.Key == item.Id).Key > 0)
                 {
-                    EpamTask10.Models.Main.AddAwardWeilder(item.Id, User.Id);
+                    WebBLL.Main.AddAwardWeilder(item.Id, User.Id);
                 }
                 else
                 {
-                    EpamTask10.Models.Main.DeleteAwardWeilder(item.Id, User.Id);
+                    WebBLL.Main.DeleteAwardWeilder(item.Id, User.Id);
                 }
             }
         }
@@ -49,7 +48,7 @@
         {
             foreach (var item in Awards)
             {
-                EpamTask10.Models.Main.DeleteAwardWeilder(item.Id, User.Id);
+                WebBLL.Main.DeleteAwardWeilder(item.Id, User.Id);
             }
         }
 
@@ -59,7 +58,7 @@
 
     if (delete != null && delete!=null)
     {
-        EpamTask10.Models.Main.DeleteUser(id);
+        WebBLL.Main.DeleteUser(id);
         Response.Redirect("~/Pages/User/Show.cshtml");
     }
 
@@ -127,6 +126,5 @@
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/pages/changePage.js"></script>
-    <script src="~/Scripts/pages/checkbox.js"></script>
 </body>
 </html>

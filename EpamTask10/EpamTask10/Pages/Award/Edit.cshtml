@@ -2,14 +2,14 @@
     Layout = "~/Pages/_Layout.cshtml";
 
 
-    var Users = EpamTask10.Models.Main.GetUsers();
+    var Users = WebBLL.Main.GetUsers();
 
     string id = Request["id"];
-    var Award = new EpamTask10.Models.classes.DataAward();
+    var Award = new WebEntity.AwardData();
 
     if (id!=null)
     {
-        Award = EpamTask10.Models.Main.GetAward(id);
+        Award = WebBLL.Main.GetAward(id);
     }
 
     if (IsPost)
@@ -18,7 +18,7 @@
         var NewImageUrl = Request["NewImageUrl"];
         var UsersHave = new Dictionary<int, string>();
 
-        EpamTask10.Models.Main.EditAward(id, NewTitle);
+        WebBLL.Main.EditAward(id, NewTitle);
 
         foreach (var item in Users)
         {
@@ -36,11 +36,11 @@
             {
                 if (UsersHave.FirstOrDefault(x => x.Key == item.Id).Key > 0)
                 {
-                    EpamTask10.Models.Main.AddAwardWeilder(Award.Id, item.Id);
+                    WebBLL.Main.AddAwardWeilder(Award.Id, item.Id);
                 }
                 else
                 {
-                    EpamTask10.Models.Main.DeleteAwardWeilder(Award.Id, item.Id);
+                    WebBLL.Main.DeleteAwardWeilder(Award.Id, item.Id);
                 }
             }
         }
@@ -48,7 +48,7 @@
         {
             foreach (var item in Users)
             {
-                EpamTask10.Models.Main.DeleteAwardWeilder(Award.Id, item.Id);
+                WebBLL.Main.DeleteAwardWeilder(Award.Id, item.Id);
             }
         }
 
@@ -113,6 +113,5 @@
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/pages/changePage.js"></script>
-    <script src="~/Scripts/pages/checkbox.js"></script>
 </body>
 </html>

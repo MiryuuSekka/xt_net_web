@@ -6,7 +6,7 @@
 
     if (confirm!=null && confirm == "Y")
     {
-        EpamTask10.Models.Main.DeleteAward(id);
+        WebBLL.Main.DeleteAward(id);
         Response.Redirect("~/Pages/Award/Show.cshtml");
     }
 }

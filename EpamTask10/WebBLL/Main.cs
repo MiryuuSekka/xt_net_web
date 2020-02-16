@@ -1,11 +1,14 @@
 ﻿using BLLInterfaces;
 using DependencyResolver;
 using Entity;
-using EpamTask10.Models.classes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using WebEntity;
 
-namespace EpamTask10.Models
+namespace WebBLL
 {
     public class Main
     {
@@ -14,13 +17,13 @@ namespace EpamTask10.Models
         private static string DefaultImage = "https://cdn4.iconfinder.com/data/icons/trophy-and-awards-1/64/Icon_Medal_Trophy_Awards_Red-512.png";
         private static string DefaultAvatar = "https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png";
 
-        public static List<DataAward> GetAwards()
+        public static List<AwardData> GetAwards()
         {
-            var result = new List<DataAward>();
+            var result = new List<AwardData>();
             var Awards = Application.GetAllAwards();
             foreach (var item in Awards)
             {
-                result.Add(new DataAward()
+                result.Add(new AwardData()
                 {
                     Id = item.Id,
                     Image = DefaultImage,
@@ -31,15 +34,15 @@ namespace EpamTask10.Models
             return result;
         }
 
-        public static List<DataUser> GetUsers()
+        public static List<UserData> GetUsers()
         {
-            var result = new List<DataUser>();
+            var result = new List<UserData>();
             var Users = Application.GetAllUsers();
             var a = new List<Award>();
 
             foreach (var item in Users)
             {
-                result.Add(new DataUser()
+                result.Add(new UserData()
                 {
                     Id = item.Id,
                     Image = DefaultAvatar,
@@ -47,7 +50,7 @@ namespace EpamTask10.Models
                     Birthday = DateToString(item.BirthDay),
                     Name = item.Name,
                     Awards = Application.GetAllAwardAtUser(item.Id)
-            });
+                });
             }
             return result;
         }
@@ -76,21 +79,31 @@ namespace EpamTask10.Models
             Application.AddAwardWeilder(Connection);
         }
 
+        private static AwardWeilder ParseToAwardWeilder(int AwardId, int UserId)
+        {
+            var a = new AwardWeilder
+            {
+                AwardId = AwardId,
+                UserId = UserId
+            };
+            a.Id = a.GetNewId(Application.GetAllAwardWeilders());
+            return a;
+        }
 
-        public static DataAward GetAward(string Id)
+
+        public static AwardData GetAward(string Id)
         {
             int.TryParse(Id, out int num);
             var awards = GetAwards();
             return awards.Find(x => x.Id == num);
         }
 
-        public static DataUser GetUser(string Id)
+        public static UserData GetUser(string Id)
         {
             int.TryParse(Id, out int num);
             var users = GetUsers();
             return users.Find(x => x.Id == num);
         }
-
 
         public static void DeleteUser(string Id)
         {
@@ -194,16 +207,6 @@ namespace EpamTask10.Models
         }
 
 
-        private static AwardWeilder ParseToAwardWeilder(int AwardId, int UserId)
-        {
-            var a = new AwardWeilder
-            {
-                AwardId = AwardId,
-                UserId = UserId
-            };
-            a.Id = a.GetNewId(Application.GetAllAwardWeilders());
-            return a;
-        }
 
         public static string DateToString(DateTime date)
         {

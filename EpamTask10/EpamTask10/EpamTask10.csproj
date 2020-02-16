@@ -224,11 +224,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\classes\DataAward.cs" />
-    <Compile Include="Models\classes\DataUser.cs" />
-    <Compile Include="Models\classes\Images.cs" />
-    <Compile Include="Models\classes\WebUser.cs" />
-    <Compile Include="Models\Main.cs" />
     <Compile Include="Models\WebData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -272,6 +267,18 @@
     <ProjectReference Include="..\..\EpamTask6\Entity\Entity.csproj">
       <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
       <Name>Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebBLL\WebBLL.csproj">
+      <Project>{fc496cb5-c1a7-480f-af0f-8db678aae289}</Project>
+      <Name>WebBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebDAL\WebDAL.csproj">
+      <Project>{9c6029d5-3bf6-425b-862c-6d85f762a873}</Project>
+      <Name>WebDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebEntity\WebEntity.csproj">
+      <Project>{d7c4a444-7f02-4862-ae6d-9741c46d6939}</Project>
+      <Name>WebEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

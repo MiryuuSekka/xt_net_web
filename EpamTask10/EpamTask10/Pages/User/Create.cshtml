@@ -15,7 +15,7 @@
 
         if (Name != null && Date != null && Name.Length > 3)
         {
-            EpamTask10.Models.Main.AddUser(Name, Date);
+            WebBLL.Main.AddUser(Name, Date);
             IsAdded = true;
         }
         else
