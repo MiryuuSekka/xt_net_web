@@ -133,6 +133,10 @@
     <Content Include="Pages\Award\Create.cshtml" />
     <Content Include="Pages\Award\Show.cshtml" />
     <Content Include="Pages\Award\DeleteConfirmPage.cshtml" />
+    <Content Include="Pages\Autorisation\LogIn.cshtml" />
+    <Content Include="Pages\Autorisation\Signup.cshtml" />
+    <Content Include="Pages\Autorisation\Logout.cshtml" />
+    <Content Include="Pages\WebUser\Change.cshtml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -244,9 +248,7 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Autorisation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\EpamTask6\BLLInterfaces\BLLInterfaces.csproj">
       <Project>{c0f7bab1-1a95-453f-8dbd-ed4ade32b6c0}</Project>
@@ -255,6 +257,10 @@
     <ProjectReference Include="..\..\EpamTask6\BLL\BLL.csproj">
       <Project>{cae57f9d-f6ad-4f0a-8bdd-139ce205b86e}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamTask6\DALInterfaces\DALInterfaces.csproj">
+      <Project>{6388e014-1a40-4bcd-83b1-29c368892b9f}</Project>
+      <Name>DALInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\EpamTask6\DAL\DAL.csproj">
       <Project>{a5d88ad4-4f07-4f2f-8962-8f3a019ea601}</Project>

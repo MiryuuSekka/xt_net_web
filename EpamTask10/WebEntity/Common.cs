@@ -9,5 +9,6 @@ namespace WebEntity
 {
     public class Common
     {
+        public static readonly string Path = @"D:\epam\EpamTask10\EpamTask10";
     }
 }

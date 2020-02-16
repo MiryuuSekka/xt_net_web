@@ -1,6 +1,8 @@
-﻿@{
+﻿@using EpamTask10.Models;
+@{
     Layout = "~/Pages/_Layout.cshtml";
-    string username = "guest";
+    string username = WebData.CurrentUser.Username;
+    string role = WebData.CurrentUser.Role.ToString();
 }
 
 <!DOCTYPE html>
@@ -19,9 +21,24 @@
 
     <div class="container">
         <h5>where u want go to?</h5>
+
         <div style="margin-top:15px">
-            <button type="button" id="ToUser" class="btn btn-primary">Users ></button>
-            <button type="button" id="ToAward" class="btn btn-primary">Awards ></button>
+            @if (role == "Guest")
+            {
+                <button type="button" id="ToShowUser" class="btn btn-primary">Users ></button>
+                <button type="button" id="ToShowAward" class="btn btn-primary">Awards ></button>
+            }
+            else
+            {
+                <button type="button" id="ToUser" class="btn btn-primary">Users ></button>
+                <button type="button" id="ToAward" class="btn btn-primary">Awards ></button>
+            }
+
+            @if (role == "Admin")
+            {
+                <button type="button" id="ToWebUserShow" class="btn btn-warning">Web users ></button>
+            }
+
         </div>
     </div>
 

@@ -5,28 +5,64 @@ namespace EpamTask10.Models
 {
     public class WebData
     {
-        private static string Path = @"D:\epam\EpamTask10\EpamTask10";
-
-        //DAL.Folder<WebUser> WebUserData = new DAL.Folder<WebUser>(Path);
-        public static DAL.Folder<Images> ImageData = new DAL.Folder<Images>(Path);
-
-        private static string DefaultImage = "https://cdn4.iconfinder.com/data/icons/trophy-and-awards-1/64/Icon_Medal_Trophy_Awards_Red-512.png";
-        private static string DefaultAvatar = "https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png";
+        private static readonly string DefaultImage = "https://cdn4.iconfinder.com/data/icons/trophy-and-awards-1/64/Icon_Medal_Trophy_Awards_Red-512.png";
+        public static WebUsers CurrentUser = GetUserByID(1);
+        public static string CurrentUserAvatar = GetImageForUser(CurrentUser.Role);
 
 
-        public static IEnumerable<Images> GetImages()
+        public static WebUsers GetUserByID(int Id)
         {
-            return ImageData.GetAll();
+            var BLL = new WebBLL.Autentification();
+            var User = BLL.GetUser(Id);
+            return User;
         }
 
-        public static void AddImage(string Path)
+        public static IEnumerable<WebUsers> GetAllUsers()
         {
-            var newImage = new Images
+            var BLL = new WebBLL.Autentification();
+            return BLL.GetAllUsers();
+        }
+
+        public static void SelectUser(string Username, string Password)
+        {
+            var BLL = new WebBLL.Autentification();
+            var User = BLL.GetUser(Username, Password);
+            CurrentUser = User;
+            CurrentUserAvatar = GetImageForUser(CurrentUser.Role);
+        }
+
+        public static string GetImageForUser(WebUsers.Roles Role)
+        {
+            switch (Role)
             {
-                Image = Path
-            };
-            newImage.Id = newImage.GetNewId(GetImages());
-            ImageData.AddData(newImage);
+                case WebUsers.Roles.User:
+                    return "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/6-512.png";
+                case WebUsers.Roles.Admin:
+                    return "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/7-512.png";
+                default:
+                    return "https://cdn1.iconfinder.com/data/icons/avatars-1-5/136/84-512.png";
+            }
+        }
+
+
+        public static void ChangeUserRole(string UserId, string NewRole)
+        {
+            int.TryParse(UserId, out int id);
+            var Role = WebUsers.Roles.Guest;
+            switch (NewRole)
+            {
+                case "up":
+                    Role = WebUsers.Roles.Admin;
+                    break;
+                case "down":
+                    Role = WebUsers.Roles.User;
+                    break;
+                default:
+                    Role = WebUsers.Roles.Guest;
+                    break;
+            }
+            var BLL = new WebBLL.Autentification();
+            BLL.ChangeUserRole(id, Role);
         }
     }
 }

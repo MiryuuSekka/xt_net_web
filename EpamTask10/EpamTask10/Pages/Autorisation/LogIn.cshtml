@@ -1,0 +1,67 @@
+﻿@using EpamTask10.Models;
+@{
+    Layout = "~/Pages/_Layout.cshtml";
+
+    var BLL = new WebBLL.Autentification();
+
+    bool IsExist = true;
+    string Username = Request["Name"];
+    string Password = Request["Password"];
+    string Error = "";
+
+    if (IsPost)
+    {
+        IsExist = BLL.CheckPassword(Username, Password);
+        if (IsExist)
+        {
+            WebData.SelectUser(Username, Password);
+            FormsAuthentication.SetAuthCookie(Username, createPersistentCookie: true);
+            Response.Redirect("~/Pages/Index.cshtml");
+        }
+        else
+        {
+            Error = "User dont find";
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/Basic.css" rel="stylesheet" />
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <form method="post">
+            <div style="margin-top:15px">
+                <div>
+                    <label class="col-form-label">Username:</label>
+                    <input class="form-control" type="text" name="Name" value="" />
+                </div>
+
+                <div>
+                    <label class="col-form-label">Password:</label>
+                    <p class="text-secondary">min length of password is 5 characters</p>
+                    <input class="form-control" type="password" name="Password" value="" />
+                </div>
+
+                @if (!IsExist)
+                {
+                    <p class="text-danger">ERROR: @Error</p>
+                }
+                <div style="margin-top:15px">
+                    <button class="btn btn-success">Log in > </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <script src="~/Scripts/jquery-3.0.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/pages/changePage.js"></script>
+</body>
+</html>

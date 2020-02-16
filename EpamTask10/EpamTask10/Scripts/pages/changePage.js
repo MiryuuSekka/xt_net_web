@@ -46,6 +46,17 @@ $('#SaveUserEdit').click(function myfunction() {
     var checkedData;
     for (var i = 0; i < checkBoxes.length; i++) {
         checkedData[i] = $(".AwardCheckbox#"+i).is(":checked");
-
     }
+});
+
+$('#ToWebUserShow').click(function myfunction() {
+    location.href = '/Pages/WebUser/Change';
+});
+
+$('#LogInButton').click(function myfunction() {
+    location.href = '/Pages/Autorisation/LogIn';
+});
+
+$('#SignUpButton').click(function myfunction() {
+    location.href = '/Pages/Autorisation/Signup';
 });

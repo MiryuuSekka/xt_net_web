@@ -1,6 +1,8 @@
-﻿@{
+﻿@using EpamTask10.Models;
+@{
     Layout = "~/Pages/_Layout.cshtml";
     var Users = WebBLL.Main.GetUsers();
+    string role = WebData.CurrentUser.Role.ToString();
 }
 
 <!DOCTYPE html>
@@ -17,7 +19,14 @@
 
         <div>
             <h2>Users</h2>
-            <button type="button" id="ToUser" class="btn btn-outline-secondary">< Back</button>
+            @if (role == "Guest")
+            {
+                <button type="button" id="ToMain" class="btn btn-outline-secondary">< Back</button>
+            }
+            else
+            {
+                <button type="button" id="ToUser" class="btn btn-outline-secondary">< Back</button>
+            }
         </div>
 
         <div class="col-lg-12" style="margin-top:15px">
@@ -30,8 +39,14 @@
                         <th scope="col">Name</th>
                         <th scope="col">Age</th>
                         <th scope="col">Birthday</th>
-                        <th scope="col">Awards</th>
-                        <th scope="col">Settings</th>
+                        @if (role == "User" || role == "Admin")
+                        {
+                            <th scope="col">Awards</th>
+                        }
+                        @if (role == "Admin")
+                        {
+                            <th scope="col">Settings</th>
+                        }
                     </tr>
                 </thead>
                 <tbody>
@@ -39,34 +54,33 @@
                     {
                     <tr>
                         <td>@item.Id</td>
-                        <td>
-                            <img src=@item.Image
-                                 alt="Avatar @item.Name"/>
-                        </td>
+                        <td> <img src=@item.Image alt="Avatar @item.Name" /> </td>
                         <td>@item.Name</td>
                         <td>@item.Age</td>
                         <td>@item.Birthday</td>
 
-                        @if (@item.Awards == null)
+                        @if (role == "User" || role == "Admin")
                         {
-                            <td>none</td>
+                            if (@item.Awards == null)
+                            {
+                                <td>none</td>
+                            }
+                            else
+                            {
+                                <td>
+                                    @foreach (var award in @item.Awards)
+                                    {
+                                        <span class="badge badge-warning"> @award.Title </span>
+                                    }
+                                </td>
+                            }
                         }
-                        else
+                        @if (role == "Admin")
                         {
                             <td>
-                                @foreach (var award in @item.Awards)
-                                {
-                                    <span class="badge badge-warning">
-                                        @award.Title
-                                    </span>
-                                }
+                                <a class="btn btn-outline-warning" href="~/Pages/User/Edit.cshtml?id=@item.Id"> Edit > </a>
                             </td>
                         }
-                            <td>
-                                <a class="btn btn-outline-warning" href="~/Pages/User/Edit.cshtml?id=@item.Id">
-                                    Edit >
-                                </a>
-                            </td>
                     </tr>
                     }
                 </tbody>
