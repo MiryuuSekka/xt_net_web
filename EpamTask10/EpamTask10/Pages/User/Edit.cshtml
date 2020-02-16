@@ -6,6 +6,7 @@
     string id = Request["id"];
     var delete = Request["delete"];
     var User = new EpamTask10.Models.classes.DataUser();
+    var DateToCalendar = "";
 
     if (id != null)
     {
@@ -17,10 +18,46 @@
         var NewName = Request["NewName"];
         var NewImageUrl = Request["NewImageUrl"];
         var NewDate = Request["NewDate"];
+        var HaveAwards = new Dictionary<int, string>();
+
+        foreach (var item in Awards)
+        {
+            var value = Request["Award " + item.Id];
+            if (value!=null)
+            {
+                HaveAwards.Add(item.Id, Request["Award " + item.Id]);
+            }
+        }
+
+        EpamTask10.Models.Main.EditUser(id, NewDate, NewName);
+
+        if (HaveAwards.Count > 0)
+        {
+            foreach (var item in Awards)
+            {
+                if (HaveAwards.FirstOrDefault(x => x.Key == item.Id).Key > 0)
+                {
+                    EpamTask10.Models.Main.AddAwardWeilder(item.Id, User.Id);
+                }
+                else
+                {
+                    EpamTask10.Models.Main.DeleteAwardWeilder(item.Id, User.Id);
+                }
+            }
+        }
+        else
+        {
+            foreach (var item in Awards)
+            {
+                EpamTask10.Models.Main.DeleteAwardWeilder(item.Id, User.Id);
+            }
+        }
+
+        Response.Redirect("~/Pages/User/Show.cshtml");
     }
 
 
-    if (delete != null && delete == "Y")
+    if (delete != null && delete!=null)
     {
         EpamTask10.Models.Main.DeleteUser(id);
         Response.Redirect("~/Pages/User/Show.cshtml");
@@ -39,16 +76,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="~/Pages/Award/DeleteConfirmPage.cshtml" method="post">
             <div style="margin-top:15px">
                 <button type="button" id="ToShowUser" class="btn btn-outline-secondary">< Back</button>
                 <a class="btn btn-outline-danger" href="~/Pages/User/Edit.cshtml?id=@id&delete=Y">
                     Delete
                 </a>
             </div>
-        </form>
 
-        <form action="/" method="post">
+        <form action="~/Pages/User/Edit.cshtml?id=@id" method="post">
             <div>
                 <div style="margin-top:15px">
                     <label>User name:</label>
@@ -56,14 +91,13 @@
                 </div>
 
                 <div style="margin-top:15px">
-                    <label>age : @User.Age </label>
-                    <label>Birthday : @User.Birthday </label>
-                    <input type="date" name="NewDate" id="Date" value="" class="form-control" />
+                    <label>Birthday : @User.Birthday (@User.Age years old) </label>
+                    <input type="date" name="NewDate" id="Date" value="@User.Birthday" class="form-control" />
                 </div>
 
                 <div style="margin-top:15px">
                     <img src=@User.Image
-                         alt="Award @User.Name"/>
+                         alt="Award @User.Name" />
 
                     <label>Icon:</label>
                     <p class="text-secondary" style="width:280px">recommend: squared small size icon. Type url of image:</p>
@@ -72,18 +106,18 @@
 
                 <div style="margin-top:15px">
                     <label>Give this award to users:</label>
-                    <div  style="display:grid;">
+                    <div style="display:grid;">
                         @foreach (var item in Awards)
                         {
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
-                                <label class="custom-control-label" for="customSwitch @item.Id"> @item.Title </label>
+                                <input type="checkbox" class="custom-control-input AwardCheckbox" id="@item.Id" name="Award @item.Id">
+                                <label class="custom-control-label" for="@item.Id"> @item.Title </label>
                             </div>
                         }
                     </div>
                 </div>
 
-                <button style="margin-top:15px" class="btn btn-success">
+                <button style="margin-top:15px" class="btn btn-success  id="SaveUserEdit"">
                     Save changes
                 </button>
             </div>
@@ -93,5 +127,6 @@
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/pages/changePage.js"></script>
+    <script src="~/Scripts/pages/checkbox.js"></script>
 </body>
 </html>

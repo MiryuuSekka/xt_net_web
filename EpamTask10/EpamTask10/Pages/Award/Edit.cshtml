@@ -16,9 +16,44 @@
     {
         var NewTitle = Request["NewTitle"];
         var NewImageUrl = Request["NewImageUrl"];
+        var UsersHave = new Dictionary<int, string>();
+
+        EpamTask10.Models.Main.EditAward(id, NewTitle);
+
+        foreach (var item in Users)
+        {
+            var value = Request["User " + item.Id];
+            if (value != null)
+            {
+                UsersHave.Add(item.Id, Request["User " + item.Id]);
+            }
+        }
+
+
+        if (UsersHave.Count > 0)
+        {
+            foreach (var item in Users)
+            {
+                if (UsersHave.FirstOrDefault(x => x.Key == item.Id).Key > 0)
+                {
+                    EpamTask10.Models.Main.AddAwardWeilder(Award.Id, item.Id);
+                }
+                else
+                {
+                    EpamTask10.Models.Main.DeleteAwardWeilder(Award.Id, item.Id);
+                }
+            }
+        }
+        else
+        {
+            foreach (var item in Users)
+            {
+                EpamTask10.Models.Main.DeleteAwardWeilder(Award.Id, item.Id);
+            }
+        }
+
+        Response.Redirect("~/Pages/Award/Show.cshtml");
     }
-
-
 }
 
 <!DOCTYPE html>
@@ -32,16 +67,14 @@
 </head>
 <body>
     <div class="container">
-        <form action="~/Pages/Award/DeleteConfirmPage.cshtml" method="post">
             <div style="margin-top:15px">
                 <button type="button" id="ToShowAward" class="btn btn-outline-secondary">< Back</button>
                 <a class="btn btn-outline-danger" href="~/Pages/Award/DeleteConfirmPage.cshtml?id=@id">
                     Delete
                 </a>
             </div>
-        </form>
 
-        <form action="/" method="post">
+        <form action="~/Pages/Award/Edit.cshtml?id=@id" method="post">
             <div>
                 <div style="margin-top:15px">
                     <label>Title:</label>
@@ -50,7 +83,7 @@
 
                 <div style="margin-top:15px">
                     <img src=@Award.Image
-                         alt="Award @Award.Title"/>
+                         alt="Award @Award.Title" />
 
                     <label>Icon:</label>
                     <p class="text-secondary" style="width:280px">recommend: squared small size icon. Type url of image:</p>
@@ -63,22 +96,23 @@
                         @foreach (var item in Users)
                         {
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" class="custom-control-input" id="customSwitch @item.Id">
-                                <label class="custom-control-label" for="customSwitch @item.Id"> @item.Name </label>
+                                <input type="checkbox" class="custom-control-input UserCheckbox" id="@item.Id" name="User @item.Id">
+                                <label class="custom-control-label" for="@item.Id"> @item.Name </label>
                             </div>
                         }
                     </div>
                 </div>
 
-                    <button style="margin-top:15px" class="btn btn-success">
-                        Save changes
-                    </button>
-                </div>
+                <button style="margin-top:15px" class="btn btn-success" id="SaveAwardEdit">
+                    Save changes
+                </button>
+            </div>
         </form>
 
     </div>
     <script src="~/Scripts/jquery-3.0.0.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <script src="~/Scripts/pages/changePage.js"></script>
+    <script src="~/Scripts/pages/checkbox.js"></script>
 </body>
 </html>

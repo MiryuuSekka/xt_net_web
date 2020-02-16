@@ -3,10 +3,20 @@
     color: #fff;
 }
 tr {
-    color: aliceblue;
+    color: #aaa;
+}
+td {
+    color: #888;
+    border-color: #888;
 }
 img {
     width: 50px;
     background-color: transparent;
     border-radius:100%; 
+}
+button{
+    min-width: 100px;
+}
+a {
+    min-width: 100px;
 }

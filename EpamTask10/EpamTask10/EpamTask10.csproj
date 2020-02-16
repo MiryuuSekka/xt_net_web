@@ -45,24 +45,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL">
-      <HintPath>..\..\EpamTask6\BLL\obj\Release\BLL.dll</HintPath>
-    </Reference>
-    <Reference Include="BLLInterfaces">
-      <HintPath>..\..\EpamTask6\BLLInterfaces\obj\Release\BLLInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="DAL">
-      <HintPath>..\..\EpamTask6\DAL\obj\Release\DAL.dll</HintPath>
-    </Reference>
-    <Reference Include="DALInterfaces">
-      <HintPath>..\..\EpamTask6\DALInterfaces\obj\Release\DALInterfaces.dll</HintPath>
-    </Reference>
-    <Reference Include="DependencyResolver">
-      <HintPath>..\..\EpamTask6\DependencyResolver\obj\Release\DependencyResolver.dll</HintPath>
-    </Reference>
-    <Reference Include="Entity">
-      <HintPath>..\..\EpamTask6\Entity\obj\Release\Entity.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -244,8 +226,10 @@
   <ItemGroup>
     <Compile Include="Models\classes\DataAward.cs" />
     <Compile Include="Models\classes\DataUser.cs" />
+    <Compile Include="Models\classes\Images.cs" />
     <Compile Include="Models\classes\WebUser.cs" />
     <Compile Include="Models\Main.cs" />
+    <Compile Include="Models\WebData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -267,6 +251,28 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Autorisation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\EpamTask6\BLLInterfaces\BLLInterfaces.csproj">
+      <Project>{c0f7bab1-1a95-453f-8dbd-ed4ade32b6c0}</Project>
+      <Name>BLLInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamTask6\BLL\BLL.csproj">
+      <Project>{cae57f9d-f6ad-4f0a-8bdd-139ce205b86e}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamTask6\DAL\DAL.csproj">
+      <Project>{a5d88ad4-4f07-4f2f-8962-8f3a019ea601}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamTask6\DependencyResolver\DependencyResolver.csproj">
+      <Project>{2cab124e-8133-4831-8c3c-3de6ccb9cae7}</Project>
+      <Name>DependencyResolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\EpamTask6\Entity\Entity.csproj">
+      <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

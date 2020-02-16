@@ -8,6 +8,6 @@ namespace EpamTask10.Models.classes
         public string Title { get; set; }
         public string Image { get; set; }
         public string Description { get; set; }
-        public List<DataUser> Users { get; set; }
+        public List<Entity.User> Users { get; set; }
     }
 }
