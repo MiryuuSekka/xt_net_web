@@ -1,4 +1,6 @@
 ﻿@using EpamTask10.Models;
+@using Entity;
+
 @{
     Layout = "~/Pages/_Layout.cshtml";
 
@@ -6,7 +8,7 @@
     var Users = WebData.GetAllUsers();
 
     string id = Request["id"];
-    var Award = new WebEntity.AwardData();
+    var Award = new Award();
 
     if (id != null)
     {
@@ -54,7 +56,7 @@
 
         if (NewImageUrl!=null && NewImageUrl.Length > 0)
         {
-            WebData.ChangeImage(NewImageUrl, null, null, Award.Id);
+            WebData.EditImage(NewImageUrl, null, null, Award.Id);
         }
 
         Response.Redirect("~/Pages/Award/Show.cshtml");
@@ -87,7 +89,7 @@
                 </div>
 
                 <div style="margin-top:15px">
-                    <img src=@Award.Image
+                    <img src=@WebData.GetImageForAward(Award.Id).Path
                          alt="Award @Award.Title" />
 
                     <label>Icon:</label>

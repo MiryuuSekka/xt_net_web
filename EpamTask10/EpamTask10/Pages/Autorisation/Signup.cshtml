@@ -1,8 +1,6 @@
-﻿@using WebEntity;
+﻿@using EpamTask10.Models;
 @{
     Layout = "~/Pages/_Layout.cshtml";
-
-    var BLL = new WebBLL.Autentification();
 
     bool IsFailed = false;
     string Username = Request["newName"];
@@ -12,20 +10,12 @@
 
     if (IsPost)
     {
-        IsFailed = BLL.CheckPassword(Username, Password);
+        IsFailed = WebData.CheckPassword(Username, Password);
         if (!IsFailed)
         {
-            var NewRole = WebUsers.Roles.Guest;
-            if (Role == "on")
-            {
-                NewRole = WebUsers.Roles.Admin;
-            }
-            else
-            {
-                NewRole = WebUsers.Roles.User;
-            }
-            BLL.AddUser(Username, Password, NewRole);
-            EpamTask10.Models.WebData.SelectUser(Username, Password);
+            var newRole = WebData.GetRole(Role);
+            WebData.AddUser(Username, Password, newRole);
+            WebData.SelectUser(Username, Password);
             FormsAuthentication.SetAuthCookie(Username, createPersistentCookie: true);
             Response.Redirect("~/Pages/Index.cshtml");
         }
@@ -59,7 +49,7 @@
                     <input class="form-control" type="password" name="newPassword" value="" />
                 </div>
 
-                <div class="custom-control custom-switch"  style="margin-top:15px">
+                <div class="custom-control custom-switch" style="margin-top:15px">
                     <input type="checkbox" class="custom-control-input UserCheckbox" id="Role" name="RoleValue">
                     <label class="custom-control-label" for="Role"> Admin </label>
 
@@ -72,7 +62,7 @@
                     <button class="btn btn-success">Sign up > </button>
                 </div>
             </div>
-</form>
+        </form>
 
     </div>
     <script src="~/Scripts/jquery-3.0.0.js"></script>

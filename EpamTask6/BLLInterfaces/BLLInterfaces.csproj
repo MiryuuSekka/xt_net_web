@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IAwardBLL.cs" />
     <Compile Include="IUserBLL.cs" />
+    <Compile Include="IWebBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

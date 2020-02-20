@@ -21,7 +21,7 @@ namespace BLL
         }
 
 
-
+        #region get
         public IEnumerable<User> GetAllUsers()
         {
             return UserManager.GetAll();
@@ -37,11 +37,62 @@ namespace BLL
             return WeilderManager.GetAll();
         }
 
+        public IEnumerable<User> GetAllUsersWithAward(int AwardId)
+        {
+            var HaveAward = new List<User>();
+            User SomeUser;
+            var Users = UserManager.GetAll();
+            var Weilders = WeilderManager.GetAll();
 
+            foreach (var item in Weilders)
+            {
+                if (item.AwardId.Equals(AwardId))
+                {
+                    SomeUser = Users.First(x => x.Id.Equals(item.UserId));
+                    HaveAward.Add(SomeUser);
+                }
+            }
+            return HaveAward;
+        }
 
+        public IEnumerable<Award> GetAllAwardAtUser(int UserId)
+        {
+            var HaveAward = new List<Award>();
+            Award SomeAward;
+            var Awards = AwardManager.GetAll();
+            var Weilders = WeilderManager.GetAll();
+
+            foreach (var item in Weilders)
+            {
+                if (item.UserId.Equals(UserId))
+                {
+                    SomeAward = Awards.First(x => x.Id.Equals(item.AwardId));
+                    HaveAward.Add(SomeAward);
+                }
+            }
+            return HaveAward;
+        }
+        #endregion
+
+        #region add
         public void AddUser(User data)
         {
             UserManager.AddData(data);
+        }
+
+        public void AddUser(User user, params Award[] Awards)
+        {
+            var WeilderInfo = new AwardWeilder();
+            WeilderInfo.UserId = user.Id;
+
+            AddUser(user);
+            foreach (var item in Awards)
+            {
+                WeilderInfo.AwardId = item.Id;
+                WeilderInfo.Id = WeilderInfo.GetNewId(WeilderManager.GetAll());
+
+                AddAwardWeilder(WeilderInfo);
+            }
         }
 
         public void AddAward(Award data)
@@ -49,13 +100,28 @@ namespace BLL
             AwardManager.AddData(data);
         }
 
+        public void AddAward(Award award, params User[] Users)
+        {
+            var WeilderInfo = new AwardWeilder();
+            WeilderInfo.AwardId = award.Id;
+
+            AddAward(award);
+            foreach (var item in Users)
+            {
+                WeilderInfo.UserId = item.Id;
+                WeilderInfo.Id = WeilderInfo.GetNewId(WeilderManager.GetAll());
+
+                AddAwardWeilder(WeilderInfo);
+            }
+        }
+
         public void AddAwardWeilder(AwardWeilder data)
         {
             WeilderManager.AddData(data);
         }
+        #endregion
 
-
-
+        #region delete
         public void DeleteUserById(int Id)
         {
             var Weilders = WeilderManager.GetAll().ToList();
@@ -84,75 +150,6 @@ namespace BLL
         {
             WeilderManager.DeleteById(Id);
         }
-
-
-
-        public List<User> GetAllUsersWithAward(int AwardId)
-        {
-            var HaveAward = new List<User>();
-            User SomeUser;
-            var Users = UserManager.GetAll();
-            var Weilders = WeilderManager.GetAll();
-
-            foreach (var item in Weilders)
-            {
-                if (item.AwardId.Equals(AwardId))
-                {
-                    SomeUser = Users.First(x => x.Id.Equals(item.UserId));
-                    HaveAward.Add(SomeUser);
-                }
-            }
-            return HaveAward;
-        }
-
-        public List<Award> GetAllAwardAtUser(int UserId)
-        {
-            var HaveAward = new List<Award>();
-            Award SomeAward;
-            var Awards = AwardManager.GetAll();
-            var Weilders = WeilderManager.GetAll();
-
-            foreach (var item in Weilders)
-            {
-                if (item.UserId.Equals(UserId))
-                {
-                    SomeAward = Awards.First(x => x.Id.Equals(item.AwardId));
-                    HaveAward.Add(SomeAward);
-                }
-            }
-            return HaveAward;
-        }
-
-
-
-        public void AddUser(User user, params Award[] Awards)
-        {
-            var WeilderInfo = new AwardWeilder();
-            WeilderInfo.UserId = user.Id;
-
-            AddUser(user);
-            foreach (var item in Awards)
-            {
-                WeilderInfo.AwardId = item.Id;
-                WeilderInfo.Id = WeilderInfo.GetNewId(WeilderManager.GetAll());
-
-                AddAwardWeilder(WeilderInfo);
-            }
-        }
-
-        public void AddAward(Award award, params User[] Users)
-        {
-            var WeilderInfo = new AwardWeilder();
-            WeilderInfo.AwardId = award.Id;
-
-            AddAward(award);
-            foreach (var item in Users)
-            {
-                WeilderInfo.UserId = item.Id;
-                WeilderInfo.Id = WeilderInfo.GetNewId(WeilderManager.GetAll());
-
-                AddAwardWeilder(WeilderInfo);
-            }
-        }
+        #endregion
     }
 }

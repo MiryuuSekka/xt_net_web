@@ -44,8 +44,11 @@
     <Compile Include="Award.cs" />
     <Compile Include="AwardWeilder.cs" />
     <Compile Include="HaveId.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="UserAward.cs" />
+    <Compile Include="WebUser.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

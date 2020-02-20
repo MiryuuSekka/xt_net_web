@@ -3,6 +3,7 @@
     Layout = "~/Pages/_Layout.cshtml";
     var Awards = WebData.GetAllAwards();
     string role = WebData.CurrentUser.Role.ToString();
+    var UserAward = WebData.GetAllWeilders();
 }
 
 <!DOCTYPE html>
@@ -33,7 +34,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color:#444;">
-                        <th scope="col">Id</th>
                         <th scope="col">Icon</th>
                         <th scope="col">Title</th>
                         @if (role == "User" || role == "Admin")
@@ -50,22 +50,21 @@
                     @foreach (var item in @Awards)
                     {
                     <tr>
-                        <td>@item.Id</td>
-                        <td> <img src=@item.Image alt="Award @item.Title" /> </td>
+                        <td> <img src=@WebData.GetImageForAward(item.Id).Path alt="Award @item.Title" /> </td>
                         <td>@item.Title</td>
 
                         @if (role == "User" || role == "Admin")
                         {
-                            if (@item.Users == null)
+                            if (UserAward.Where(x => x.Award.Id == item.Id).Count() == 0)
                             {
                                 <td>none</td>
                             }
                             else
                             {
                                 <td>
-                                    @foreach (var user in @item.Users)
+                                    @foreach (var user in UserAward.Where(x => x.Award.Id == item.Id))
                                     {
-                                        <span class="badge badge-primary"> @user.Name </span>
+                                        <span class="badge badge-primary"> @user.User.Name </span>
                                     }
                                 </td>
                             }

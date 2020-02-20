@@ -1,18 +1,17 @@
-﻿using Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
-namespace WebEntity
+namespace Entity
 {
-    public class Images : HaveId
+    public class Image : HaveId
     {
-        public string Image { get; set; }
+        public string Path { get; set; }
         public int? UserId { get; set; }
         public int? WebUserId { get; set; }
         public int? AwardId { get; set; }
         public bool IsDefault { get; set; }
 
-        public static Images Parse(IEnumerable<Images> AllImages, string Image, int? WebUserId, int? UserId, int? AwardId)
+        public static Image Parse(IEnumerable<Image> AllImages, string Image, int? WebUserId, int? UserId, int? AwardId)
         {
             if (AllImages == null)
             {
@@ -26,9 +25,9 @@ namespace WebEntity
             {
                 throw new ArgumentException("Cant add image to stock");
             }
-            var NewImage = new Images
+            var NewImage = new Image
             {
-                Image = Image,
+                Path = Image,
                 UserId = UserId,
                 AwardId = AwardId,
                 WebUserId = WebUserId,

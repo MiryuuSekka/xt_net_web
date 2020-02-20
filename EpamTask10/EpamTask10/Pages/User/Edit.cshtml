@@ -6,7 +6,7 @@
 
     string id = Request["id"];
     var delete = Request["delete"];
-    var User = new WebEntity.UserData();
+    var User = new Entity.User();
 
     if (id != null)
     {
@@ -56,7 +56,7 @@
 
         if (NewImageUrl != null && NewImageUrl.Length > 0)
         {
-            WebData.ChangeImage(NewImageUrl, null, User.Id, null);
+            WebData.EditImage(NewImageUrl, null, User.Id, null);
         }
         Response.Redirect("~/Pages/User/Show.cshtml");
     }
@@ -96,12 +96,12 @@
                 </div>
 
                 <div style="margin-top:15px">
-                    <label>Birthday : @User.Birthday (@User.Age years old) </label>
-                    <input type="date" name="NewDate" id="Date" value="@User.Birthday" class="form-control" />
+                    <label>Birthday : @User.BirthDay (@User.Age years old) </label>
+                    <input type="date" name="NewDate" id="Date" value="@User.BirthDay" class="form-control" />
                 </div>
 
                 <div style="margin-top:15px">
-                    <img src=@User.Image
+                    <img src=@WebData.GetImageForUser(User.Id).Path
                          alt="Award @User.Name" />
 
                     <label>Icon:</label>

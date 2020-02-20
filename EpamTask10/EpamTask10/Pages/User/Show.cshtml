@@ -3,6 +3,7 @@
     Layout = "~/Pages/_Layout.cshtml";
     var Users = WebData.GetAllUsers();
     string role = WebData.CurrentUser.Role.ToString();
+    var UserAward = WebData.GetAllWeilders();
 }
 
 <!DOCTYPE html>
@@ -34,7 +35,6 @@
             <table class="table table-hover">
                 <thead>
                     <tr style="background-color:#444;">
-                        <th scope="col">Id</th>
                         <th scope="col">Avatar</th>
                         <th scope="col">Name</th>
                         <th scope="col">Age</th>
@@ -53,24 +53,23 @@
                     @foreach (var item in @Users)
                     {
                     <tr>
-                        <td>@item.Id</td>
-                        <td> <img src=@item.Image alt="Avatar @item.Name" /> </td>
+                        <td> <img src=@WebData.GetImageForUser(item.Id).Path alt="Avatar @item.Name" /> </td>
                         <td>@item.Name</td>
                         <td>@item.Age</td>
-                        <td>@item.Birthday</td>
+                        <td>@item.BirthDay.ToString("MM.dd.yyyy")</td>
 
                         @if (role == "User" || role == "Admin")
                         {
-                            if (@item.Awards == null)
+                            if (UserAward.Where(x => x.User.Id==item.Id).Count() == 0)
                             {
                                 <td>none</td>
                             }
                             else
                             {
                                 <td>
-                                    @foreach (var award in @item.Awards)
+                                    @foreach (var award in UserAward.Where(x => x.User.Id == item.Id))
                                     {
-                                        <span class="badge badge-warning"> @award.Title </span>
+                                        <span class="badge badge-warning"> @award.Award.Title </span>
                                     }
                                 </td>
                             }

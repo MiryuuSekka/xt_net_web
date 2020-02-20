@@ -254,17 +254,9 @@
       <Project>{c0f7bab1-1a95-453f-8dbd-ed4ade32b6c0}</Project>
       <Name>BLLInterfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\EpamTask6\BLL\BLL.csproj">
-      <Project>{cae57f9d-f6ad-4f0a-8bdd-139ce205b86e}</Project>
-      <Name>BLL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\EpamTask6\DALInterfaces\DALInterfaces.csproj">
       <Project>{6388e014-1a40-4bcd-83b1-29c368892b9f}</Project>
       <Name>DALInterfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\EpamTask6\DAL\DAL.csproj">
-      <Project>{a5d88ad4-4f07-4f2f-8962-8f3a019ea601}</Project>
-      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\EpamTask6\DependencyResolver\DependencyResolver.csproj">
       <Project>{2cab124e-8133-4831-8c3c-3de6ccb9cae7}</Project>
@@ -273,18 +265,6 @@
     <ProjectReference Include="..\..\EpamTask6\Entity\Entity.csproj">
       <Project>{14d7edf7-af4e-408c-8541-5280fc7bad3f}</Project>
       <Name>Entity</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebBLL\WebBLL.csproj">
-      <Project>{fc496cb5-c1a7-480f-af0f-8db678aae289}</Project>
-      <Name>WebBLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebDAL\WebDAL.csproj">
-      <Project>{9c6029d5-3bf6-425b-862c-6d85f762a873}</Project>
-      <Name>WebDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebEntity\WebEntity.csproj">
-      <Project>{d7c4a444-7f02-4862-ae6d-9741c46d6939}</Project>
-      <Name>WebEntity</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

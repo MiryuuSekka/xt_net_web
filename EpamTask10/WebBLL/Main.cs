@@ -1,19 +1,21 @@
 ﻿using BLLInterfaces;
 using DependencyResolver;
 using Entity;
+
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WebEntity;
 
 namespace WebBLL
 {
     public class Main
     {
-        public IAwardBLL Application;
+        public IWebBLL Application;
 
         public Main()
         {
-            Application = Resolver.SelectAwardBLL();
+            Application = Resolver.SelectWebBLLjson();
         }
 
         public List<AwardData> GetAwards()
@@ -26,16 +28,17 @@ namespace WebBLL
                 {
                     Id = item.Id,
                     Title = item.Title,
-                    Users = Application.GetAllUsersWithAward(item.Id)
+                    Users = Application.GetAllUsersWithAward(item.Id).ToList()
                 });
             }
             return result;
         }
+
         public string AddAward(string title)
         {
             if (title != null)
             {
-                var newAward = Entity.Award.Parse(Application.GetAllAwards(), title);
+                var newAward = Award.Parse(Application.GetAllAwards(), title);
                 Application.AddAward(newAward);
             }
             return title;
@@ -100,7 +103,7 @@ namespace WebBLL
                     Age = item.Age,
                     Birthday = DateToString(item.BirthDay),
                     Name = item.Name,
-                    Awards = Application.GetAllAwardAtUser(item.Id)
+                    Awards = Application.GetAllAwardAtUser(item.Id).ToList()
                 });
             }
             return result;

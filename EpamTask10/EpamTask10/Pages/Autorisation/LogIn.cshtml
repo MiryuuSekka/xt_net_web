@@ -2,8 +2,6 @@
 @{
     Layout = "~/Pages/_Layout.cshtml";
 
-    var BLL = new WebBLL.Autentification();
-
     bool IsExist = true;
     string Username = Request["Name"];
     string Password = Request["Password"];
@@ -11,7 +9,7 @@
 
     if (IsPost)
     {
-        IsExist = BLL.CheckPassword(Username, Password);
+        IsExist = WebData.CheckPassword(Username, Password);
         if (IsExist)
         {
             WebData.SelectUser(Username, Password);

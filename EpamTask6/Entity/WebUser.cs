@@ -1,11 +1,10 @@
-﻿using Entity;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebEntity
+namespace Entity
 {
-    public class WebUsers : HaveId
+    public class WebUser : HaveId
     {
         public enum Roles
         {
@@ -13,12 +12,12 @@ namespace WebEntity
             User,
             Admin
         }
-        
+
         public string Username { get; set; }
         public string Password { get; set; }
         public Roles Role { get; set; }
 
-        public static WebUsers Parse(IEnumerable<WebUsers> AllWebUsers, string Username, string Password, WebUsers.Roles Role)
+        public static WebUser Parse(IEnumerable<WebUser> AllWebUsers, string Username, string Password, WebUser.Roles Role)
         {
             if (AllWebUsers == null)
             {
@@ -37,7 +36,7 @@ namespace WebEntity
                 throw new ArgumentException("Username already exist");
             }
 
-            var NewUser = new WebUsers
+            var NewUser = new WebUser
             {
                 Role = Role,
                 Username = Username,

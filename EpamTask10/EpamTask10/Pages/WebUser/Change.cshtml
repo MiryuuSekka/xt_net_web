@@ -1,4 +1,6 @@
 ﻿@using EpamTask10.Models;
+@using Entity;
+
 @{
     Layout = "~/Pages/_Layout.cshtml";
     string role = WebData.CurrentUser.Role.ToString();
@@ -10,10 +12,11 @@
     string NewRole = Request["role"];
     if (id!=null && NewRole !=null)
     {
-        WebData.ChangeUserRole(id, NewRole);
+        WebData.EditUserRole(id, NewRole);
         Response.Redirect("~/Pages/WebUser/Change.cshtml");
     }
 }
+
 
 <!DOCTYPE html>
 
@@ -51,13 +54,13 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>
-                            <img src="@WebData.GetImageForWebUser(item.Role, item.Id.ToString())" 
+                            <img src="@WebData.GetImageForWebUser(item.Role, item.Id).Path" 
                                  alt="Avatar @item.Role.ToString()" />
                         </td>
                         <td>@item.Username</td>
                         <td>@item.Role.ToString()</td>
                         <td>
-                            @if (item.Role == WebEntity.WebUsers.Roles.User)
+                            @if (item.Role.Equals(WebUser.Roles.User))
                             {
                                 <a class="btn btn-outline-warning" href="~/Pages/WebUser/Change.cshtml?id=@item.Id&role=up">
                                     up to Admin
