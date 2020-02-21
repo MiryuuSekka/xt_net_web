@@ -56,7 +56,7 @@
 
         if (NewImageUrl != null && NewImageUrl.Length > 0)
         {
-            WebData.EditImage(NewImageUrl, null, User.Id, null);
+            WebData.EditImage(NewImageUrl, User.Id, null);
         }
         Response.Redirect("~/Pages/User/Show.cshtml");
     }
@@ -101,7 +101,7 @@
                 </div>
 
                 <div style="margin-top:15px">
-                    <img src=@WebData.GetImageForUser(User.Id).Path
+                    <img src=@WebData.GetImageForUser(User).Path
                          alt="Award @User.Name" />
 
                     <label>Icon:</label>

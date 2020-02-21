@@ -2,7 +2,7 @@
 @{
     Layout = "~/Pages/_Layout.cshtml";
     var Users = WebData.GetAllUsers();
-    string role = WebData.CurrentUser.Role.ToString();
+    string role = WebData.CurrentUser.Role.Title;
     var UserAward = WebData.GetAllWeilders();
 }
 
@@ -53,7 +53,7 @@
                     @foreach (var item in @Users)
                     {
                     <tr>
-                        <td> <img src=@WebData.GetImageForUser(item.Id).Path alt="Avatar @item.Name" /> </td>
+                        <td> <img src=@WebData.GetImageForUser(item).Path alt="Avatar @item.Name" /> </td>
                         <td>@item.Name</td>
                         <td>@item.Age</td>
                         <td>@item.BirthDay.ToString("MM.dd.yyyy")</td>

@@ -26,16 +26,22 @@ namespace DAL
             Manager.Serialize(data);
         }
 
-        public void DeleteById(int Id)
+        public void Delete(int Id)
         {
-            var Users = GetAll().ToList();
-            Users.RemoveAll(x => x.Id.Equals(Id));
+            var All = GetAll().ToList();
+            All.RemoveAll(x => x.Id.Equals(Id));
 
             Manager.ClearFile();
-            foreach (var item in Users)
+            foreach (var item in All)
             {
                 Manager.Serialize(item);
             }
+        }
+
+        public void Edit(T Edited)
+        {
+            Delete(Edited.Id);
+            AddData(Edited);
         }
     }
 }

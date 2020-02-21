@@ -6,12 +6,9 @@ namespace Entity
     public class Image : HaveId
     {
         public string Path { get; set; }
-        public int? UserId { get; set; }
-        public int? WebUserId { get; set; }
-        public int? AwardId { get; set; }
         public bool IsDefault { get; set; }
 
-        public static Image Parse(IEnumerable<Image> AllImages, string Image, int? WebUserId, int? UserId, int? AwardId)
+        public static Image Parse(IEnumerable<Image> AllImages, string Image)
         {
             if (AllImages == null)
             {
@@ -21,16 +18,9 @@ namespace Entity
             {
                 throw new ArgumentException("Image url too short");
             }
-            if (WebUserId == null && UserId == null && AwardId == null)
-            {
-                throw new ArgumentException("Cant add image to stock");
-            }
             var NewImage = new Image
             {
                 Path = Image,
-                UserId = UserId,
-                AwardId = AwardId,
-                WebUserId = WebUserId,
                 IsDefault = false
             };
             NewImage.Id = NewImage.GetNewId(AllImages);

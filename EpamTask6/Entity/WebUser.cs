@@ -6,18 +6,11 @@ namespace Entity
 {
     public class WebUser : HaveId
     {
-        public enum Roles
-        {
-            Guest,
-            User,
-            Admin
-        }
-
         public string Username { get; set; }
         public string Password { get; set; }
-        public Roles Role { get; set; }
+        public Role Role { get; set; }
 
-        public static WebUser Parse(IEnumerable<WebUser> AllWebUsers, string Username, string Password, WebUser.Roles Role)
+        public static WebUser Parse(IEnumerable<WebUser> AllWebUsers, string Username, string Password, Role Role)
         {
             if (AllWebUsers == null)
             {

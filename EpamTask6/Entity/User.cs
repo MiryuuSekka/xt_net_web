@@ -11,6 +11,9 @@ namespace Entity
 
         public int Age { get; set; }
 
+        public Image Icon { get; set; }
+
+
 
         public void CalculateAge()
         {

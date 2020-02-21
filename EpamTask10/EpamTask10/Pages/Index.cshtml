@@ -2,7 +2,7 @@
 @{
     Layout = "~/Pages/_Layout.cshtml";
     string username = WebData.CurrentUser.Username;
-    string role = WebData.CurrentUser.Role.ToString();
+    string role = WebData.CurrentUser.Role.Title;
 }
 
 <!DOCTYPE html>

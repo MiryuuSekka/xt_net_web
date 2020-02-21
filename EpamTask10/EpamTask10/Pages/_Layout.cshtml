@@ -1,7 +1,7 @@
 ﻿@using EpamTask10.Models;
 @{
     string username = WebData.CurrentUser.Username;
-    string role = WebData.CurrentUser.Role.ToString();
+    string role = WebData.CurrentUser.Role.Title;
     string avatar = WebData.CurrentUserAvatar;
 }
 <!DOCTYPE html>

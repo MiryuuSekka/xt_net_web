@@ -8,6 +8,8 @@ namespace DALInterfaces
 
         void AddData(T data);
 
-        void DeleteById(int Id);
+        void Delete(int Id);
+
+        void Edit(T Edited);
     }
 }

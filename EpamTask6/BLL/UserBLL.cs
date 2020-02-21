@@ -27,7 +27,7 @@ namespace BLL
 
         public void DeleteById(int Id)
         {
-            Manager.DeleteById(Id);
+            Manager.Delete(Id);
         }
     }
 }

@@ -122,33 +122,33 @@ namespace BLL
         #endregion
 
         #region delete
-        public void DeleteUserById(int Id)
+        public void DeleteUser(int Id)
         {
             var Weilders = WeilderManager.GetAll().ToList();
             Weilders = Weilders.FindAll(x => x.UserId.Equals(Id));
 
             foreach (var item in Weilders)
             {
-                WeilderManager.DeleteById(item.Id);
+                WeilderManager.Delete(item.Id);
             }
-            UserManager.DeleteById(Id);
+            UserManager.Delete(Id);
         }
 
-        public void DeleteAwardById(int Id)
+        public void DeleteAward(int Id)
         {
             var Weilders = WeilderManager.GetAll().ToList();
             Weilders = Weilders.FindAll(x => x.AwardId.Equals(Id));
 
             foreach (var item in Weilders)
             {
-                WeilderManager.DeleteById(item.Id);
+                WeilderManager.Delete(item.Id);
             }
-            AwardManager.DeleteById(Id);
+            AwardManager.Delete(Id);
         }
 
-        public void DeleteWeilderById(int Id)
+        public void DeleteWeilder(int Id)
         {
-            WeilderManager.DeleteById(Id);
+            WeilderManager.Delete(Id);
         }
         #endregion
     }

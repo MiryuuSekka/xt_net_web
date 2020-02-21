@@ -23,9 +23,14 @@ namespace DAL
             Data.Add(data);
         }
 
-        public void DeleteById(int Id)
+        public void Delete(int Id)
         {
             Data.RemoveAll(x => x.Id.Equals(Id));
+        }
+
+        public void Edit(T Edited)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -25,11 +25,11 @@ namespace BLLInterfaces
         void AddAwardWeilder(AwardWeilder data);
 
 
-        void DeleteUserById(int Id);
+        void DeleteUser(int Id);
 
-        void DeleteAwardById(int Id);
+        void DeleteAward(int Id);
 
-        void DeleteWeilderById(int Id);
+        void DeleteWeilder(int Id);
 
     }
 }

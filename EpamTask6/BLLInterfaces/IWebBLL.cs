@@ -5,46 +5,51 @@ namespace BLLInterfaces
 {
     public interface IWebBLL : IAwardBLL
     {
+        #region Edit
+        void EditUser(User EditedVer);
+        void EditAward(Award EditedVer);
+        void EditWebUser(WebUser EditedVer);
+        void EditRole(Role EditedVer);
+        void EditImage(Image EditedVer, int? UserId, int? AwardId);
+        void EditWeilder(AwardWeilder EditedVer);
+        #endregion
+
+        #region delete
+        void DeleteImage(int Id);
+        void DeleteWebUser(int Id);
+        void DeleteRole(int Id);
+        #endregion
+
+        #region get
         IEnumerable<Image> GetAllImages();
+        Image GetImage(int Id);
+        Image GetImageForUser(User user);
+        Image GetImageForAward(Award award);
+
+        IEnumerable<Role> GetAllRoles();
+        Role GetRole(int Id);
 
         IEnumerable<WebUser> GetAllWebUsers();
-
-        IEnumerable<UserAward> GetAllWeilders();
-
-
-        string AddImage(string Path, int? WebUserId, int? UserId, int? AwardId);
-
-        WebUser AddUser(string Username, string Password, WebUser.Roles Role);
+        WebUser GetWebUser(int Id);
+        WebUser GetWebUser(string Username, string Password);
         
-
-        void DeleteImage(int Id);
-
-
-        void ChangeUserRole(int UserId, WebUser.Roles NewRole);
-
-
-        bool CheckPassword(string Username, string Password);
+        User GetUser(int Id);
+        
+        Award GetAward(int Id);
+        
+        IEnumerable<UserAward> GetAllWeilders();
+        #endregion
 
 
+        #region add
+        void AddRole(Role data);
 
-        WebUser GetUser(int Id);
+        void AddImage(Image data);
+        string AddImage(string Path, int? UserId, int? AwardId);
 
-        WebUser GetUser(string Username, string Password);
+        WebUser AddWebUser(string Username, string Password, Role Role);
+        #endregion
 
-
-        Image GetImageByImageId(int Id);
-
-        Image GetImageByUserId(int Id);
-
-        Image GetImageByWebUserId(int Id);
-
-        Image GetImageByAwardId(int Id);
-
-
-        Image GetDefaultImageForWebUser(WebUser.Roles Role);
-
-        Image GetDefaultImageForAward();
-
-        Image GetDefaultImageForUser();
+        bool LogInCheck(string Username, string Password);
     }
 }

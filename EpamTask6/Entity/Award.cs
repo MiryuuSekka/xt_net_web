@@ -7,7 +7,7 @@ namespace Entity
     public class Award : HaveId
     {
         public string Title { get; set; }
-
+        public Image Icon { get; set; }
 
         public static Award Parse(IEnumerable<Award> Awards, string Answer)
         {

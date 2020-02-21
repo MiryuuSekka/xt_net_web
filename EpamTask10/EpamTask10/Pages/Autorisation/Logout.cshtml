@@ -1,7 +1,7 @@
 ﻿@using EpamTask10.Models;
 @{
     Layout = null;
-    var User = WebData.GetUserByID(1);
+    var User = WebData.GetAllWebUsers().FirstOrDefault();
     WebData.SelectUser(User.Username, User.Password);
     FormsAuthentication.SignOut();
 

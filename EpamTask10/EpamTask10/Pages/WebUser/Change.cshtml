@@ -3,7 +3,7 @@
 
 @{
     Layout = "~/Pages/_Layout.cshtml";
-    string role = WebData.CurrentUser.Role.ToString();
+    string role = WebData.CurrentUser.Role.Title;
     var Users = WebData.GetAllWebUsers().Where(x => x.Id > 1);
     Users = Users.Where(x => x.Id!= WebData.CurrentUser.Id);
     Users = Users.OrderByDescending(x => x.Id);
@@ -54,13 +54,13 @@
                     <tr>
                         <td>@item.Id</td>
                         <td>
-                            <img src="@WebData.GetImageForWebUser(item.Role, item.Id).Path" 
-                                 alt="Avatar @item.Role.ToString()" />
+                            <img src="@WebData.GetImageForWebUser(item)" 
+                                 alt="Avatar @item.Role.Title" />
                         </td>
                         <td>@item.Username</td>
                         <td>@item.Role.ToString()</td>
                         <td>
-                            @if (item.Role.Equals(WebUser.Roles.User))
+                            @if (item.Role.Equals("User"))
                             {
                                 <a class="btn btn-outline-warning" href="~/Pages/WebUser/Change.cshtml?id=@item.Id&role=up">
                                     up to Admin
