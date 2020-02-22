@@ -46,7 +46,7 @@ namespace DAL.sqlClasses
             SqlCommand = $"UPDATE {tableName} ";
             SqlCommand += $"SET Name = '{Edited.Name}', Age = {Edited.Age}, ";
             SqlCommand += $"Birthday = '{Edited.BirthDay.ToString("dd.MM.yyyy")}', ";
-            SqlCommand += $"id_image = {Edited.Icon.Id}, WHERE Id={Edited.Id}";
+            SqlCommand += $"id_image = {Edited.Icon.Id} WHERE Id={Edited.Id}";
 
             using (var SqlConnection = new SqlConnection(ConnectionString))
             {

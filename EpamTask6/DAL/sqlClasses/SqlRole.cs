@@ -42,7 +42,7 @@ namespace DAL.sqlClasses
 
         public void Edit(T Edited)
         {
-            SqlCommand = $"UPDATE {tableName} SET Title = '{Edited.Title}', Id_image = {Edited.Id_Image}  WHERE Id={Edited.Id}";
+            SqlCommand = $"UPDATE {tableName} SET Title = '{Edited.Title}', Id_image = {Edited.Id_Image} WHERE Id={Edited.Id}";
             using (var SqlConnection = new SqlConnection(ConnectionString))
             {
                 SqlConnection.Open();

@@ -58,9 +58,9 @@
                                  alt="Avatar @item.Role.Title" />
                         </td>
                         <td>@item.Username</td>
-                        <td>@item.Role.ToString()</td>
+                        <td>@item.Role.Title</td>
                         <td>
-                            @if (item.Role.Equals("User"))
+                            @if (item.Role.Title.Equals("User"))
                             {
                                 <a class="btn btn-outline-warning" href="~/Pages/WebUser/Change.cshtml?id=@item.Id&role=up">
                                     up to Admin

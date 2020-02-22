@@ -43,7 +43,7 @@ namespace DAL.sqlClasses
 
         public void Edit(T Edited)
         {
-            SqlCommand = $"UPDATE {tableName} SET url = '{Edited.Path}'  WHERE Id={Edited.Id}";
+            SqlCommand = $"UPDATE {tableName} SET url = '{Edited.Path}' WHERE Id={Edited.Id}";
             using (var SqlConnection = new SqlConnection(ConnectionString))
             {
                 SqlConnection.Open();

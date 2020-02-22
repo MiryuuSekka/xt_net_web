@@ -14,7 +14,7 @@
         if (!IsFailed)
         {
             var newRole = WebData.GetRole(Role);
-            WebData.AddUser(Username, Password, newRole);
+            Error = WebData.AddUser(Username, Password, newRole);
             WebData.SelectUser(Username, Password);
             FormsAuthentication.SetAuthCookie(Username, createPersistentCookie: true);
             Response.Redirect("~/Pages/Index.cshtml");

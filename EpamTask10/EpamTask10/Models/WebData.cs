@@ -43,7 +43,7 @@ namespace EpamTask10.Models
         #region get
         public static string GetImageForWebUser(WebUser user)
         {
-            return Connect().GetImage(CurrentUser.Role.Id_Image).Path;
+            return Connect().GetImage(user.Role.Id_Image).Path;
         }
 
         public static IEnumerable<Award> GetAllAwards()
@@ -95,9 +95,9 @@ namespace EpamTask10.Models
         {
             if (result == "on")
             {
-                return Connect().GetRole(3);
+                return Connect().GetAllRoles().ToList()[2];
             }
-            return Connect().GetRole(2);
+            return Connect().GetAllRoles().ToList()[1];
         }
         public static WebUser GetUserByID(int Id)
         {
@@ -120,9 +120,18 @@ namespace EpamTask10.Models
         #endregion
 
         #region add        
-        public static void AddUser(string Username, string Password, Role Role)
+        public static string AddUser(string Username, string Password, Role Role)
         {
-            Connect().AddWebUser(Username, Password, Role);
+            try
+            {
+                Connect().AddWebUser(Username, Password, Role);
+            }
+            catch (ArgumentException e)
+            {
+
+                return e.Message;
+            }
+            return "";
         }
         public static void AddAward(string Title)
         {
@@ -171,7 +180,7 @@ namespace EpamTask10.Models
         public static void EditUserRole(int UserId, string NewRole)
         {
             var User = Connect().GetWebUser(UserId);
-            User.Role = (NewRole == "up") ? Connect().GetRole(3) : Connect().GetRole(2);
+            User.Role = (NewRole == "up") ? Connect().GetAllRoles().ToList()[2] : Connect().GetAllRoles().ToList()[1];
             Connect().EditWebUser(User);
         }
         public static void EditImage(string Path, int? UserId, int? AwardId)
@@ -185,26 +194,25 @@ namespace EpamTask10.Models
 
         public static void EditAward(int id, string Title)
         {
-            var newAward = Award.Parse(Connect().GetAllAwards(), Title);
-            newAward.Id = id;
-            Connect().EditAward(newAward);
+            var BaseAward = Connect().GetAward(id);
+            if (BaseAward.Title != Title)
+            {
+                BaseAward.Title = Title;
+            }
+            Connect().EditAward(BaseAward);
         }
         public static void EditUser(int Id, string Date, string Name)
         {
             var BaseUser = Connect().GetUser(Id);
-            DateTime date = BaseUser.BirthDay;
-
             if (Date.Length > 0)
             {
-                date = StringToDate(Date);
+                BaseUser.BirthDay = StringToDate(Date);
             }
-            if (BaseUser.Name == Name)
+            if (BaseUser.Name != Name)
             {
-                Name = BaseUser.Name;
+                BaseUser.Name = Name;
             }
-            var newUser = User.Parse(Connect().GetAllUsers(), Name, date);
-            newUser.Id = Id;
-            Connect().EditUser(newUser);
+            Connect().EditUser(BaseUser);
         }
         #endregion
 
